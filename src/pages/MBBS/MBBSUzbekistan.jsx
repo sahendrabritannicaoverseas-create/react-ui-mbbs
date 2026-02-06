@@ -1,55 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, uniCrimea, uniDhaka, uniAma, uniAltinbas, uniMasha } from '../../assets/images';
-import { BiRightArrowAlt, BiChevronRight, BiPlusCircle, BiMapPin } from 'react-icons/bi';
+import { BiRightArrowAlt, BiChevronRight, BiPlusCircle, BiMapPin, BiListUl, BiCheckCircle, BiInfoCircle } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
-const MBBSVietnam = () => {
+
+const MBBSUzbekistan = () => {
     const universities = [
         {
-            name: 'Hanoi Medical University',
-            slug: 'hanoi-medical-university',
-            img: uniCrimea,
-            desc: 'One of Vietnam\'s oldest and most prestigious medical institutions, known for excellence in medical education and research.',
-            location: 'Hanoi, Vietnam',
-            established: '1902',
-            recognition: 'WHO, NMC, FAIMER Listed'
-        },
-        {
-            name: 'Ho Chi Minh City University of Medicine and Pharmacy',
-            slug: 'hcmc-university-medicine-pharmacy',
-            img: uniDhaka,
-            desc: 'A leading medical university in Southern Vietnam offering world-class MBBS programs with modern facilities.',
-            location: 'Ho Chi Minh City, Vietnam',
-            established: '1947',
-            recognition: 'WHO, NMC, FAIMER Listed'
-        },
-        {
-            name: 'Hue University of Medicine and Pharmacy',
-            slug: 'hue-university-medicine-pharmacy',
-            img: uniAma,
-            desc: 'Located in the historic city of Hue, offering comprehensive medical education with strong clinical training.',
-            location: 'Hue, Vietnam',
-            established: '1957',
-            recognition: 'WHO, NMC Listed'
-        },
-        {
-            name: 'Can Tho University of Medicine and Pharmacy',
-            slug: 'can-tho-university-medicine-pharmacy',
-            img: uniAltinbas,
-            desc: 'A prominent institution in the Mekong Delta region, known for quality medical education and affordable tuition.',
-            location: 'Can Tho, Vietnam',
-            established: '2002',
-            recognition: 'WHO, NMC Listed'
-        },
-        {
-            name: 'Thai Binh University of Medicine and Pharmacy',
-            slug: 'thai-binh-university-medicine-pharmacy',
+            name: 'Tashkent Medical Academy',
+            slug: 'tashkent-medical-academy',
             img: uniMasha,
-            desc: 'A well-established medical university offering MBBS programs with excellent practical training opportunities.',
-            location: 'Thai Binh, Vietnam',
-            established: '1968',
-            recognition: 'WHO, NMC Listed'
+            desc: 'The leading medical educational institution in the Republic of Uzbekistan for training medical personnel.',
+            location: 'Tashkent, Uzbekistan',
+            established: '1920',
+            recognition: 'WHO, NMC Recognized'
+        },
+        {
+            name: 'Samarkand State Medical University',
+            slug: 'samarkand-state-medical-university',
+            img: uniAltinbas,
+            desc: 'One of the oldest and most prestigious medical universities in Central Asia.',
+            location: 'Samarkand, Uzbekistan',
+            established: '1930',
+            recognition: 'WHO, NMC Recognized'
         }
     ];
 
@@ -60,15 +34,18 @@ const MBBSVietnam = () => {
         transition: { duration: 0.6, ease: "easeOut" }
     };
 
-    const staggerContainer = {
-        initial: {},
-        whileInView: { transition: { staggerChildren: 0.1 } }
-    };
+    const tocSections = [
+        { id: 'intro', label: '1. Introduction to MBBS in Uzbekistan' },
+        { id: 'universities', label: '2. Top Medical Universities' },
+        { id: 'why-uzbekistan', label: '3. Why Study in Uzbekistan?' },
+        { id: 'eligibility', label: '4. Eligibility Criteria' },
+        { id: 'documents', label: '5. Required Documents' },
+    ];
 
     return (
         <main className="overflow-hidden bg-white">
             {/* Page Title Area */}
-            <section className="relative pt-[120px] pb-[80px] bg-slate-900 overflow-hidden">
+            <section id="intro" className="relative pt-[120px] pb-[80px] bg-slate-900 overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
                     style={{ backgroundImage: `url(${pageTitleBg})` }}
@@ -94,83 +71,206 @@ const MBBSVietnam = () => {
                             MBBS Uzbekistan
                         </h2>
                         <ul className="flex items-center justify-center xl:justify-start gap-3 text-slate-400 font-semibold text-xs uppercase tracking-widest">
-                            <li><Link to="/" className="hover:text-brand-secondary transition-colors">Home</Link></li>
+                            <li><Link to="/" className="hover:text-brand-primary transition-colors">Home</Link></li>
                             <li className="text-slate-600">/</li>
-                            <li className="text-brand-primary">Uzbekistan Universities</li>
+                            <li className="text-brand-secondary">Uzbekistan Universities</li>
                         </ul>
                     </motion.div>
                 </div>
             </section>
 
-            {/* University List */}
-            <section className="py-16 bg-slate-50 relative">
+            {/* Main Content Area */}
+            <section className="py-16 bg-white relative">
                 <div className="container mx-auto px-6">
-                    <motion.div
-                        {...fadeInUp}
-                        className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 border-b border-slate-200 pb-6"
-                    >
-                        <div>
-                            <span className="text-brand-primary font-bold text-[10px] uppercase tracking-widest mb-2 block">Premier Institutions</span>
-                            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 uppercase tracking-tight">Top Medical <span className="gradient-text">Universities</span></h2>
-                        </div>
-                        <div className="text-slate-500 font-semibold bg-white px-4 py-1.5 rounded-full shadow-sm text-xs uppercase tracking-wide border border-slate-100">
-                            {universities.length} Recognized Universities
-                        </div>
-                    </motion.div>
+                    <div className="max-w-4xl mx-auto space-y-20">
 
-                    <motion.div
-                        variants={staggerContainer}
-                        initial="initial"
-                        whileInView="whileInView"
-                        viewport={{ once: true }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                    >
-                        {universities.map((uni, idx) => (
-                            <motion.div
-                                key={idx}
-                                variants={fadeInUp}
-                                whileHover={{ y: -5 }}
-                                className="bg-white rounded-[24px] border border-slate-100 p-5 hover:shadow-lg transition-all duration-300 shadow-sm group"
-                            >
-                                <div className="h-44 rounded-[16px] overflow-hidden mb-5 relative">
-                                    <img src={uni.img} alt={uni.name} className="w-full h-full object-cover" />
-                                    <div className="absolute top-3 left-3 bg-slate-900/70 backdrop-blur-sm px-3 py-1 rounded-full text-white text-[10px] font-semibold flex items-center gap-1.5">
-                                        <BiMapPin className="text-brand-secondary text-sm" />
-                                        {uni.location}
+                        {/* 1. Introduction Section */}
+                        <motion.section id="intro" {...fadeInUp} className="scroll-mt-32">
+                            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                                <div className="p-2 bg-brand-primary/10 rounded-lg"><BiInfoCircle className="text-brand-primary" /></div>
+                                1. Introduction to MBBS in Uzbekistan
+                            </h2>
+                            <div className="prose prose-slate max-w-none text-slate-600 space-y-6 mb-10">
+                                <p>
+                                    Uzbekistan has emerged as one of the most promising destinations for Indian students to study MBBS. The country offers a high standard of medical education, modern infrastructure, and a safe environment, all at a very affordable cost.
+                                </p>
+
+                                {/* Featured Content Image */}
+                                <div className="rounded-[32px] overflow-hidden my-12 shadow-xl border-4 border-white aspect-video relative group">
+                                    <img
+                                        src={uniAma}
+                                        alt="Medical Education in Uzbekistan"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                                    <div className="absolute bottom-8 left-8">
+                                        <p className="text-white font-bold text-lg">Leading Medical Universities</p>
+                                        <p className="text-slate-200 text-sm">Join a growing community of Indian students in Uzbekistan.</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-2 mb-3">
-                                    <span className="text-brand-primary font-semibold text-[9px] uppercase tracking-wide bg-brand-primary/5 px-2 py-0.5 rounded-full">Est. {uni.established}</span>
-                                    <span className="text-green-600 font-semibold text-[9px] uppercase tracking-wide bg-green-50 px-2 py-0.5 rounded-full">{uni.recognition.split(',')[0]}</span>
-                                </div>
-                                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-primary transition-colors leading-tight">{uni.name}</h3>
-                                <p className="text-slate-500 text-sm mb-5 leading-relaxed line-clamp-2">
-                                    {uni.desc}
+
+                                <p>
+                                    Medical universities in Uzbekistan are recognized by WHO and NMC, ensuring that the degree obtained is valid for practice in India and globally after clearing the necessary licensing exams.
                                 </p>
-                                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                                    <Link
-                                        to={`/university/${uni.slug}`}
-                                        className="text-brand-primary font-semibold text-xs uppercase tracking-wide inline-flex items-center gap-2 hover:text-[#1E3A8A] transition-all group/btn"
+                            </div>
+
+                            {/* In-Content Table of Contents Box */}
+                            <div className="bg-[#f3f8ff] rounded-[24px] p-8 border border-[#e1ecf8] shadow-sm">
+                                <h2 className="text-xl font-bold text-[#1e3a8a] mb-6 flex items-center gap-3">
+                                    <div className="w-1.5 h-6 bg-brand-primary rounded-full"></div>
+                                    Table of Contents
+                                </h2>
+                                <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                                    {tocSections.map((section, idx) => (
+                                        <li key={idx} className="flex items-start gap-2 group">
+                                            <span className="text-slate-400 font-bold text-sm mt-0.5">{idx + 1}.</span>
+                                            <button
+                                                onClick={() => {
+                                                    const element = document.getElementById(section.id);
+                                                    if (element) {
+                                                        window.scrollTo({
+                                                            top: element.offsetTop - 120,
+                                                            behavior: 'smooth'
+                                                        });
+                                                    }
+                                                }}
+                                                className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-1 underline decoration-transparent hover:decoration-brand-primary/30 underline-offset-4 text-left text-sm font-bold transition-all"
+                                            >
+                                                {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </motion.section>
+                        {/* 2. Top Universities */}
+                        <div id="universities" className="scroll-mt-32">
+                            <motion.div {...fadeInUp} className="flex items-center justify-between gap-4 mb-10 border-b border-slate-200 pb-6">
+                                <h2 className="text-2xl md:text-3xl font-bold text-slate-900">2. Top Medical Universities in Uzbekistan</h2>
+                                <div className="bg-brand-primary/5 text-brand-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-brand-primary/10">
+                                    {universities.length} Institutions
+                                </div>
+                            </motion.div>
+
+                            <div className="space-y-10">
+                                {universities.map((uni, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        id={uni.slug}
+                                        {...fadeInUp}
+                                        className="bg-white rounded-[32px] border border-slate-100 p-6 md:p-10 hover:shadow-xl transition-all duration-500 shadow-sm group scroll-mt-32"
                                     >
-                                        View Details
-                                        <div className="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center group-hover/btn:bg-[#1E3A8A] transition-all">
-                                            <BiRightArrowAlt className="text-sm" />
+                                        <div className="grid grid-cols-1 xl:grid-cols-12 gap-10">
+                                            <div className="xl:col-span-4">
+                                                <div className="h-56 rounded-[24px] overflow-hidden relative shadow-lg">
+                                                    <img src={uni.img} alt={uni.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                                    <div className="absolute top-4 left-4 bg-slate-900/70 backdrop-blur-md px-3 py-1.5 rounded-full text-white text-[10px] font-bold flex items-center gap-2">
+                                                        <BiMapPin className="text-brand-secondary" />
+                                                        {uni.location}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="xl:col-span-8">
+                                                <div className="flex items-center gap-3 mb-4">
+                                                    <span className="text-[10px] font-bold text-brand-primary uppercase tracking-widest bg-brand-primary/5 px-3 py-1 rounded-full">2.{idx + 1}. University Info</span>
+                                                </div>
+                                                <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-brand-primary transition-colors">{uni.name}</h3>
+                                                <p className="text-slate-500 text-sm leading-relaxed mb-8">{uni.desc}</p>
+                                                <div className="flex flex-wrap items-center justify-between gap-6 pt-6 border-t border-slate-100">
+                                                    <div className="flex gap-4">
+                                                        <div className="flex items-center gap-2 text-slate-400 text-xs font-bold">
+                                                            <BiCheckCircle /> {uni.recognition.split(',')[0]}
+                                                        </div>
+                                                        <div className="flex items-center gap-2 text-slate-400 text-xs font-bold">
+                                                            <BiPlusCircle /> Est. {uni.established}
+                                                        </div>
+                                                    </div>
+                                                    <Link
+                                                        to={`/university/${uni.slug}`}
+                                                        className="text-brand-primary font-bold text-sm inline-flex items-center gap-2 group/btn hover:translate-x-1 transition-transform"
+                                                    >
+                                                        View Detailed Profile <BiRightArrowAlt className="text-xl group-hover/btn:translate-x-1 transition-transform" />
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </Link>
-                                    <div className="flex gap-1">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary animate-pulse"></span>
-                                        <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary opacity-50"></span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Why Study in Uzbekistan */}
+                        <div id="why-uzbekistan" className="mb-20">
+                            <motion.div {...fadeInUp} className="mb-8">
+                                <h2 className="text-2xl font-bold text-slate-900 mb-4">Why Study MBBS in Uzbekistan?</h2>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    {[
+                                        'Extremely affordable tuition fees and living costs.',
+                                        'NMC and WHO recognized medical degrees.',
+                                        'Safe environment for international students.',
+                                        'Modern medical technology and infrastructure.',
+                                        'Easy visa process and proximity to India.',
+                                        'High quality of education with practical training.'
+                                    ].map((item, idx) => (
+                                        <div key={idx} className="flex items-start gap-3 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                                            <BiCheckCircle className="text-green-500 text-xl flex-shrink-0" />
+                                            <p className="text-slate-600 text-sm">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Eligibility Section */}
+                        <div id="eligibility" className="mb-20">
+                            <motion.div {...fadeInUp} className="bg-white rounded-[32px] p-8 border border-slate-100 shadow-sm">
+                                <h2 className="text-2xl font-bold text-slate-900 mb-6">Eligibility Criteria</h2>
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl">
+                                        <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold">1</div>
+                                        <p className="text-slate-700 font-medium">At least 50% in PCB for General category (40% for SC/ST/OBC).</p>
+                                    </div>
+                                    <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl">
+                                        <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold">2</div>
+                                        <p className="text-slate-700 font-medium">NEET qualification is a must for Indian students.</p>
+                                    </div>
+                                    <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl">
+                                        <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold">3</div>
+                                        <p className="text-slate-700 font-medium">Minimum age of 17 years as of 31st December of the admission year.</p>
                                     </div>
                                 </div>
                             </motion.div>
-                        ))}
-                    </motion.div>
+                        </div>
+
+                        {/* Documents Section */}
+                        <div id="documents" className="mb-10">
+                            <motion.div {...fadeInUp} className="bg-slate-900 rounded-[32px] p-8 text-white relative overflow-hidden">
+                                <div className="relative z-10">
+                                    <h2 className="text-2xl font-bold mb-6">Required Documents</h2>
+                                    <ul className="grid md:grid-cols-2 gap-4">
+                                        {[
+                                            '10th & 12th Marksheets',
+                                            'Valid Passport',
+                                            'NEET Result Scorecard',
+                                            'Passport size photographs',
+                                            'Medical clearance certificate',
+                                            'Invitation letter from University'
+                                        ].map((doc, idx) => (
+                                            <li key={idx} className="flex items-center gap-3">
+                                                <BiCheckCircle className="text-brand-secondary text-xl" />
+                                                <span className="text-slate-300">{doc}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                            </motion.div>
+                        </div>
+                    </div>
                 </div>
             </section>
-
-
         </main>
     );
 };
 
-export default MBBSVietnam;
+export default MBBSUzbekistan;

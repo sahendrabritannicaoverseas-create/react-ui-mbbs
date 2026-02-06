@@ -12,6 +12,7 @@ import Countries from "../pages/Countries";
 import Team from "../pages/Team";
 import Contact from "../pages/Contact/Contact";
 import UniversityDetail from "../pages/Universities/UniversityDetail";
+import AdmissionProcess from "../pages/AdmissionProcess";
 
 const AppRoutes = () => {
     return (
@@ -29,6 +30,7 @@ const AppRoutes = () => {
             <Route path="/countries/:id" element={<Countries />} />
             <Route path="/team" element={<Team />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admission-process" element={<AdmissionProcess />} />
         </Routes>
     );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, uniCrimea, uniDhaka, uniAma, uniAltinbas, uniMasha } from '../../assets/images';
-import { BiRightArrowAlt, BiChevronRight, BiPlusCircle, BiMapPin } from 'react-icons/bi';
+import { BiRightArrowAlt, BiMapPin } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 const MBBSVietnam = () => {
@@ -65,10 +65,11 @@ const MBBSVietnam = () => {
         whileInView: { transition: { staggerChildren: 0.1 } }
     };
 
+
     return (
         <main className="overflow-hidden bg-white">
             {/* Page Title Area */}
-            <section className="relative pt-[120px] pb-[80px] bg-slate-900 overflow-hidden">
+            <section id="intro" className="relative pt-[120px] pb-[80px] bg-slate-900 overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
                     style={{ backgroundImage: `url(${pageTitleBg})` }}
@@ -90,85 +91,82 @@ const MBBSVietnam = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 uppercase tracking-tight">
+                        <h2 className="text-2xl mt-5 text-3xl font-bold text-white mb-5 uppercase tracking-tight">
                             MBBS Vietnam
                         </h2>
                         <ul className="flex items-center justify-center xl:justify-start gap-3 text-slate-400 font-semibold text-xs uppercase tracking-widest">
-                            <li><Link to="/" className="hover:text-brand-secondary transition-colors">Home</Link></li>
+                            <li><Link to="/" className="hover:text-brand-primary transition-colors">Home</Link></li>
                             <li className="text-slate-600">/</li>
-                            <li className="text-brand-primary">Vietnam Universities</li>
+                            <li className="text-brand-secondary">Vietnam Universities</li>
                         </ul>
                     </motion.div>
                 </div>
             </section>
 
-            {/* University List */}
+            {/* Main Content */}
             <section className="py-16 bg-slate-50 relative">
                 <div className="container mx-auto px-6">
-                    <motion.div
-                        {...fadeInUp}
-                        className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 border-b border-slate-200 pb-6"
-                    >
-                        <div>
-                            <span className="text-brand-primary font-bold text-[10px] uppercase tracking-widest mb-2 block">Premier Institutions</span>
-                            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 uppercase tracking-tight">Top Medical <span className="gradient-text">Universities</span></h2>
-                        </div>
-                        <div className="text-slate-500 font-semibold bg-white px-4 py-1.5 rounded-full shadow-sm text-xs uppercase tracking-wide border border-slate-100">
-                            {universities.length} Recognized Universities
-                        </div>
-                    </motion.div>
+                    {/* University List */}
+                    <div id="universities" className="mb-20">
+                        <motion.div
+                            {...fadeInUp}
+                            className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 border-b border-slate-200 pb-6"
+                        >
+                            <div>
+                                <span className="text-brand-primary font-bold text-[10px] uppercase tracking-widest mb-2 block">Premier Institutions</span>
+                                <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 uppercase tracking-tight">Top Medical <span className="gradient-text">Universities</span></h2>
+                            </div>
+                            <div className="text-slate-500 font-semibold bg-white px-4 py-1.5 rounded-full shadow-sm text-xs uppercase tracking-wide border border-slate-100">
+                                {universities.length} Recognized Universities
+                            </div>
+                        </motion.div>
 
-                    <motion.div
-                        variants={staggerContainer}
-                        initial="initial"
-                        whileInView="whileInView"
-                        viewport={{ once: true }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                    >
-                        {universities.map((uni, idx) => (
-                            <motion.div
-                                key={idx}
-                                variants={fadeInUp}
-                                whileHover={{ y: -5 }}
-                                className="bg-white rounded-[24px] border border-slate-100 p-5 hover:shadow-lg transition-all duration-300 shadow-sm group"
-                            >
-                                <div className="h-44 rounded-[16px] overflow-hidden mb-5 relative">
-                                    <img src={uni.img} alt={uni.name} className="w-full h-full object-cover" />
-                                    <div className="absolute top-3 left-3 bg-slate-900/70 backdrop-blur-sm px-3 py-1 rounded-full text-white text-[10px] font-semibold flex items-center gap-1.5">
-                                        <BiMapPin className="text-brand-secondary text-sm" />
-                                        {uni.location}
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 mb-3">
-                                    <span className="text-brand-primary font-semibold text-[9px] uppercase tracking-wide bg-brand-primary/5 px-2 py-0.5 rounded-full">Est. {uni.established}</span>
-                                    <span className="text-green-600 font-semibold text-[9px] uppercase tracking-wide bg-green-50 px-2 py-0.5 rounded-full">{uni.recognition.split(',')[0]}</span>
-                                </div>
-                                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-primary transition-colors leading-tight">{uni.name}</h3>
-                                <p className="text-slate-500 text-sm mb-5 leading-relaxed line-clamp-2">
-                                    {uni.desc}
-                                </p>
-                                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                                    <Link
-                                        to={`/university/${uni.slug}`}
-                                        className="text-brand-primary font-semibold text-xs uppercase tracking-wide inline-flex items-center gap-2 hover:text-[#1E3A8A] transition-all group/btn"
-                                    >
-                                        View Details
-                                        <div className="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center group-hover/btn:bg-[#1E3A8A] transition-all">
-                                            <BiRightArrowAlt className="text-sm" />
+                        <motion.div
+                            variants={staggerContainer}
+                            initial="initial"
+                            whileInView="whileInView"
+                            viewport={{ once: true }}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                        >
+                            {universities.map((uni, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    variants={fadeInUp}
+                                    whileHover={{ y: -5 }}
+                                    className="bg-white rounded-[24px] border border-slate-100 p-5 hover:shadow-lg transition-all duration-300 shadow-sm group"
+                                >
+                                    <div className="h-44 rounded-[16px] overflow-hidden mb-5 relative">
+                                        <img src={uni.img} alt={uni.name} className="w-full h-full object-cover" />
+                                        <div className="absolute top-3 left-3 bg-slate-900/70 backdrop-blur-sm px-3 py-1 rounded-full text-white text-[10px] font-semibold flex items-center gap-1.5">
+                                            <BiMapPin className="text-brand-secondary text-sm" />
+                                            {uni.location}
                                         </div>
-                                    </Link>
-                                    <div className="flex gap-1">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary animate-pulse"></span>
-                                        <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary opacity-50"></span>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <span className="text-brand-primary font-semibold text-[9px] uppercase tracking-wide bg-brand-primary/5 px-2 py-0.5 rounded-full">Est. {uni.established}</span>
+                                        <span className="text-green-600 font-semibold text-[9px] uppercase tracking-wide bg-green-50 px-2 py-0.5 rounded-full">{uni.recognition.split(',')[0]}</span>
+                                    </div>
+                                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-primary transition-colors leading-tight">{uni.name}</h3>
+                                    <p className="text-slate-500 text-sm mb-5 leading-relaxed line-clamp-2">
+                                        {uni.desc}
+                                    </p>
+                                    <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                                        <Link
+                                            to={`/university/${uni.slug}`}
+                                            className="text-brand-primary font-semibold text-xs uppercase tracking-wide inline-flex items-center gap-2 hover:text-[#1E3A8A] transition-all group/btn"
+                                        >
+                                            View Details
+                                            <div className="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center group-hover/btn:bg-[#1E3A8A] transition-all">
+                                                <BiRightArrowAlt className="text-sm" />
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
                 </div>
             </section>
-
-
         </main>
     );
 };
