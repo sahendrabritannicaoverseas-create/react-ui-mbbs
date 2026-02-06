@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, uniCrimea, uniDhaka, uniAma, uniAltinbas, uniMasha } from '../../assets/images';
-import { BiRightArrowAlt, BiChevronRight, BiPlusCircle, BiMapPin, BiListUl, BiCheckCircle, BiInfoCircle } from 'react-icons/bi';
+import { BiRightArrowAlt, BiChevronRight, BiPlusCircle, BiMapPin, BiListUl, BiCheckCircle, BiInfoCircle, BiPlus, BiMinus } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 
 const MBBSUzbekistan = () => {
+    const [isTocOpen, setIsTocOpen] = useState(false);
     const universities = [
         {
             name: 'Tashkent Medical Academy',
@@ -114,33 +115,49 @@ const MBBSUzbekistan = () => {
                                 </p>
                             </div>
 
-                            {/* In-Content Table of Contents Box */}
-                            <div className="bg-[#f3f8ff] rounded-[24px] p-8 border border-[#e1ecf8] shadow-sm">
-                                <h2 className="text-xl font-bold text-[#1e3a8a] mb-6 flex items-center gap-3">
-                                    <div className="w-1.5 h-6 bg-brand-primary rounded-full"></div>
-                                    Table of Contents
-                                </h2>
-                                <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
-                                    {tocSections.map((section, idx) => (
-                                        <li key={idx} className="flex items-start gap-2 group">
-                                            <span className="text-slate-400 font-bold text-sm mt-0.5">{idx + 1}.</span>
-                                            <button
-                                                onClick={() => {
-                                                    const element = document.getElementById(section.id);
-                                                    if (element) {
-                                                        window.scrollTo({
-                                                            top: element.offsetTop - 120,
-                                                            behavior: 'smooth'
-                                                        });
-                                                    }
-                                                }}
-                                                className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-1 underline decoration-transparent hover:decoration-brand-primary/30 underline-offset-4 text-left text-sm font-bold transition-all"
-                                            >
-                                                {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
+                            {/* Collapsible Table of Contents Box */}
+                            <div className="bg-white rounded-xl p-4 md:p-6 mb-12 border border-slate-200 shadow-sm transition-all duration-300">
+                                <div
+                                    className="flex items-center justify-between cursor-pointer group"
+                                    onClick={() => setIsTocOpen(!isTocOpen)}
+                                >
+                                    <h2 className="text-xl font-bold text-slate-800">
+                                        Table of Contents
+                                    </h2>
+                                    <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white rounded transition-colors hover:bg-brand-primary/90">
+                                        {isTocOpen ? <BiMinus className="text-2xl" /> : <BiPlus className="text-2xl" />}
+                                    </div>
+                                </div>
+
+                                {isTocOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        className="overflow-hidden"
+                                    >
+                                        <ul className="flex flex-col gap-y-4 pt-8 mt-6 border-t border-slate-100">
+                                            {tocSections.map((section, idx) => (
+                                                <li key={idx} className="flex items-start gap-2 group">
+                                                    <span className="text-slate-400 font-bold text-sm mt-0.5">{idx + 1}.</span>
+                                                    <button
+                                                        onClick={() => {
+                                                            const element = document.getElementById(section.id);
+                                                            if (element) {
+                                                                window.scrollTo({
+                                                                    top: element.offsetTop - 120,
+                                                                    behavior: 'smooth'
+                                                                });
+                                                            }
+                                                        }}
+                                                        className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-1 underline decoration-transparent hover:decoration-brand-primary/30 underline-offset-4 text-left text-sm font-bold transition-all"
+                                                    >
+                                                        {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
+                                                    </button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                )}
                             </div>
                         </motion.section>
                         {/* 2. Top Universities */}

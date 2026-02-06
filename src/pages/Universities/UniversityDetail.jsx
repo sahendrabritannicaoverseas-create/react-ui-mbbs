@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, uniCrimea, uniDhaka, uniAma, uniAltinbas, uniMasha } from '../../assets/images';
-import { BiChevronRight, BiMapPin, BiCalendar, BiCheckShield, BiBuildings, BiBookOpen, BiMoney, BiTime, BiGlobe, BiPhone, BiListUl, BiInfoCircle } from 'react-icons/bi';
+import { BiChevronRight, BiMapPin, BiCalendar, BiCheckShield, BiBuildings, BiBookOpen, BiMoney, BiTime, BiGlobe, BiPhone, BiListUl, BiInfoCircle, BiPlus, BiMinus } from 'react-icons/bi';
 
 
 const UniversityDetail = () => {
     const { slug } = useParams();
+    const [isTocOpen, setIsTocOpen] = useState(false);
 
     // University data - this could be moved to a separate data file or fetched from API
     const universitiesData = {
@@ -240,6 +241,51 @@ const UniversityDetail = () => {
                                     />
                                 </div>
 
+                                {/* Collapsible Table of Contents Box */}
+                                <div className="bg-white rounded-xl p-4 md:p-6 mb-12 border border-slate-200 shadow-sm transition-all duration-300">
+                                    <div
+                                        className="flex items-center justify-between cursor-pointer group"
+                                        onClick={() => setIsTocOpen(!isTocOpen)}
+                                    >
+                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-3">
+                                            Table of Contents
+                                        </h2>
+                                        <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white rounded transition-colors hover:bg-brand-primary/90">
+                                            {isTocOpen ? <BiMinus className="text-2xl" /> : <BiPlus className="text-2xl" />}
+                                        </div>
+                                    </div>
+
+                                    {isTocOpen && (
+                                        <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            className="overflow-hidden"
+                                        >
+                                            <ul className="flex flex-col gap-y-4 pt-8 mt-6 border-t border-slate-100">
+                                                {tocSections.map((section, idx) => (
+                                                    <li key={idx} className="flex items-start gap-2 group">
+                                                        <span className="text-slate-400 font-bold text-sm mt-0.5">{idx + 1}.</span>
+                                                        <button
+                                                            onClick={() => {
+                                                                const element = document.getElementById(section.id);
+                                                                if (element) {
+                                                                    window.scrollTo({
+                                                                        top: element.offsetTop - 120,
+                                                                        behavior: 'smooth'
+                                                                    });
+                                                                }
+                                                            }}
+                                                            className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-1 underline decoration-transparent hover:decoration-brand-primary/30 underline-offset-4 text-left text-sm font-bold transition-all"
+                                                        >
+                                                            {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
+                                                        </button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </motion.div>
+                                    )}
+                                </div>
+
 
                                 {/* Highlights */}
                                 <div id="highlights" className="scroll-mt-32 mb-12">
@@ -416,35 +462,6 @@ const UniversityDetail = () => {
                         {/* Right Sidebar */}
                         <div className="lg:col-span-1">
                             <aside className="sticky top-32 space-y-8">
-                                {/* Table of Contents - Sidebar View */}
-                                <div className="bg-white rounded-[24px] border border-slate-100 p-6 shadow-sm overflow-hidden">
-                                    <h3 className="text-base font-bold text-slate-900 mb-6 pb-2 border-b border-slate-100 flex items-center gap-3">
-                                        <div className="w-1 h-4 bg-brand-primary rounded-full"></div>
-                                        Table of Contents
-                                    </h3>
-                                    <div className="space-y-2">
-                                        {tocSections.map((section, idx) => (
-                                            <button
-                                                key={idx}
-                                                onClick={() => {
-                                                    const element = document.getElementById(section.id);
-                                                    if (element) {
-                                                        window.scrollTo({
-                                                            top: element.offsetTop - 120,
-                                                            behavior: 'smooth'
-                                                        });
-                                                    }
-                                                }}
-                                                className="w-full flex items-center gap-3 p-3 rounded-xl border border-transparent hover:border-brand-primary/10 hover:bg-brand-primary/5 transition-all group text-left"
-                                            >
-                                                <span className="text-slate-400 font-bold text-[10px] w-5">{idx + 1}.</span>
-                                                <span className="text-xs font-bold text-slate-700 group-hover:text-brand-primary transition-colors">
-                                                    {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                                </span>
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
 
                                 {/* Other Universities Card */}
                                 <div className="bg-white rounded-[24px] border border-slate-100 p-6 shadow-sm overflow-hidden">
