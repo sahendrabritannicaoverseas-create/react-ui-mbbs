@@ -48,8 +48,12 @@ const Navbar = () => {
         { name: 'NEXT Exam', slug: 'next' },
         { name: 'FMGE Exam', slug: 'fmge' },
         { name: 'PLAB Exam', slug: 'plab' },
-        { name: 'PLAB Exam 2025', slug: 'plab-2025' },
-        { name: 'PLAB Exam Syllabus', slug: 'plab/syllabus' },
+
+    ];
+
+    const neetPgLinks = [
+        { name: 'Neet PG Question Paper', slug: 'neet-pg/question-paper' },
+
     ];
     return (
         <>
@@ -202,7 +206,7 @@ const Navbar = () => {
                                         transition={{ duration: 0.3, ease: "easeOut" }}
                                         className="absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white rounded-[28px] shadow-premium border border-slate-50 p-8 z-[100] mt-1"
                                     >
-                                        <div className="grid grid-cols-2 gap-x-12 gap-y-10">
+                                        <div className="grid grid-cols-3 gap-x-10 gap-y-10">
                                             {/* NEET UG Column */}
                                             <div className="flex flex-col gap-6">
                                                 <div>
@@ -228,32 +232,53 @@ const Navbar = () => {
                                                 </div>
                                             </div>
 
-                                            {/* NEET PG and Licensing Column */}
-                                            <div className="flex flex-col gap-10">
+                                            {/* NEET PG Column */}
+                                            <div className="flex flex-col gap-6">
+                                                <div>
+                                                    <h4 className="text-[11px] font-black text-brand-primary uppercase tracking-widest mb-1">NEET PG</h4>
+                                                    <div className="h-0.5 w-full bg-slate-100 relative">
+                                                        <div className="absolute top-0 left-0 h-full w-12 bg-brand-primary"></div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-col gap-4">
+                                                    {neetPgLinks.map((link, idx) => (
+                                                        <Link
+                                                            key={idx}
+                                                            to={`/exams/${link.slug}`}
+                                                            onClick={closeMenu}
+                                                            className="group/item flex items-center gap-3 transition-colors"
+                                                        >
+                                                            <div className="w-6 h-6 rounded-md bg-brand-primary/5 flex items-center justify-center text-brand-primary group-hover/item:bg-brand-primary group-hover/item:text-white transition-all">
+                                                                <BiBookOpen className="text-xs" />
+                                                            </div>
+                                                            <span className="text-[13px] font-bold text-slate-700 group-hover/item:text-brand-primary transition-colors leading-tight">{link.name}</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
 
-                                                {/* Licensing Section */}
-                                                <div className="flex flex-col gap-6">
-                                                    <div>
-                                                        <h4 className="text-[11px] font-black text-brand-primary uppercase tracking-widest mb-1">MEDICAL LICENSING EXAMS</h4>
-                                                        <div className="h-0.5 w-full bg-slate-100 relative">
-                                                            <div className="absolute top-0 left-0 h-full w-12 bg-brand-primary"></div>
-                                                        </div>
+                                            {/* Licensing Section */}
+                                            <div className="flex flex-col gap-6">
+                                                <div>
+                                                    <h4 className="text-[11px] font-black text-brand-primary uppercase tracking-widest mb-1">MEDICAL LICENSING EXAMS</h4>
+                                                    <div className="h-0.5 w-full bg-slate-100 relative">
+                                                        <div className="absolute top-0 left-0 h-full w-12 bg-brand-primary"></div>
                                                     </div>
-                                                    <div className="flex flex-col gap-4">
-                                                        {licensingLinks.map((link, idx) => (
-                                                            <Link
-                                                                key={idx}
-                                                                to={`/exams/${link.slug}`}
-                                                                onClick={closeMenu}
-                                                                className="group/item flex items-center gap-3 transition-colors"
-                                                            >
-                                                                <div className="w-6 h-6 rounded-md bg-brand-primary/5 flex items-center justify-center text-brand-primary group-hover/item:bg-brand-primary group-hover/item:text-white transition-all">
-                                                                    <BiBookOpen className="text-xs" />
-                                                                </div>
-                                                                <span className="text-[13px] font-bold text-slate-700 group-hover/item:text-brand-primary transition-colors leading-tight">{link.name}</span>
-                                                            </Link>
-                                                        ))}
-                                                    </div>
+                                                </div>
+                                                <div className="flex flex-col gap-4">
+                                                    {licensingLinks.map((link, idx) => (
+                                                        <Link
+                                                            key={idx}
+                                                            to={`/exams/${link.slug}`}
+                                                            onClick={closeMenu}
+                                                            className="group/item flex items-center gap-3 transition-colors"
+                                                        >
+                                                            <div className="w-6 h-6 rounded-md bg-brand-primary/5 flex items-center justify-center text-brand-primary group-hover/item:bg-brand-primary group-hover/item:text-white transition-all">
+                                                                <BiBookOpen className="text-xs" />
+                                                            </div>
+                                                            <span className="text-[13px] font-bold text-slate-700 group-hover/item:text-brand-primary transition-colors leading-tight">{link.name}</span>
+                                                        </Link>
+                                                    ))}
                                                 </div>
                                             </div>
                                         </div>

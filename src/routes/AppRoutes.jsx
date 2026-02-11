@@ -27,6 +27,7 @@ import Team from "../pages/Team";
 import Contact from "../pages/Contact/Contact";
 import UniversityDetail from "../pages/Universities/UniversityDetail";
 import AdmissionProcess from "../pages/AdmissionProcess";
+import NeetPGQuestionPaper from "../pages/Exams/neet-pg/NeetPGQuestionPaper";
 
 const AppRoutes = () => {
     return (
@@ -53,6 +54,9 @@ const AppRoutes = () => {
                 <Route path="neet-ug/result" element={<NeetUGResult />} />
                 <Route path="neet-ug/cutoff" element={<NeetUGCutoff />} />
                 <Route path="neet-ug/previous-year-question" element={<NeetUGPYQ />} />
+
+                {/* NEET PG Nested Routes */}
+                <Route path="neet-pg/question-paper" element={<NeetPGQuestionPaper />} />
 
                 {/* Medical Licensing */}
                 <Route path="fmge" element={<FMGE />} />

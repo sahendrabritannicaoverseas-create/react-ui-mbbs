@@ -58,6 +58,15 @@ const examsList = [
         banner: 'https://images.unsplash.com/photo-1505751172107-573225a94501?auto=format&fit=crop&q=80&w=800',
         bgColor: 'bg-sky-600',
         btnColor: 'bg-sky-700'
+    },
+    {
+        id: 'neet-pg',
+        title: 'NEET PG 2026',
+        subtitle: 'National Eligibility Entrance Test (PG)',
+        category: 'NEET PG',
+        banner: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800',
+        bgColor: 'bg-rose-600',
+        btnColor: 'bg-rose-700'
     }
 ];
 

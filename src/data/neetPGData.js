@@ -26,9 +26,12 @@ export const pyqData = {
     heroTitle: 'NEET PG',
     heroHighlight: 'Previous Year Papers',
     breadcrumbLabel: 'PG Question Papers',
-    years: [2024, 2023, 2022, 2021, 2020],
+    years: [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017],
     tocSections: [
         { id: 'papers', label: '1. Previous Year Papers' },
         { id: 'importance', label: '2. Importance of Solved Papers' },
+        { id: 'pattern', label: '3. NEET PG Exam Pattern' },
+        { id: 'tips', label: '4. Preparation Tips' },
+        { id: 'faq', label: '5. Frequently Asked Questions' },
     ]
 };

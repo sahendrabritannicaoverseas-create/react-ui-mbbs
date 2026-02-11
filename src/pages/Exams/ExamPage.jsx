@@ -102,6 +102,20 @@ const examData = {
     description: "Analyze NEET UG cut-off trends for various categories and top medical colleges to set your target score.",
     links: [{ name: "Previous Year Cutoffs", path: "#" }, { name: "Category Wise Cutoff", path: "#" }]
   },
+  "neet-pg": {
+    title: "NEET PG",
+    subtitle: "National Eligibility cum Entrance Test (Postgraduate)",
+    description:
+      "NEET PG is the single window entrance examination for various MD/MS and PG Diploma courses in India.",
+    links: [
+      { name: "NEET PG Question Paper", path: "/exams/neet-pg/question-paper" },
+      { name: "NEET PG Syllabus", path: "/exams/neet-pg/syllabus" },
+      { name: "NEET PG Exam Date", path: "/exams/neet-pg/exam-date" },
+      { name: "NEET PG Admit Card", path: "/exams/neet-pg/admit-card" },
+      { name: "NEET PG Cut Off", path: "/exams/neet-pg/cutoff" },
+      { name: "NEET PG Result", path: "/exams/neet-pg/result" },
+    ],
+  },
 };
 
 const ExamPage = () => {
