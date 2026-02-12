@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, uniCrimea, uniDhaka, uniAma, uniAltinbas, uniMasha } from '../../assets/images';
-import { BiRightArrowAlt, BiMapPin, BiCheckCircle, BiPlusCircle, BiChevronRight, BiBookOpen, BiDetail, BiBuildings } from 'react-icons/bi';
+import { BiRightArrowAlt, BiMapPin, BiCheckCircle, BiPlusCircle, BiChevronRight, BiChevronLeft, BiBookOpen, BiDetail, BiBuildings } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 const Universities = () => {
     const [selectedUniversities, setSelectedUniversities] = React.useState([]);
     const [searchQuery, setSearchQuery] = React.useState('');
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const itemsPerPage = 6;
 
     const categories = [
         {
@@ -54,6 +56,12 @@ const Universities = () => {
                 ? prev.filter(u => u !== uniName)
                 : [...prev, uniName]
         );
+        setCurrentPage(1);
+    };
+
+    const handleSearch = (query) => {
+        setSearchQuery(query);
+        setCurrentPage(1);
     };
 
     const filteredUnis = allUnis.filter(uni => {
@@ -62,6 +70,16 @@ const Universities = () => {
         const matchesFilter = selectedUniversities.length === 0 || selectedUniversities.includes(uni.name);
         return matchesSearch && matchesFilter;
     });
+
+    const totalPages = Math.ceil(filteredUnis.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredUnis.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+    };
 
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
@@ -164,7 +182,7 @@ const Universities = () => {
                                         <input
                                             type="text"
                                             value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                            onChange={(e) => handleSearch(e.target.value)}
                                             placeholder="Search by university name or location..."
                                             className="w-full h-14 pl-6 pr-12 rounded-xl bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary text-sm font-medium transition-all shadow-sm"
                                         />
@@ -175,7 +193,7 @@ const Universities = () => {
                                         Search
                                     </button>
                                     <button
-                                        onClick={() => { setSelectedUniversities([]); setSearchQuery(''); }}
+                                        onClick={() => { setSelectedUniversities([]); setSearchQuery(''); setCurrentPage(1); }}
                                         className="h-14 px-8 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-secondary transition-all shadow-md active:scale-95"
                                     >
                                         Reset
@@ -185,8 +203,8 @@ const Universities = () => {
 
                             {/* University Cards Horizontal List */}
                             <div className="space-y-4">
-                                {filteredUnis.length > 0 ? (
-                                    filteredUnis.map((uni, idx) => (
+                                {currentItems.length > 0 ? (
+                                    currentItems.map((uni, idx) => (
                                         <motion.div
                                             key={uni.slug}
                                             {...fadeInUp}
@@ -242,7 +260,7 @@ const Universities = () => {
                                     <div className="bg-white rounded-xl p-20 text-center border border-slate-100">
                                         <p className="text-slate-400 font-bold text-lg">No universities found matching your search or filters.</p>
                                         <button
-                                            onClick={() => { setSelectedUniversities([]); setSearchQuery(''); }}
+                                            onClick={() => { setSelectedUniversities([]); setSearchQuery(''); setCurrentPage(1); }}
                                             className="mt-4 text-brand-primary font-bold hover:underline"
                                         >
                                             Clear all filters
@@ -250,6 +268,39 @@ const Universities = () => {
                                     </div>
                                 )}
                             </div>
+
+                            {/* Premium Pagination */}
+                            {totalPages > 1 && (
+                                <div className="flex items-center justify-center gap-2 pt-8">
+                                    <button
+                                        onClick={() => paginate(Math.max(1, currentPage - 1))}
+                                        disabled={currentPage === 1}
+                                        className={`w-12 h-12 flex items-center justify-center rounded-xl border transition-all ${currentPage === 1 ? 'border-slate-100 text-slate-300 cursor-not-allowed' : 'border-slate-200 text-slate-600 hover:border-brand-primary hover:text-brand-primary shadow-sm hover:shadow-md'}`}
+                                    >
+                                        <BiChevronLeft className="text-2xl" />
+                                    </button>
+
+                                    <div className="flex items-center gap-2">
+                                        {[...Array(totalPages)].map((_, i) => (
+                                            <button
+                                                key={i + 1}
+                                                onClick={() => paginate(i + 1)}
+                                                className={`w-12 h-12 flex items-center justify-center rounded-xl font-bold text-sm transition-all ${currentPage === i + 1 ? 'bg-brand-primary text-white shadow-lg shadow-brand-primary/30' : 'bg-white border border-slate-200 text-slate-600 hover:border-brand-primary hover:text-brand-primary shadow-sm'}`}
+                                            >
+                                                {i + 1}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    <button
+                                        onClick={() => paginate(Math.min(totalPages, currentPage + 1))}
+                                        disabled={currentPage === totalPages}
+                                        className={`w-12 h-12 flex items-center justify-center rounded-xl border transition-all ${currentPage === totalPages ? 'border-slate-100 text-slate-300 cursor-not-allowed' : 'border-slate-200 text-slate-600 hover:border-brand-primary hover:text-brand-primary shadow-sm hover:shadow-md'}`}
+                                    >
+                                        <BiChevronRight className="text-2xl" />
+                                    </button>
+                                </div>
+                            )}
                         </div>
 
                     </div>

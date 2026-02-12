@@ -40,6 +40,9 @@ export const examDateData = {
     tocSections: [
         { id: 'exam-cta', label: '1. Upcoming Exam Date' },
         { id: 'schedule', label: '2. Important Schedule 2026' },
+        { id: 'exam-pattern', label: '3. Exam Pattern' },
+        { id: 'registration', label: '4. Registration Dates' },
+        { id: 'faq', label: '5. Frequently Asked Questions' },
     ],
     pageTitle: 'Exam Date',
     pageBreadcrumbs: [
@@ -78,9 +81,9 @@ export const admitCardData = {
     tocSections: [
         { id: 'admit-card-preview', label: '1. NEET UG 2026 Admit Card' },
         { id: 'how-to-download', label: '2. How to Download Hall Ticket' },
-        { id: 'check-eligibility', label: '3. Check Eligibility' },
-        { id: 'verify-details', label: '4. Verify Details' },
-        { id: 'follow-instructions', label: '5. Follow Instructions' },
+        { id: 'eligibility', label: '3. Eligibility Criteria' },
+        { id: 'instructions', label: '4. Instructions for Exam Day' },
+        { id: 'admit-info', label: '5. Information Stated' },
     ],
     pageTitle: 'Admit Card',
     pageBreadcrumbs: [
@@ -148,10 +151,11 @@ export const pyqData = {
     breadcrumbLabel: 'PYQ Papers',
     years: [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017],
     tocSections: [
-        { id: 'importance', label: '1. Why Solve NEET UG Previous Year Papers?' },
-        { id: 'pattern', label: '2. NEET UG Exam Pattern & Difficulty Level' },
-        { id: 'tips', label: '3. Preparation Tips using PYQs' },
-        { id: 'faq', label: '4. Frequently Asked Questions' },
+        { id: 'practice-papers', label: '1. Practice Question Papers' },
+        { id: 'importance', label: '2. Why Solve NEET UG Previous Year Papers?' },
+        { id: 'pattern', label: '3. NEET UG Exam Pattern & Difficulty Level' },
+        { id: 'tips', label: '4. Preparation Tips using PYQs' },
+        { id: 'faq', label: '5. Frequently Asked Questions' },
     ],
 };
 

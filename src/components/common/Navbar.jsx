@@ -55,6 +55,7 @@ const Navbar = () => {
         { name: 'Neet PG Question Paper', slug: 'neet-pg/question-paper' },
 
     ];
+
     return (
         <>
             <header className="fixed top-2 md:top-8 left-1/2 -translate-x-1/2 w-[95%] sm:w-[90%] max-w-[1280px] bg-white rounded-full shadow-xl z-[1000] px-4 md:px-10 py-3 md:py-4 flex items-center justify-between transition-all duration-300">
@@ -82,6 +83,14 @@ const Navbar = () => {
                                 className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
                             >
                                 MBBS in Vietnam
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/admission-process"
+                                className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
+                            >
+                                Admission Process
                             </Link>
                         </li>
                         <li
@@ -286,14 +295,7 @@ const Navbar = () => {
                                 )}
                             </AnimatePresence>
                         </li>
-                        <li>
-                            <Link
-                                to="/admission-process"
-                                className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
-                            >
-                                Admission Process
-                            </Link>
-                        </li>
+
                         <li>
                             <Link
                                 to="/services"
@@ -352,6 +354,13 @@ const Navbar = () => {
                                 MBBS in Vietnam <BiRightArrowAlt className="text-slate-300" />
                             </Link>
                             <Link
+                                to="/admission-process"
+                                onClick={closeMenu}
+                                className="text-slate-900 hover:text-brand-primary border-b border-slate-50 pb-5 flex justify-between items-center"
+                            >
+                                Admission Process <BiRightArrowAlt className="text-slate-300" />
+                            </Link>
+                            <Link
                                 to="/universities"
                                 onClick={closeMenu}
                                 className="text-slate-900 hover:text-brand-primary border-b border-slate-50 pb-5 flex justify-between items-center"
@@ -367,14 +376,7 @@ const Navbar = () => {
                                 Exams{" "}
                                 <BiRightArrowAlt className="text-slate-300" />
                             </Link>
-                            <Link
-                                to="/admission-process"
-                                onClick={closeMenu}
-                                className="text-slate-900 hover:text-brand-primary border-b border-slate-50 pb-5 flex justify-between items-center"
-                            >
-                                Admission Process{" "}
-                                <BiRightArrowAlt className="text-slate-300" />
-                            </Link>
+
                             <Link
                                 to="/services"
                                 onClick={closeMenu}

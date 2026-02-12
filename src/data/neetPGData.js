@@ -28,7 +28,7 @@ export const pyqData = {
     breadcrumbLabel: 'PG Question Papers',
     years: [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017],
     tocSections: [
-        { id: 'papers', label: '1. Previous Year Papers' },
+        { id: 'papers', label: '1. Question Papers' },
         { id: 'importance', label: '2. Importance of Solved Papers' },
         { id: 'pattern', label: '3. NEET PG Exam Pattern' },
         { id: 'tips', label: '4. Preparation Tips' },

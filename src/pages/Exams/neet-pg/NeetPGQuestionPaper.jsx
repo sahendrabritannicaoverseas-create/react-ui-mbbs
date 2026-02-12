@@ -73,7 +73,7 @@ const NeetPGQuestionPaper = () => {
                 </div>
             </section>
 
-            <section className="py-12 relative -mt-10 z-20">
+            <section className="py-6 relative -mt-8 z-20">
                 <div className="container mx-auto px-5 lg:px-12 max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                         {/* Left Sidebar - Filter Section */}
@@ -142,13 +142,13 @@ const NeetPGQuestionPaper = () => {
                         </aside>
 
                         {/* Right Content */}
-                        <div className="lg:col-span-9 space-y-10">
+                        <div className="lg:col-span-9 space-y-6">
                             {/* Question Papers Section */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 id="papers"
-                                className="bg-white rounded-[32px] p-8 md:p-12 shadow-premium border border-slate-100"
+                                className="bg-white rounded-[24px] p-6 md:p-10 shadow-premium border border-slate-100"
                             >
                                 <div className="flex items-center justify-between mb-8">
                                     <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Question <span className="text-brand-primary">Papers</span></h2>
@@ -182,7 +182,43 @@ const NeetPGQuestionPaper = () => {
                                 </div>
                             </motion.div>
 
-                            <div id="importance" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
+                            {/* Table of Content */}
+                            <div className="bg-white rounded-[24px] p-5 md:p-8 border border-slate-200 shadow-premium transition-all duration-300">
+                                <div
+                                    className="flex items-center justify-between cursor-pointer group"
+                                    onClick={() => setIsTocOpen(!isTocOpen)}
+                                >
+                                    <h2 className="text-1xl font-black text-slate-800 flex items-center gap-3 lowercase tracking-tight">
+                                        Table of Content
+                                    </h2>
+                                    <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white rounded-lg transition-colors hover:bg-brand-primary/90 shadow-lg">
+                                        {isTocOpen ? <BiMinus className="text-1xl" /> : <BiPlus className="text-1xl" />}
+                                    </div>
+                                </div>
+                                {isTocOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        className="overflow-hidden"
+                                    >
+                                        <ul className="flex flex-col gap-y-2 pt-4 mt-4 border-t border-slate-100">
+                                            {sections.map((section, idx) => (
+                                                <li key={idx} className="flex items-start gap-2 group">
+                                                    <span className="text-brand-primary/40 font-bold text-sm mt-0.5">{idx + 1}.</span>
+                                                    <button
+                                                        onClick={() => scrollToSection(section.id)}
+                                                        className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-2 transition-all text-left text-sm font-bold tracking-tight"
+                                                    >
+                                                        {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
+                                                    </button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                )}
+                            </div>
+
+                            <div id="importance" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
                                 <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Why Solve NEET PG Previous Year Papers?</h2>
                                 <p className="text-slate-600">Solving previous year papers for NEET PG is essential to understand the complex clinical MCQ patterns, image-based questions, and the distribution of various pre-clinical, para-clinical, and clinical subjects.</p>
                                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -200,57 +236,23 @@ const NeetPGQuestionPaper = () => {
                                 </div>
                             </div>
 
-                            <div id="pattern" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
+                            <div id="pattern" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
                                 <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">NEET PG Exam Pattern</h2>
                                 <p className="text-slate-600">Candidates can analyze the distribution of questions across Clinical, Pre-Clinical, and Para-Clinical subjects from past papers. The exam consists of 200 multiple-choice questions.</p>
                             </div>
 
-                            <div id="tips" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
+                            <div id="tips" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
                                 <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Preparation Tips</h2>
                                 <p className="text-slate-600">Focus on clinical case-based questions and image-based identification. Regular revision of high-yield topics from past papers is key to success.</p>
                             </div>
 
-                            <div id="faq" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
+                            <div id="faq" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
                                 <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Frequently Asked Questions</h2>
                                 <p className="text-slate-600 font-bold mb-4 italic italic">Q: How many questions are asked in NEET PG?</p>
                                 <p className="text-slate-600">A: There are 200 MCQs to be solved in 3 hours and 30 minutes.</p>
                             </div>
 
-                            {/* Table of Contents */}
-                            <div className="bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-premium transition-all duration-300">
-                                <div
-                                    className="flex items-center justify-between cursor-pointer group"
-                                    onClick={() => setIsTocOpen(!isTocOpen)}
-                                >
-                                    <h2 className="text-1xl font-black text-slate-800 flex items-center gap-3 lowercase tracking-tight">
-                                        Table of Contents
-                                    </h2>
-                                    <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white rounded-lg transition-colors hover:bg-brand-primary/90 shadow-lg">
-                                        {isTocOpen ? <BiMinus className="text-1xl" /> : <BiPlus className="text-1xl" />}
-                                    </div>
-                                </div>
-                                {isTocOpen && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        className="overflow-hidden"
-                                    >
-                                        <ul className="flex flex-col gap-y-4 pt-8 mt-8 border-t border-slate-100">
-                                            {sections.map((section, idx) => (
-                                                <li key={idx} className="flex items-start gap-4 group">
-                                                    <span className="text-brand-primary/40 font-bold text-sm mt-0.5">{idx + 1}.</span>
-                                                    <button
-                                                        onClick={() => scrollToSection(section.id)}
-                                                        className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-2 transition-all text-left text-sm font-bold tracking-tight"
-                                                    >
-                                                        {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                                    </button>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </motion.div>
-                                )}
-                            </div>
+
                         </div>
                     </div>
                 </div>

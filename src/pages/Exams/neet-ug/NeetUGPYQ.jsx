@@ -3,11 +3,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { pageTitleBg, pageTitleShape } from '../../../assets/images';
 import { neetUGLinks, pyqData } from '../../../data/neetUGData';
-import { BiPlus, BiMinus, BiChevronRight } from 'react-icons/bi';
+import { BiPlus, BiMinus, BiChevronRight, BiListUl, BiRightArrowAlt } from 'react-icons/bi';
+import { AnimatePresence } from 'framer-motion';
 
 const NeetUGPYQ = () => {
     const [isTocOpen, setIsTocOpen] = useState(true);
     const [selectedYears, setSelectedYears] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
 
     const years = pyqData.years;
     const sections = pyqData.tocSections;
@@ -33,6 +36,17 @@ const NeetUGPYQ = () => {
     const filteredPapers = years.filter(year =>
         selectedYears.length === 0 || selectedYears.includes(year)
     );
+
+    // Pagination Logic
+    const totalPages = Math.ceil(filteredPapers.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentPapers = filteredPapers.slice(indexOfFirstItem, indexOfLastItem);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        scrollToSection('practice-papers');
+    };
 
     return (
         <main className="overflow-hidden bg-slate-50 min-h-screen">
@@ -142,7 +156,8 @@ const NeetUGPYQ = () => {
                         </aside>
 
                         {/* Right Content */}
-                        <div className="lg:col-span-9 space-y-10">
+                        <div className="lg:col-span-9 space-y-8">
+
                             {/* Question Papers Section */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -158,7 +173,7 @@ const NeetUGPYQ = () => {
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                                    {filteredPapers.map((year) => (
+                                    {currentPapers.map((year) => (
                                         <motion.div
                                             key={year}
                                             layout
@@ -180,7 +195,106 @@ const NeetUGPYQ = () => {
                                         </div>
                                     )}
                                 </div>
+
+                                {/* Premium Pagination */}
+                                {totalPages > 1 && (
+                                    <div className="pt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-50 mt-10">
+                                        <p className="text-xs font-black text-slate-400 uppercase tracking-widest order-2 md:order-1">
+                                            Showing <span className="text-brand-primary">{indexOfFirstItem + 1}</span> to <span className="text-brand-primary">{Math.min(indexOfLastItem, filteredPapers.length)}</span> of <span className="text-brand-primary">{filteredPapers.length}</span> Papers
+                                        </p>
+
+                                        <div className="flex items-center gap-2 order-1 md:order-2">
+                                            <button
+                                                onClick={() => handlePageChange(currentPage - 1)}
+                                                disabled={currentPage === 1}
+                                                className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:border-brand-primary hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
+                                            >
+                                                <BiChevronRight className="text-xl rotate-180" />
+                                            </button>
+
+                                            {[...Array(totalPages)].map((_, i) => (
+                                                <button
+                                                    key={i + 1}
+                                                    onClick={() => handlePageChange(i + 1)}
+                                                    className={`w-10 h-10 rounded-xl font-black text-[10px] transition-all shadow-sm ${currentPage === i + 1
+                                                        ? 'bg-brand-primary text-white shadow-brand-primary/20'
+                                                        : 'bg-white border border-slate-200 text-slate-600 hover:border-brand-primary hover:text-brand-primary'
+                                                        }`}
+                                                >
+                                                    {i + 1}
+                                                </button>
+                                            ))}
+
+                                            <button
+                                                onClick={() => handlePageChange(currentPage + 1)}
+                                                disabled={currentPage === totalPages}
+                                                className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:border-brand-primary hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
+                                            >
+                                                <BiChevronRight className="text-xl" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </motion.div>
+
+                            {/* Premium Collapsible Table of Contents */}
+                            <motion.section
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="bg-white rounded-[40px] p-6 lg:p-10 border border-slate-100 shadow-premium transition-all duration-500 overflow-hidden relative"
+                            >
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
+
+                                <div className="relative z-10">
+                                    <div
+                                        className="flex items-center justify-between cursor-pointer group"
+                                        onClick={() => setIsTocOpen(!isTocOpen)}
+                                    >
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-12 h-12 rounded-2xl bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-inner group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
+                                                <BiListUl className="text-2xl" />
+                                            </div>
+                                            <div>
+                                                <h2 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">
+                                                    Table of <span className="text-brand-primary uppercase">Contents</span>
+                                                </h2>
+                                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mt-1">Quick Navigation Guide</p>
+                                            </div>
+                                        </div>
+                                        <div className="w-10 h-10 bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-900 rounded-xl transition-all group-hover:bg-brand-primary group-hover:text-white group-hover:border-transparent group-hover:shadow-lg">
+                                            {isTocOpen ? <BiMinus className="text-xl" /> : <BiPlus className="text-xl" />}
+                                        </div>
+                                    </div>
+
+                                    <AnimatePresence>
+                                        {isTocOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                                className="overflow-hidden"
+                                            >
+                                                <div className="pt-8 mt-8 border-t border-slate-100">
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                                                        {sections.map((section, idx) => (
+                                                            <div key={section.id} className="flex items-start gap-4 group">
+                                                                <span className="text-brand-primary/40 font-black text-sm mt-1">0{idx + 1}.</span>
+                                                                <button
+                                                                    onClick={() => scrollToSection(section.id)}
+                                                                    className="text-slate-700 hover:text-brand-primary hover:translate-x-1 transition-all text-left text-[15px] font-bold tracking-tight py-1"
+                                                                >
+                                                                    {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
+                                                                </button>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </motion.section>
 
                             <div id="importance" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
                                 <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Why Solve NEET UG Previous Year Papers?</h2>
@@ -203,41 +317,6 @@ const NeetUGPYQ = () => {
                                 <p className="text-slate-600">A: While direct questions may not repeat, the concepts and patterns often do.</p>
                             </div>
 
-                            {/* Table of Contents */}
-                            <div className="bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-premium transition-all duration-300">
-                                <div
-                                    className="flex items-center justify-between cursor-pointer group"
-                                    onClick={() => setIsTocOpen(!isTocOpen)}
-                                >
-                                    <h2 className="text-1xl font-black text-slate-800 flex items-center gap-3 lowercase tracking-tight">
-                                        Table of Contents
-                                    </h2>
-                                    <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white rounded-lg transition-colors hover:bg-brand-primary/90 shadow-lg">
-                                        {isTocOpen ? <BiMinus className="text-1xl" /> : <BiPlus className="text-1xl" />}
-                                    </div>
-                                </div>
-                                {isTocOpen && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        className="overflow-hidden"
-                                    >
-                                        <ul className="flex flex-col gap-y-4 pt-8 mt-8 border-t border-slate-100">
-                                            {sections.map((section, idx) => (
-                                                <li key={idx} className="flex items-start gap-4 group">
-                                                    <span className="text-brand-primary/40 font-bold text-sm mt-0.5">{idx + 1}.</span>
-                                                    <button
-                                                        onClick={() => scrollToSection(section.id)}
-                                                        className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-2 transition-all text-left text-sm font-bold tracking-tight"
-                                                    >
-                                                        {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                                    </button>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </motion.div>
-                                )}
-                            </div>
                         </div>
                     </div>
                 </div>

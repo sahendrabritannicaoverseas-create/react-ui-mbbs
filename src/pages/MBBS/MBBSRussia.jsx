@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 const MBBSRussia = () => {
     const [selectedUniversities, setSelectedUniversities] = React.useState([]);
     const [searchQuery, setSearchQuery] = React.useState('');
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const itemsPerPage = 3;
 
     const universities = [
         {
@@ -52,6 +54,17 @@ const MBBSRussia = () => {
         const matchesFilter = selectedUniversities.length === 0 || selectedUniversities.includes(uni.name);
         return matchesSearch && matchesFilter;
     });
+
+    // Pagination Logic
+    const totalPages = Math.ceil(filteredUnis.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentUnis = filteredUnis.slice(indexOfFirstItem, indexOfLastItem);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        window.scrollTo({ top: 400, behavior: 'smooth' });
+    };
 
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
@@ -175,8 +188,8 @@ const MBBSRussia = () => {
 
                             {/* University Cards Horizontal List */}
                             <div className="space-y-4">
-                                {filteredUnis.length > 0 ? (
-                                    filteredUnis.map((uni, idx) => (
+                                {currentUnis.length > 0 ? (
+                                    currentUnis.map((uni, idx) => (
                                         <motion.div
                                             key={uni.slug}
                                             {...fadeInUp}
@@ -240,6 +253,46 @@ const MBBSRussia = () => {
                                     </div>
                                 )}
                             </div>
+
+                            {/* Premium Pagination Section */}
+                            {totalPages > 1 && (
+                                <div className="pt-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                                    <p className="text-sm font-bold text-slate-500 order-2 md:order-1">
+                                        Showing <span className="text-brand-primary">{indexOfFirstItem + 1}</span> to <span className="text-brand-primary">{Math.min(indexOfLastItem, filteredUnis.length)}</span> of <span className="text-brand-primary">{filteredUnis.length}</span> Results
+                                    </p>
+
+                                    <div className="flex items-center gap-2 order-1 md:order-2">
+                                        <button
+                                            onClick={() => handlePageChange(currentPage - 1)}
+                                            disabled={currentPage === 1}
+                                            className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:border-brand-primary hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
+                                        >
+                                            <BiChevronRight className="text-xl rotate-180" />
+                                        </button>
+
+                                        {[...Array(totalPages)].map((_, i) => (
+                                            <button
+                                                key={i + 1}
+                                                onClick={() => handlePageChange(i + 1)}
+                                                className={`w-10 h-10 rounded-xl font-black text-sm transition-all shadow-sm ${currentPage === i + 1
+                                                        ? 'bg-brand-primary text-white shadow-brand-primary/20'
+                                                        : 'bg-white border border-slate-200 text-slate-600 hover:border-brand-primary hover:text-brand-primary'
+                                                    }`}
+                                            >
+                                                {i + 1}
+                                            </button>
+                                        ))}
+
+                                        <button
+                                            onClick={() => handlePageChange(currentPage + 1)}
+                                            disabled={currentPage === totalPages}
+                                            className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:border-brand-primary hover:text-brand-primary disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
+                                        >
+                                            <BiChevronRight className="text-xl" />
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
                     </div>

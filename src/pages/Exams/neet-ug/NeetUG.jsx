@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { pageTitleBg, pageTitleShape } from '../../../assets/images';
-import { BiChevronRight, BiPlus, BiMinus } from 'react-icons/bi';
+import { BiChevronRight, BiPlus, BiMinus, BiListUl, BiRightArrowAlt } from 'react-icons/bi';
+import { AnimatePresence } from 'framer-motion';
 import { neetUGLinks, overviewData } from '../../../data/neetUGData';
 
 const NeetUG = () => {
@@ -117,41 +118,66 @@ const NeetUG = () => {
                                 </div>
                             </motion.div>
 
-                            {/* Table of Contents */}
-                            <div className="bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-premium transition-all duration-300">
-                                <div
-                                    className="flex items-center justify-between cursor-pointer group"
-                                    onClick={() => setIsTocOpen(!isTocOpen)}
-                                >
-                                    <h2 className="text-1xl font-black text-slate-800 flex items-center gap-3 lowercase tracking-tight">
-                                        Table of Contents
-                                    </h2>
-                                    <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white rounded-lg transition-colors hover:bg-brand-primary/90 shadow-lg">
-                                        {isTocOpen ? <BiMinus className="text-1xl" /> : <BiPlus className="text-1xl" />}
-                                    </div>
-                                </div>
-                                {isTocOpen && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        className="overflow-hidden"
+                            {/* Premium Collapsible Table of Contents */}
+                            <motion.section
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="bg-white rounded-[40px] p-6 lg:p-10 border border-slate-100 shadow-premium transition-all duration-500 overflow-hidden relative"
+                            >
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
+
+                                <div className="relative z-10">
+                                    <div
+                                        className="flex items-center justify-between cursor-pointer group"
+                                        onClick={() => setIsTocOpen(!isTocOpen)}
                                     >
-                                        <ul className="flex flex-col gap-y-4 pt-8 mt-8 border-t border-slate-100">
-                                            {sections.map((section, idx) => (
-                                                <li key={idx} className="flex items-start gap-4 group">
-                                                    <span className="text-brand-primary/40 font-bold text-sm mt-0.5">{idx + 1}.</span>
-                                                    <button
-                                                        onClick={() => scrollToSection(section.id)}
-                                                        className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-2 transition-all text-left text-sm font-bold tracking-tight"
-                                                    >
-                                                        {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                                    </button>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </motion.div>
-                                )}
-                            </div>
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-12 h-12 rounded-2xl bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-inner group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
+                                                <BiListUl className="text-2xl" />
+                                            </div>
+                                            <div>
+                                                <h2 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">
+                                                    Table of <span className="text-brand-primary uppercase">Contents</span>
+                                                </h2>
+                                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mt-1">Quick Navigation Guide</p>
+                                            </div>
+                                        </div>
+                                        <div className="w-10 h-10 bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-900 rounded-xl transition-all group-hover:bg-brand-primary group-hover:text-white group-hover:border-transparent group-hover:shadow-lg">
+                                            {isTocOpen ? <BiMinus className="text-xl" /> : <BiPlus className="text-xl" />}
+                                        </div>
+                                    </div>
+
+                                    <AnimatePresence>
+                                        {isTocOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                                className="overflow-hidden"
+                                            >
+                                                <div className="pt-8 mt-8 border-t border-slate-100">
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                                                        {sections.map((section, idx) => (
+                                                            <div key={section.id} className="flex items-start gap-4 group">
+                                                                <span className="text-brand-primary/40 font-black text-sm mt-1">0{idx + 1}.</span>
+                                                                <button
+                                                                    onClick={() => scrollToSection(section.id)}
+                                                                    className="text-slate-700 hover:text-brand-primary hover:translate-x-1 transition-all text-left text-[15px] font-bold tracking-tight py-1"
+                                                                >
+                                                                    {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
+                                                                </button>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </motion.section>
+
                         </div>
                     </div>
                 </div>

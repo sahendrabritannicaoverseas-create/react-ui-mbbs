@@ -13,9 +13,9 @@ import {
   flagKyrgyzstanIcon,
   flagEgyptIcon,
 } from "../../assets/images";
+import blog3 from "../../assets/images/blog/blog-3.jpg";
 import blog1 from "../../assets/images/blog/blog-1.jpg";
 import blog2 from "../../assets/images/blog/blog-2.jpg";
-import blog3 from "../../assets/images/blog/blog-3.jpg";
 import {
   BiIdCard,
   BiHeadphone,
@@ -273,33 +273,40 @@ const Home = () => {
         <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
-              title: "Top 7 Affordable Countries to Study MBBS Abroad in 2025",
-              date: "Oct 24, 2024",
+              id: 1,
+              title: "List of Medical Universities in Bangladesh | Government & Private Colleges",
+              date: "Feb 10, 2026",
               author: "Admin",
               img: blog1,
+              category: "Bangladesh",
+              slug: "list-of-medical-universities-in-bangladesh"
             },
             {
-              title:
-                "New NMC Guidelines for MBBS Abroad: What Every Student Must Know",
-              date: "Oct 20, 2024",
-              author: "Editor",
+              id: 2,
+              title: "Why Indian Students Prefer MBBS in Georgia | Complete Guide",
+              date: "Feb 08, 2026",
+              author: "Admin",
               img: blog2,
+              category: "Georgia",
+              slug: "why-indian-students-prefer-mbbs-in-georgia"
             },
             {
-              title:
-                "MBBS in Russia, Uzbekistan & Kazakhstan: Which Country Is Best?",
-              date: "Oct 15, 2024",
-              author: "Expert",
+              id: 3,
+              title: "MBBS Admission 2026 – Complete Guide to Study MBBS Abroad",
+              date: "Feb 05, 2026",
+              author: "Admin",
               img: blog3,
-            },
+              category: "Admission",
+              slug: "mbbs-admission-2026-guide"
+            }
           ].map((post, idx) => (
             <motion.div
-              key={idx}
+              key={post.id}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="premium-card group !p-5 h-full flex flex-col"
+              className="premium-card group !p-5 h-full flex flex-col text-left"
             >
               <div className="mb-8 rounded-[30px] overflow-hidden h-72 bg-slate-50 relative">
                 <img
@@ -311,6 +318,9 @@ const Home = () => {
                 <div className="absolute top-6 left-6 glass-card px-5 py-2.5 rounded-2xl text-xs font-black text-white shadow-xl tracking-widest uppercase">
                   {post.date}
                 </div>
+                <div className="absolute bottom-6 right-6 bg-brand-primary/90 backdrop-blur-sm px-4 py-1.5 rounded-2xl text-[10px] font-black text-white shadow-xl tracking-[0.2em] uppercase">
+                  {post.category}
+                </div>
               </div>
               <div className="px-5 pb-5 flex flex-col flex-grow">
                 <div className="flex items-center gap-4 text-xs font-black text-slate-400 mb-6 uppercase tracking-[0.2em]">
@@ -318,15 +328,15 @@ const Home = () => {
                     <BiUser className="text-lg" /> {post.author}
                   </span>
                   <span className="w-1.5 h-1.5 bg-slate-200 rounded-full"></span>
-                  <span>MBBS ABROAD</span>
+                  <span>MBBS VITYNAM </span>
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-6 group-hover:text-brand-primary transition-colors leading-tight min-h-[96px]">
-                  <Link to="#" className="no-underline text-inherit">
+                <h3 className="text-xl font-black text-slate-900 mb-6 group-hover:text-brand-primary transition-colors leading-tight min-h-[96px]">
+                  <Link to={`/blog/${post.slug}`} className="no-underline text-inherit">
                     {post.title}
                   </Link>
                 </h3>
                 <Link
-                  to="#"
+                  to={`/blog/${post.slug}`}
                   className="group inline-flex items-center gap-2 text-sm font-black text-slate-900 hover:text-brand-primary transition-colors tracking-widest mt-auto"
                 >
                   READ MORE{" "}
