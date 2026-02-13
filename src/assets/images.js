@@ -46,8 +46,6 @@ import team15 from './images/team/team-15.png';
 import footerBg from './images/footer/footer-2.png';
 
 // Countries
-import imgMalaysia from './images/media/malaysia-b.jpg';
-import imgTurkiye from './images/media/turkiye-b.jpg';
 import imgKazakhstan from './images/media/media-36.jpg'; // Reusing as per original code
 import imgPhilippines from './images/media/thailand-b.jpg'; // Filename from original code
 import imgGeorgia from './images/media/belzium-b.jpg'; // Filename from original code
@@ -64,12 +62,12 @@ import media8 from './images/media/media-8.jpg';
 // Flag Icons (Circular)
 import flagRussiaIcon from './images/media/bra-b.jpg';
 import flagUzbekistanIcon from './images/media/china-b.jpg';
-import flagKazakhstanIcon from './images/media/malaysia-b.jpg';
-import flagPhilippinesIcon from './images/media/thailand-b.jpg';
-import flagGeorgiaIcon from './images/media/belzium-b.jpg';
-import flagKyrgyzstanIcon from './images/media/afg-b.jpg';
-import flagEgyptIcon from './images/media/german-b.jpg';
-import flagMalaysiaIcon from './images/media/malaysia-b.jpg';
+import flagVietnamIcon from './images/media/china.jpg'; // Placeholder
+import flagBangladeshIcon from './images/media/belzium-b.jpg'; // Placeholder
+import flagKazakhstanIcon from './images/media/media-36.jpg'; // Placeholder
+import flagPhilippinesIcon from './images/media/thailand-b.jpg'; // Placeholder
+import flagGeorgiaIcon from './images/media/belzium-b.jpg'; // Placeholder
+import flagEgyptIcon from './images/media/german-b.jpg'; // Placeholder
 
 // Missing Flags for About page
 import flagAustria from './images/media/austria.jpg';
@@ -110,8 +108,6 @@ export {
     team14,
     team15,
     footerBg,
-    imgMalaysia,
-    imgTurkiye,
     imgKazakhstan,
     imgPhilippines,
     imgGeorgia,
@@ -131,10 +127,10 @@ export {
     flagColombia,
     flagRussiaIcon,
     flagUzbekistanIcon,
+    flagVietnamIcon,
+    flagBangladeshIcon,
     flagKazakhstanIcon,
     flagPhilippinesIcon,
     flagGeorgiaIcon,
-    flagKyrgyzstanIcon,
-    flagEgyptIcon,
-    flagMalaysiaIcon
+    flagEgyptIcon
 };

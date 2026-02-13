@@ -16,27 +16,49 @@ const PopularUniversities = () => {
             name: "Crimea Federal University",
             location: "Russia",
             img: uniCrimea,
+            slug: "crimea-federal-university"
         },
         {
             name: "Dhaka National Medical",
             location: "Bangladesh",
             img: uniDhaka,
+            slug: "dhaka-national-medical"
         },
         {
             name: "AMA School of Medicine",
             location: "Philippines",
             img: uniAma,
+            slug: "ama-school-of-medicine"
         },
         {
             name: "Altinbas University",
             location: "Turkey",
             img: uniAltinbas,
+            slug: "altinbas-university"
         },
-        { name: "MAHSA University", location: "Malaysia", img: uniMasha },
+        {
+            name: "MAHSA University",
+            location: "Malaysia",
+            img: uniMasha,
+            slug: "mahsa-university"
+        },
+        {
+            name: "Hanoi Medical University",
+            location: "Vietnam",
+            img: uniCrimea, // Placeholder
+            slug: "hanoi-medical-university"
+        },
+        {
+            name: "Samarkand State Medical University",
+            location: "Uzbekistan",
+            img: uniCrimea, // Placeholder
+            slug: "samarkand-state-medical-university"
+        },
         {
             name: "Tbilisi State University",
             location: "Georgia",
             img: uniCrimea,
+            slug: "tbilisi-state-university"
         },
     ];
 
@@ -59,49 +81,48 @@ const PopularUniversities = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className="premium-card group !p-0 overflow-hidden"
+                            className="premium-card group !p-0 overflow-hidden cursor-pointer"
                         >
-                            <div className="relative h-80 overflow-hidden">
-                                <div className="absolute top-6 left-6 glass-card text-white text-xs font-black px-5 py-2.5 rounded-full z-10 uppercase tracking-widest flex items-center gap-2">
-                                    <BiMapPin className="text-lg text-brand-secondary" />
-                                    {uni.location}
+                            <Link to={`/university/${uni.slug}`} className="block h-full">
+                                <div className="relative h-80 overflow-hidden">
+                                    <div className="absolute top-6 left-6 glass-card text-white text-xs font-black px-5 py-2.5 rounded-full z-10 uppercase tracking-widest flex items-center gap-2">
+                                        <BiMapPin className="text-lg text-brand-secondary" />
+                                        {uni.location}
+                                    </div>
+                                    <img
+                                        src={uni.img}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                                        alt={uni.name}
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-10"></div>
                                 </div>
-                                <img
-                                    src={uni.img}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                                    alt={uni.name}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-10"></div>
-                            </div>
-                            <div className="p-5">
-                                <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-brand-primary transition-colors leading-tight line-clamp-2 min-h-[25px]">
-                                    {uni.name}
-                                </h3>
+                                <div className="p-5">
+                                    <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-brand-primary transition-colors leading-tight line-clamp-2 min-h-[25px]">
+                                        {uni.name}
+                                    </h3>
 
-                                <div className="flex items-center gap-1 text-brand-secondary mb-8">
-                                    {[...Array(5)].map((_, i) => (
-                                        <BiStar key={i} className="fill-current text-xl" />
-                                    ))}
-                                    <span className="text-slate-400 ml-2 text-sm font-black tracking-widest">
-                                        5.0 RATING
-                                    </span>
-                                </div>
+                                    <div className="flex items-center gap-1 text-brand-secondary mb-8">
+                                        {[...Array(5)].map((_, i) => (
+                                            <BiStar key={i} className="fill-current text-xl" />
+                                        ))}
+                                        <span className="text-slate-400 ml-2 text-sm font-black tracking-widest">
+                                            5.0 RATING
+                                        </span>
+                                    </div>
 
-                                <div className="flex justify-between items-center pt-8 border-t border-slate-100">
-                                    <span className="text-slate-500 text-sm font-black flex items-center gap-3 tracking-widest">
-                                        <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-brand-primary shadow-sm">
-                                            <BiCalendar className="text-xl" />
+                                    <div className="flex justify-between items-center pt-8 border-t border-slate-100">
+                                        <span className="text-slate-500 text-sm font-black flex items-center gap-3 tracking-widest">
+                                            <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-brand-primary shadow-sm">
+                                                <BiCalendar className="text-xl" />
+                                            </div>
+                                            SEPT INTAKE
+                                        </span>
+                                        <div className="text-slate-300 group-hover:text-brand-primary transition-colors">
+                                            <BiRightArrowAlt className="bg-slate-50 rounded-full w-12 h-12 p-3 shadow-sm group-hover:scale-110 transition-transform" />
                                         </div>
-                                        SEPT INTAKE
-                                    </span>
-                                    <Link
-                                        to="#"
-                                        className="text-slate-300 hover:text-brand-primary transition-colors"
-                                    >
-                                        <BiRightArrowAlt className="bg-slate-50 rounded-full w-12 h-12 p-3 shadow-sm hover:scale-110 transition-transform" />
-                                    </Link>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>

@@ -20,7 +20,7 @@ const Footer = () => {
                             <img
                                 src={logo}
                                 alt="logo"
-                                className="h-14"
+                                className="h-20 object-contain"
                             />
                         </Link>
                         <p className="text-white text-sm leading-relaxed max-w-xs font-medium">
@@ -57,6 +57,7 @@ const Footer = () => {
                                 { name: 'MBBS in Vietnam', link: '/mbbs-vietnam' },
                                 { name: 'Admission Process', link: '/admission-process' },
                                 { name: 'Services', link: '/services' },
+                                { name: 'Blog', link: '/blog' },
                                 { name: 'Contact Us', link: '/contact' }
                             ].map((item, idx) => (
                                 <li key={idx}>

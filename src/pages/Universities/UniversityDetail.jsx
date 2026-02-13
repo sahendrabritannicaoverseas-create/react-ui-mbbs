@@ -132,7 +132,7 @@ const UniversityDetail = () => {
             location: 'Thai Binh, Vietnam',
             established: '1968',
             recognition: 'WHO, NMC Listed',
-            description: 'Thai Binh University of Medicine and Pharmacy is a premier medical institution in Vietnam, offering globally recognized degrees, state-of-the-art facilities, and extensive clinical training for future medical leaders. The university provides a perfect blend of theoretical knowledge and hands-on experience in its cutting-edge teaching hospitals and research centers.',
+            description: 'Thai Binh University of Medicine and Pharmacy is a premier medical institution in Vietnam, offering globally recognized degrees, state-of-the-art facilities, and extensive clinical training for future medical leaders.',
             highlights: [
                 'Over 55 years of medical education',
                 'Strong emphasis on practical skills',
@@ -142,11 +142,121 @@ const UniversityDetail = () => {
                 'Quality clinical exposure'
             ],
             tuitionFee: '$3,000 - $4,000 per year',
-            duration: '6 years (including internship)',
+            duration: '6 years',
             medium: 'English / Vietnamese',
             intake: 'September',
-            eligibility: '50% in PCB for General, 40% for Reserved categories, NEET qualified',
-            facilities: ['Teaching Hospital', 'Research Labs', 'Central Library', 'Student Housing', 'Recreation Center']
+            eligibility: '50% in PCB, NEET qualified',
+            facilities: ['Teaching Hospital', 'Research Labs', 'Central Library', 'Student Housing']
+        },
+        'crimea-federal-university': {
+            name: 'Crimea Federal University',
+            img: uniCrimea,
+            bannerImg: uniCrimea,
+            location: 'Simferopol, Russia',
+            established: '1918',
+            recognition: 'WHO, NMC Recognized',
+            description: 'Crimea Federal University is one of the top medical universities in Russia, offering high-quality medical education with a strong emphasis on clinical practice and research.',
+            highlights: [
+                'Centuries of academic excellence',
+                'English medium MBBS program',
+                'State-of-the-art medical equipment',
+                'International student community',
+                'Low cost of living'
+            ],
+            tuitionFee: '$3,500 - $4,500 per year',
+            duration: '6 years',
+            medium: 'English',
+            intake: 'September',
+            eligibility: '50% in PCB, NEET qualified',
+            facilities: ['Museum of Anatomy', 'Scientific Library', 'Sports Grounds', 'Hostels']
+        },
+        'dhaka-national-medical': {
+            name: 'Dhaka National Medical College',
+            img: uniDhaka,
+            bannerImg: uniDhaka,
+            location: 'Dhaka, Bangladesh',
+            established: '1925',
+            recognition: 'WHO, NMC, BMDC Recognized',
+            description: 'Dhaka National Medical College is a prestigious private medical college in Bangladesh, known for its high academic standards and excellent clinical training.',
+            highlights: [
+                'Located in the heart of Dhaka',
+                'Affiliated with University of Dhaka',
+                'High FMGE passing rate',
+                'Extensive clinical exposure',
+                'Modern campus facilities'
+            ],
+            tuitionFee: '$40,000 (Total for 5 years)',
+            duration: '5 years + 1 year internship',
+            medium: 'English',
+            intake: 'January',
+            eligibility: 'GPA requirements as per DGHS Bangladesh, NEET qualified',
+            facilities: ['Modern Hospital', 'AC Classrooms', 'Auditorium', 'Cafeteria']
+        },
+        'ama-school-of-medicine': {
+            name: 'AMA School of Medicine',
+            img: uniAma,
+            bannerImg: uniAma,
+            location: 'Manila, Philippines',
+            established: '2008',
+            recognition: 'WHO, NMC Recognized',
+            description: 'AMA School of Medicine offers a MD program (equivalent to MBBS) based on the American pattern of medical education, focusing on practical learning and USMLE preparation.',
+            highlights: [
+                'BS+MD course structure',
+                'American pattern of education',
+                'Hands-on clinical training',
+                'English speaking country',
+                'Affordable tuition fees'
+            ],
+            tuitionFee: '$3,000 - $4,000 per year',
+            duration: '5.5 years (including BS)',
+            medium: 'English',
+            intake: 'September',
+            eligibility: '50% in PCB, NEET qualified',
+            facilities: ['Simulation Lab', 'Wi-Fi Campus', 'Modern Library', 'Student Lounge']
+        },
+        'samarkand-state-medical-university': {
+            name: 'Samarkand State Medical University',
+            img: uniCrimea,
+            bannerImg: uniCrimea,
+            location: 'Samarkand, Uzbekistan',
+            established: '1930',
+            recognition: 'WHO, NMC Recognized',
+            description: 'Samarkand State Medical University is the oldest medical university in Uzbekistan, providing high-quality medical education with modern teaching methods.',
+            highlights: [
+                'Oldest medical university in Central Asia',
+                'English medium instruction',
+                'Direct admission process',
+                'Modern clinical database',
+                'Safe and historic city'
+            ],
+            tuitionFee: '$3,000 - $3,500 per year',
+            duration: '6 years',
+            medium: 'English',
+            intake: 'September',
+            eligibility: '50% in PCB, NEET qualified',
+            facilities: ['Anatomy Museum', 'Research Centers', 'Comfortable Hostels', 'Dining Halls']
+        },
+        'tbilisi-state-university': {
+            name: 'Tbilisi State University',
+            img: uniCrimea,
+            bannerImg: uniCrimea,
+            location: 'Tbilisi, Georgia',
+            established: '1918',
+            recognition: 'WHO, NMC, WFME Recognized',
+            description: 'Tbilisi State University is a leading research university in Georgia, offering European standard medical education with global recognition.',
+            highlights: [
+                'European standard education',
+                'Member of European University Association',
+                'No entrance exam for international students',
+                'High safety standards',
+                'English medium MBBS'
+            ],
+            tuitionFee: '$5,000 - $6,000 per year',
+            duration: '6 years',
+            medium: 'English',
+            intake: 'September',
+            eligibility: '50% in PCB, NEET qualified',
+            facilities: ['Modern Labs', 'University Clinic', 'Large Library', 'Student Hubs']
         }
     };
 
@@ -180,50 +290,50 @@ const UniversityDetail = () => {
     return (
         <main className="overflow-hidden bg-white">
             {/* Hero Banner */}
-            <section className="relative pt-[140px] pb-[60px] bg-slate-900 overflow-hidden">
+            <section className="relative pt-[120px] pb-[60px] md:pt-[160px] md:pb-[80px] bg-slate-900 overflow-hidden">
                 <div
-                    className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
+                    className="absolute inset-0 bg-cover bg-center opacity-30 scale-105"
                     style={{ backgroundImage: `url(${university.bannerImg})` }}
                 ></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/80 to-slate-900"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/70 to-slate-900"></div>
 
                 <motion.img
                     initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 0.2, x: 0 }}
+                    animate={{ opacity: 0.15, x: 0 }}
                     transition={{ duration: 1.2 }}
                     src={pageTitleShape}
                     alt="shape"
-                    className="absolute right-0 bottom-0 pointer-events-none w-1/3 opacity-20"
+                    className="absolute right-0 bottom-0 pointer-events-none w-1/3 z-10"
                 />
 
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto px-6 relative z-20">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center xl:text-left"
+                        className="text-center xl:text-left xl:max-w-4xl"
                     >
-                        <ul className="flex items-center justify-center xl:justify-start gap-3 text-slate-500 font-semibold text-[10px] uppercase tracking-widest mb-4">
+                        <ul className="flex flex-wrap items-center justify-center xl:justify-start gap-3 text-slate-400 font-black text-[10px] uppercase tracking-[0.3em] mb-8">
                             <li><Link to="/" className="hover:text-brand-secondary transition-colors">Home</Link></li>
                             <li className="text-slate-700">/</li>
-                            <li><Link to="/mbbs-vietnam" className="hover:text-brand-secondary transition-colors">MBBS Vietnam</Link></li>
+                            <li><Link to="/universities" className="hover:text-brand-secondary transition-colors">Medical Universities</Link></li>
                             <li className="text-slate-700">/</li>
-                            <li className="text-brand-secondary">{university.name}</li>
+                            <li className="text-brand-primary">{university.name}</li>
                         </ul>
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter">
                             {university.name}
                         </h1>
-                        <div className="flex flex-wrap items-center justify-center xl:justify-start gap-4 text-white/70 text-sm">
-                            <span className="flex items-center gap-1.5">
-                                <BiMapPin className="text-brand-secondary text-base" />
+                        <div className="flex flex-wrap items-center justify-center xl:justify-start gap-4 md:gap-8 text-white/80 text-xs font-bold uppercase tracking-widest">
+                            <span className="flex items-center gap-2.5 bg-white/5 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10">
+                                <BiMapPin className="text-brand-secondary text-lg" />
                                 {university.location}
                             </span>
-                            <span className="flex items-center gap-1.5">
-                                <BiCalendar className="text-brand-secondary text-base" />
+                            <span className="flex items-center gap-2.5 bg-white/5 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10">
+                                <BiCalendar className="text-brand-secondary text-lg" />
                                 Est. {university.established}
                             </span>
-                            <span className="flex items-center gap-1.5">
-                                <BiCheckShield className="text-brand-secondary text-base" />
+                            <span className="flex items-center gap-2.5 bg-white/5 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10">
+                                <BiCheckShield className="text-brand-secondary text-lg" />
                                 {university.recognition}
                             </span>
                         </div>

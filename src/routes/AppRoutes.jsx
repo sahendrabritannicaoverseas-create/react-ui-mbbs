@@ -28,6 +28,8 @@ import Contact from "../pages/Contact/Contact";
 import UniversityDetail from "../pages/Universities/UniversityDetail";
 import AdmissionProcess from "../pages/AdmissionProcess";
 import NeetPGQuestionPaper from "../pages/Exams/neet-pg/NeetPGQuestionPaper";
+import Blog from "../pages/Blog/Blog";
+import BlogDetail from "../pages/Blog/BlogDetail";
 
 const AppRoutes = () => {
     return (
@@ -71,6 +73,8 @@ const AppRoutes = () => {
             <Route path="/team" element={<Team />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/admission-process" element={<AdmissionProcess />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogDetail />} />
         </Routes>
     );
 };

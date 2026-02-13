@@ -7,10 +7,11 @@ import {
   aboutMainImg,
   flagRussiaIcon,
   flagUzbekistanIcon,
+  flagVietnamIcon,
+  flagBangladeshIcon,
   flagKazakhstanIcon,
   flagPhilippinesIcon,
   flagGeorgiaIcon,
-  flagKyrgyzstanIcon,
   flagEgyptIcon,
 } from "../../assets/images";
 import blog3 from "../../assets/images/blog/blog-3.jpg";
@@ -38,29 +39,49 @@ const Home = () => {
   });
 
   const countries = [
-    { name: "MBBS in Russia", flag: flagRussiaIcon, color: "bg-blue-600" },
+    { name: "MBBS in Russia", flag: flagRussiaIcon, color: "bg-blue-600", path: "/mbbs-russia" },
     {
       name: "MBBS in Uzbekistan",
       flag: flagUzbekistanIcon,
       color: "bg-cyan-500",
+      path: "/mbbs-uzbekistan"
+    },
+    {
+      name: "MBBS in Vietnam",
+      flag: flagVietnamIcon,
+      color: "bg-red-600",
+      path: "/mbbs-vietnam"
     },
     {
       name: "MBBS in Kazakhstan",
       flag: flagKazakhstanIcon,
       color: "bg-blue-400",
+      path: "/countries/kazakhstan"
     },
     {
       name: "MBBS in Philippines",
       flag: flagPhilippinesIcon,
       color: "bg-blue-700",
+      path: "/countries/philippines"
     },
-    { name: "MBBS in Georgia", flag: flagGeorgiaIcon, color: "bg-red-600" },
     {
-      name: "MBBS in Kyrgyzstan",
-      flag: flagKyrgyzstanIcon,
+      name: "MBBS in Georgia",
+      flag: flagGeorgiaIcon,
       color: "bg-red-500",
+      path: "/countries/georgia"
     },
-    { name: "MBBS in Egypt", flag: flagEgyptIcon, color: "bg-black" },
+    {
+      name: "MBBS in Egypt",
+      flag: flagEgyptIcon,
+      color: "bg-red-700",
+      path: "/countries/egypt"
+    },
+    {
+      name: "MBBS in Bangladesh",
+      flag: flagBangladeshIcon,
+      color: "bg-green-600",
+      path: "/countries/bangladesh"
+    },
   ];
 
   const fadeInUp = {
@@ -231,26 +252,27 @@ const Home = () => {
 
           <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
             {countries.map((country, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-slate-50 border border-slate-100 px-8 py-5 rounded-[40px] flex items-center gap-4 hover:shadow-xl hover:border-[#F5A716] transition-all cursor-pointer group"
-              >
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm group-hover:scale-110 transition-transform flex-shrink-0">
-                  <img
-                    src={country.flag}
-                    alt={country.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <span className="text-lg font-bold text-slate-700">
-                  {country.name}
-                </span>
-              </motion.div>
+              <Link key={idx} to={country.path}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-slate-50 border border-slate-100 px-8 py-5 rounded-[40px] flex items-center gap-4 hover:shadow-xl hover:border-[#F5A716] transition-all cursor-pointer group"
+                >
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm group-hover:scale-110 transition-transform flex-shrink-0">
+                    <img
+                      src={country.flag}
+                      alt={country.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span className="text-lg font-bold text-slate-700">
+                    {country.name}
+                  </span>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
@@ -261,8 +283,8 @@ const Home = () => {
       {/* blog Section */}
       <section className="py-12 md:py-16 bg-white overflow-hidden">
         <div className="container mx-auto px-6 md:px-12 text-center mb-20">
-          <h2 className="text-4xl md:text-[60px] font-semibold text-[#212529] mb-8">
-            Latest MBBS Abroad News & Updates
+          <h2 className="text-4xl md:text-[60px] font-black text-[#212529] mb-8 uppercase tracking-tighter leading-none">
+            Latest <span className="text-brand-primary">MBBS Updates</span>
           </h2>
           <p className="text-[#212529]/70 text-[15px] leading-relaxed max-w-2xl mx-auto">
             Stay informed with the newest insights and trends in international
@@ -315,7 +337,7 @@ const Home = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
-                <div className="absolute top-6 left-6 glass-card px-5 py-2.5 rounded-2xl text-xs font-black text-white shadow-xl tracking-widest uppercase">
+                <div className="absolute top-6 left-6 px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-2xl text-[10px] font-black text-slate-900 shadow-xl tracking-[0.2em] uppercase">
                   {post.date}
                 </div>
                 <div className="absolute bottom-6 right-6 bg-brand-primary/90 backdrop-blur-sm px-4 py-1.5 rounded-2xl text-[10px] font-black text-white shadow-xl tracking-[0.2em] uppercase">
@@ -328,23 +350,33 @@ const Home = () => {
                     <BiUser className="text-lg" /> {post.author}
                   </span>
                   <span className="w-1.5 h-1.5 bg-slate-200 rounded-full"></span>
-                  <span>MBBS VITYNAM </span>
+                  <span>Insights</span>
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-6 group-hover:text-brand-primary transition-colors leading-tight min-h-[96px]">
+                <h3 className="text-2xl font-black text-slate-900 mb-6 group-hover:text-brand-primary transition-colors leading-tight min-h-[96px]">
                   <Link to={`/blog/${post.slug}`} className="no-underline text-inherit">
                     {post.title}
                   </Link>
                 </h3>
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="group inline-flex items-center gap-2 text-sm font-black text-slate-900 hover:text-brand-primary transition-colors tracking-widest mt-auto"
+                  className="group inline-flex items-center gap-2 text-sm font-black text-slate-900 hover:text-brand-primary transition-all tracking-widest mt-auto uppercase"
                 >
-                  READ MORE{" "}
+                  Read More
                   <BiRightArrowAlt className="text-xl group-hover:translate-x-2 transition-transform" />
                 </Link>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="container mx-auto px-6 md:px-12 mt-16 text-center">
+          <Link
+            to="/blog"
+            className="bg-[#1E3A8A] text-white px-12 py-5 rounded-[35px] font-bold text-lg hover:bg-[#F5A716] transition-all inline-flex items-center gap-3 shadow-lg group"
+          >
+            Explore All Blogs
+            <BiRightArrowAlt className="text-2xl group-hover:translate-x-2 transition-transform" />
+          </Link>
         </div>
       </section>
     </main>

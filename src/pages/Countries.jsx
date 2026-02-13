@@ -1,18 +1,13 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { pageTitleBg, pageTitleShape, imgMalaysia, imgTurkiye, imgKazakhstan, imgPhilippines, imgGeorgia, imgRussia, imgUzbekistan, imgEgypt } from '../assets/images';
+import { pageTitleBg, pageTitleShape, imgKazakhstan, imgRussia, imgUzbekistan } from '../assets/images';
 import { BiRightArrowAlt, BiCheck, BiChevronRight, BiCalendarCheck } from 'react-icons/bi';
 
 const countriesData = [
-    { id: 'malaysia', name: 'Malaysia', img: imgMalaysia },
-    { id: 'turkiye', name: 'Turkiye', img: imgTurkiye },
-    { id: 'kazakhstan', name: 'Kazakhstan', img: imgKazakhstan },
-    { id: 'philippines', name: 'Philippines', img: imgPhilippines },
-    { id: 'georgia', name: 'Georgia', img: imgGeorgia },
+    { id: 'vietnam', name: 'Vietnam', img: imgKazakhstan },
     { id: 'russia', name: 'Russia', img: imgRussia },
     { id: 'uzbekistan', name: 'Uzbekistan', img: imgUzbekistan },
-    { id: 'egypt', name: 'Egypt', img: imgEgypt },
 ];
 
 const Countries = () => {
@@ -81,7 +76,7 @@ const Countries = () => {
                             {countriesData.map((country) => (
                                 <motion.div key={country.id} variants={fadeInUp}>
                                     <Link
-                                        to={`/countries/${country.id}`}
+                                        to={`/mbbs-${country.id}`}
                                         className="group relative h-[450px] rounded-[48px] overflow-hidden shadow-premium hover:shadow-2xl transition-all duration-700 block bg-slate-200 border-8 border-white"
                                     >
                                         <img
@@ -202,7 +197,7 @@ const Countries = () => {
                                         {countriesData.filter(c => c.id !== id).slice(0, 5).map(country => (
                                             <Link
                                                 key={country.id}
-                                                to={`/countries/${country.id}`}
+                                                to={`/mbbs-${country.id}`}
                                                 className="flex items-center gap-5 p-3 rounded-2xl hover:bg-slate-50 transition-all no-underline group border border-transparent hover:border-slate-100"
                                             >
                                                 <div className="w-14 h-14 rounded-xl overflow-hidden shadow-sm group-hover:scale-95 transition-transform">

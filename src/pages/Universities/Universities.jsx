@@ -31,19 +31,32 @@ const Universities = () => {
         {
             country: 'Uzbekistan',
             unis: [
-                { name: 'Tashkent Medical Academy', slug: 'tashkent-medical-academy', img: uniMasha, desc: 'The leading medical educational institution in Republic of Uzbekistan.', location: 'Tashkent, Uzbekistan', established: '1920', recognition: 'WHO, NMC Recognized' }
+                { name: 'Tashkent Medical Academy', slug: 'tashkent-medical-academy', img: uniMasha, desc: 'The leading medical educational institution in Republic of Uzbekistan.', location: 'Tashkent, Uzbekistan', established: '1920', recognition: 'WHO, NMC Recognized' },
+                { name: 'Samarkand State Medical University', slug: 'samarkand-state-medical-university', img: uniCrimea, desc: 'The oldest medical university in Uzbekistan with a rich historical legacy.', location: 'Samarkand, Uzbekistan', established: '1930', recognition: 'WHO, NMC Recognized' }
             ]
         },
         {
             country: 'Bangladesh',
             unis: [
-                { name: 'Dhaka National Medical College', slug: 'dhaka-national-medical-college', img: uniDhaka, desc: 'High clinical exposure and affordable medical education for international students.', location: 'Dhaka, Bangladesh', established: '1925', recognition: 'WHO, NMC Recognized' }
+                { name: 'Dhaka National Medical College', slug: 'dhaka-national-medical', img: uniDhaka, desc: 'High clinical exposure and affordable medical education for international students.', location: 'Dhaka, Bangladesh', established: '1925', recognition: 'WHO, NMC Recognized' }
             ]
         },
         {
             country: 'Philippines',
             unis: [
                 { name: 'AMA School of Medicine', slug: 'ama-school-of-medicine', img: uniAma, desc: 'English medium US-pattern curriculum popular with Indian medical aspirants.', location: 'Manila, Philippines', established: '1980', recognition: 'WHO, NMC Recognized' }
+            ]
+        },
+        {
+            country: 'Georgia',
+            unis: [
+                { name: 'Tbilisi State University', slug: 'tbilisi-state-university', img: uniCrimea, desc: 'A leading global research university offering top-tier medical education.', location: 'Tbilisi, Georgia', established: '1918', recognition: 'WHO, NMC Recognized' }
+            ]
+        },
+        {
+            country: 'Malaysia',
+            unis: [
+                { name: 'MAHSA University', slug: 'mahsa-university', img: uniMasha, desc: 'Renowned for healthcare education with a vibrant international student community.', location: 'Selangor, Malaysia', established: '2005', recognition: 'WHO, NMC Recognized' }
             ]
         }
     ];

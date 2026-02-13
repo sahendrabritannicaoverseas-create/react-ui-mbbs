@@ -89,8 +89,8 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
-              Our <span className="text-brand-primary">Services</span>
+            <h2 className="text-1xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">
+              Our <span className="text-brand-secondary">Services</span>
             </h2>
             <ul className="flex items-center justify-center xl:justify-start gap-4 text-slate-400 font-black text-xs uppercase tracking-[0.3em]">
               <li>
@@ -102,7 +102,7 @@ const Services = () => {
                 </a>
               </li>
               <li className="text-slate-600">/</li>
-              <li className="text-brand-primary">What We Offer</li>
+              <li className="text-brand-primary">Services</li>
             </ul>
           </motion.div>
         </div>
@@ -115,9 +115,9 @@ const Services = () => {
         <div className="container mx-auto px-6">
           <motion.div {...fadeInUp} className="text-center mb-24">
             <span className="inline-block bg-brand-primary/10 text-brand-primary px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-              Expert Solutions
+              Our services
             </span>
-            <h2 className="text-4xl lg:text-6xl font-black text-slate-900 leading-[1] uppercase tracking-tighter mb-8 max-w-4xl mx-auto">
+            <h2 className="text-4xl lg:text-6xl font-black text-slate-900 leading-[1] uppertolowercase tracking-tighter mb-8 max-w-4xl mx-auto">
               Comprehensive Support For Your{" "}
               <span className="gradient-text">Global Medical Career</span>
             </h2>

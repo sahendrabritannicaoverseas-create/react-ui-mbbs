@@ -126,7 +126,7 @@ const AdmissionProcess = () => {
     return (
         <main className="overflow-hidden bg-white">
             {/* Page Title Area */}
-            <section className="relative pt-[140px] pb-[60px] md:pt-[200px] md:pb-[80px] bg-slate-900 overflow-hidden text-left">
+            <section className="relative pt-[120px] pb-[40px] md:pt-[160px] md:pb-[60px] bg-slate-900 overflow-hidden text-left">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
                     style={{ backgroundImage: `url(${pageTitleBg})` }}
@@ -162,20 +162,20 @@ const AdmissionProcess = () => {
             </section>
 
             {/* Main Content Area */}
-            <section className="py-12 bg-white">
+            <section className="py-8 bg-white">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         {/* Full Width Content Area */}
-                        <div className="lg:col-span-12 space-y-12 relative">
+                        <div className="lg:col-span-12 space-y-8 relative">
 
                             {/* Dynamic Apply for MBBS in Vietnam Hero Section */}
                             <motion.section
                                 {...fadeInUp}
                                 className="bg-white rounded-[40px] shadow-premium border border-slate-50 overflow-hidden relative group/hero"
                             >
-                                <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[600px]">
+                                <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[500px]">
                                     {/* Left Side Content */}
-                                    <div className="p-8 lg:p-14 flex flex-col justify-center bg-gradient-to-br from-white via-slate-50 to-brand-primary/5 relative overflow-hidden">
+                                    <div className="p-6 lg:p-10 flex flex-col justify-center bg-gradient-to-br from-white via-slate-50 to-brand-primary/5 relative overflow-hidden">
                                         <div className="relative z-10">
                                             <motion.div
                                                 initial={{ opacity: 0, x: -20 }}
@@ -186,11 +186,11 @@ const AdmissionProcess = () => {
                                                 <span className="text-brand-primary font-black uppercase tracking-[0.4em] text-[10px]">Direct Admission 2026</span>
                                             </motion.div>
 
-                                            <h2 className="text-3xl md:text-6xl font-black text-slate-900 mb-6 leading-[1.1]">
+                                            <h2 className="text-2xl md:text-5xl font-black text-slate-900 mb-6 leading-[1.1]">
                                                 Apply for <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">MBBS in Vietnam</span>
                                             </h2>
 
-                                            <div className="inline-block bg-brand-secondary text-white px-8 py-3 rounded-2xl text-sm md:text-lg font-black mb-10 shadow-xl shadow-brand-secondary/30 transform -rotate-1 group-hover/hero:rotate-0 transition-all duration-500 uppercase tracking-widest">
+                                            <div className="inline-block bg-brand-secondary text-white px-6 py-2.5 rounded-xl text-xs md:text-sm font-black mb-8 shadow-xl shadow-brand-secondary/30 transform -rotate-1 group-hover/hero:rotate-0 transition-all duration-500 uppercase tracking-widest">
                                                 Start Your Medical Career Abroad!
                                             </div>
 
@@ -205,10 +205,12 @@ const AdmissionProcess = () => {
                                                         whileHover={{ x: 10 }}
                                                         className="flex items-center gap-4 group/item"
                                                     >
-                                                        <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-brand-primary group-hover/item:bg-brand-primary group-hover/item:text-white transition-all duration-300">
-                                                            {item.icon}
+                                                        <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-brand-primary group-hover/item:bg-brand-primary group-hover/item:text-white transition-all duration-300">
+                                                            <div className="text-xl">
+                                                                {item.icon}
+                                                            </div>
                                                         </div>
-                                                        <span className="text-lg font-bold text-slate-700 group-hover/item:text-brand-primary transition-colors">{item.text}</span>
+                                                        <span className="text-base font-bold text-slate-700 group-hover/item:text-brand-primary transition-colors">{item.text}</span>
                                                     </motion.div>
                                                 ))}
                                             </div>
@@ -218,18 +220,9 @@ const AdmissionProcess = () => {
                                     </div>
 
                                     {/* Right Side Form */}
-                                    <div className="bg-slate-900 p-8 lg:p-14 relative overflow-hidden flex items-center justify-center">
-                                        <div className="absolute inset-0 opacity-30 group-hover/hero:scale-110 transition-transform duration-[2s]">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=1000"
-                                                alt="Doctor"
-                                                className="w-full h-full object-cover"
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-slate-900"></div>
-                                        </div>
-
+                                    <div className="bg-white p-6 lg:p-10 relative overflow-hidden flex items-center justify-center border-t lg:border-t-0 lg:border-l border-slate-100">
                                         <div className="relative z-10 w-full">
-                                            <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[40px] p-6 lg:p-10 shadow-2xl">
+                                            <div className="bg-white rounded-[32px] p-6 lg:p-8 shadow-premium border border-slate-50">
                                                 <form onSubmit={handleSubmit} className="space-y-4">
                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                         <input
@@ -239,7 +232,7 @@ const AdmissionProcess = () => {
                                                             type="text"
                                                             required
                                                             placeholder="Full Name"
-                                                            className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 focus:border-brand-secondary/50 transition-all font-medium"
+                                                            className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-brand-primary/50 transition-all font-medium"
                                                         />
                                                         <input
                                                             name="email"
@@ -248,7 +241,7 @@ const AdmissionProcess = () => {
                                                             type="email"
                                                             required
                                                             placeholder="Email Address"
-                                                            className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 focus:border-brand-secondary/50 transition-all font-medium"
+                                                            className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-brand-primary/50 transition-all font-medium"
                                                         />
                                                     </div>
                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -259,7 +252,7 @@ const AdmissionProcess = () => {
                                                             type="tel"
                                                             required
                                                             placeholder="Mobile Number"
-                                                            className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 focus:border-brand-secondary/50 transition-all font-medium"
+                                                            className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-brand-primary/50 transition-all font-medium"
                                                         />
                                                         <input
                                                             name="neetScore"
@@ -267,7 +260,7 @@ const AdmissionProcess = () => {
                                                             onChange={handleInputChange}
                                                             type="text"
                                                             placeholder="NEET Score"
-                                                            className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 focus:border-brand-secondary/50 transition-all font-medium"
+                                                            className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-brand-primary/50 transition-all font-medium"
                                                         />
                                                     </div>
                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -277,7 +270,7 @@ const AdmissionProcess = () => {
                                                             onChange={handleInputChange}
                                                             type="text"
                                                             placeholder="12th PCB %"
-                                                            className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 focus:border-brand-secondary/50 transition-all font-medium"
+                                                            className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-brand-primary/50 transition-all font-medium"
                                                         />
                                                         <input
                                                             name="passport"
@@ -285,7 +278,7 @@ const AdmissionProcess = () => {
                                                             onChange={handleInputChange}
                                                             type="text"
                                                             placeholder="Passport (Opt)"
-                                                            className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 focus:border-brand-secondary/50 transition-all font-medium"
+                                                            className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-brand-primary/50 transition-all font-medium"
                                                         />
                                                     </div>
                                                     <textarea
@@ -294,16 +287,15 @@ const AdmissionProcess = () => {
                                                         onChange={handleInputChange}
                                                         placeholder="Additional Message"
                                                         rows="2"
-                                                        className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 focus:border-brand-secondary/50 transition-all font-medium mt-2"
+                                                        className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-brand-primary/50 transition-all font-medium mt-2"
                                                     ></textarea>
-
                                                     <button
                                                         type="submit"
-                                                        className="w-full py-5 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-primary/80 hover:from-brand-secondary hover:to-brand-secondary text-white font-black uppercase tracking-[0.2em] shadow-2xl shadow-brand-primary/40 transform hover:-translate-y-1 transition-all active:scale-95 group flex items-center justify-center gap-4 text-sm mt-6"
+                                                        className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-primary/80 hover:from-brand-secondary hover:to-brand-secondary text-white font-black uppercase tracking-[0.2em] shadow-xl shadow-brand-primary/20 transform hover:-translate-y-1 transition-all active:scale-95 group flex items-center justify-center gap-4 text-xs mt-6"
                                                     >
                                                         Submit Application
-                                                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/40 transition-colors">
-                                                            <BiSend className="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/40 transition-colors">
+                                                            <BiSend className="text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                                         </div>
                                                     </button>
                                                 </form>
@@ -316,7 +308,7 @@ const AdmissionProcess = () => {
                             {/* Premium Collapsible Table of Contents Section */}
                             <motion.section
                                 {...fadeInUp}
-                                className="bg-white rounded-[40px] p-6 lg:p-10 border-color-brand-secondary border-slate-100 shadow-premium transition-all duration-500 overflow-hidden relative"
+                                className="bg-white rounded-[32px] p-6 lg:p-8 border-color-brand-secondary border-slate-100 shadow-premium transition-all duration-500 overflow-hidden relative"
                             >
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
 
@@ -409,8 +401,8 @@ const AdmissionProcess = () => {
                         </div>
                     </div>
                 </div>
-            </section >
-        </main >
+            </section>
+        </main>
     );
 };
 

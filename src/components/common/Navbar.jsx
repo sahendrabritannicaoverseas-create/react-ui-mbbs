@@ -62,7 +62,7 @@ const Navbar = () => {
                 {/* Logo Section */}
                 <div className="flex items-center min-w-fit pr-4">
                     <Link to="/" onClick={closeMenu}>
-                        <img src={logo} alt="Header-logo" className="h-[35px] md:h-[40px] block" />
+                        <img src={logo} alt="Header-logo" className="h-[45px] md:h-[60px] block object-contain" />
                     </Link>
                 </div>
 
@@ -304,6 +304,14 @@ const Navbar = () => {
                                 Services
                             </Link>
                         </li>
+                        <li>
+                            <Link
+                                to="/blog"
+                                className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
+                            >
+                                Blog
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
 
@@ -383,6 +391,13 @@ const Navbar = () => {
                                 className="text-slate-900 hover:text-brand-primary border-b border-slate-50 pb-5 flex justify-between items-center"
                             >
                                 Services <BiRightArrowAlt className="text-slate-300" />
+                            </Link>
+                            <Link
+                                to="/blog"
+                                onClick={closeMenu}
+                                className="text-slate-900 hover:text-brand-primary border-b border-slate-50 pb-5 flex justify-between items-center"
+                            >
+                                Blog <BiRightArrowAlt className="text-slate-300" />
                             </Link>
                             <Link
                                 to="/contact"
