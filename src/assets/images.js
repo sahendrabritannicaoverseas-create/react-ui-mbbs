@@ -1,5 +1,5 @@
 // Logo
-import logo from './images/logo/mymbbsadmission-logo-1.svg';
+import logo from './images/logo/logo.png';
 
 // Hero
 import heroBg from './images/hero/hero-img-6.jpg';
@@ -21,7 +21,7 @@ import uniMasha from './images/uni-img/masha-img.jpg';
 
 // Media
 import aboutMedia from './images/media/media-36.jpg';
-import aboutMainImg from './images/media/media-16.jpg';
+import aboutMainImg from './images/media/media-36.jpg';
 import testimonialImg from './images/media/testimonial-img1.jpg';
 
 // Page Title

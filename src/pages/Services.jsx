@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { BiRightArrowAlt, BiPhone, BiCalendarCheck } from "react-icons/bi";
 import {
   pageTitleBg,
@@ -16,36 +17,42 @@ const Services = () => {
   const services = [
     {
       title: "Student Visa",
+      slug: "student-visa",
       icon: iconStudent,
       number: "01",
       desc: "Expert guidance for student visa applications for top medical destinations.",
     },
     {
       title: "Tourist Visa",
+      slug: "tourist-visa",
       icon: iconTourist,
       number: "02",
       desc: "Hassle-free tourist visa assistance for parents and travelers.",
     },
     {
       title: "Working Visa",
+      slug: "working-visa",
       icon: iconWorking,
       number: "03",
       desc: "Professional support for work permits and legal employment abroad.",
     },
     {
       title: "Visa Application",
+      slug: "visa-application",
       icon: iconVisa,
       number: "04",
       desc: "Complete documentation and filing support for all types of visas.",
     },
     {
       title: "Free Counselling",
+      slug: "free-counselling",
       icon: iconCounselling,
       number: "05",
       desc: "One-on-one sessions to help you choose the best medical career path.",
     },
     {
       title: "MBBS Destinations",
+      slug: "mbbs-destinations",
       icon: iconDestinations,
       number: "06",
       desc: "Explore top-ranked medical universities in Russia, Bangladesh, and beyond.",
@@ -67,7 +74,7 @@ const Services = () => {
   return (
     <main className="overflow-hidden bg-white">
       {/* Page Title Area */}
-      <section className="relative pt-[160px] pb-[120px] bg-slate-900 overflow-hidden">
+      <section className="relative pt-[100px] pb-[30px] md:pt-[140px] md:pb-[40px] bg-slate-900 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
           style={{ backgroundImage: `url(${pageTitleBg})` }}
@@ -101,7 +108,7 @@ const Services = () => {
                   Home
                 </a>
               </li>
-              <li className="text-slate-600">/</li>
+              <li className="text-slate-400">/</li>
               <li className="text-brand-primary">Services</li>
             </ul>
           </motion.div>
@@ -109,22 +116,17 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-32 bg-slate-50 relative overflow-hidden">
+      <section className="py-2 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
 
         <div className="container mx-auto px-6">
-          <motion.div {...fadeInUp} className="text-center mb-24">
-            <span className="inline-block bg-brand-primary/10 text-brand-primary px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-              Our services
+          <motion.div {...fadeInUp} className="text-center mb-18">
+            <span className="inline-block bg-brand-primary/10 text-brand-primary px-6 py-1 rounded-full text-[18px] font-black uppercase tracking-[0.3em] mb-6">
+              Our Services
             </span>
-            <h2 className="text-4xl lg:text-6xl font-black text-slate-900 leading-[1] uppertolowercase tracking-tighter mb-8 max-w-4xl mx-auto">
-              Comprehensive Support For Your{" "}
-              <span className="gradient-text">Global Medical Career</span>
-            </h2>
-            <p className="max-w-[700px] mx-auto text-slate-500 text-lg font-medium">
-              Navigating international admissions is complex. We provide expert
-              guidance at every step, from choosing a university to landing in
-              your dream country.
+
+            <p className="max-w-[600px] mx-auto text-slate-500 text-lg font-medium">
+              End-to-end MBBS abroad assistance including counselling, admissions, visa support, and guidance until you settle at your university.
             </p>
           </motion.div>
 
@@ -133,29 +135,29 @@ const Services = () => {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
           >
             {services.map((service, idx) => (
               <motion.div
                 key={idx}
                 variants={fadeInUp}
                 whileHover={{ y: -10 }}
-                className="group bg-white rounded-[40px] p-12 shadow-premium hover:shadow-2xl transition-all duration-500 border border-white relative overflow-hidden"
+                className="group bg-white rounded-[40px] p-12 shadow-premium hover:shadow-2xl transition-all duration-500 border border-slate-200 hover:border-brand-secondary relative overflow-hidden"
               >
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-slate-50 rounded-bl-full -mr-16 -mt-16 group-hover:bg-brand-primary/5 transition-colors"></div>
-                <div className="absolute bottom-10 left-10 w-2 h-2 rounded-full bg-brand-secondary/20 group-hover:scale-[10] transition-transform duration-700"></div>
+                <div className="absolute bottom-10 left-10 w-2 h-2 rounded-full bg-brand-primary/20 group-hover:scale-[10] transition-transform duration-700"></div>
 
                 <div className="relative z-10">
                   <div className="flex justify-between items-start mb-10">
-                    <div className="bg-slate-50 w-20 h-20 rounded-[24px] flex items-center justify-center p-4 group-hover:bg-brand-primary group-hover:shadow-lg group-hover:shadow-brand-primary/30 group-hover:-rotate-6 transition-all duration-500">
+                    <div className="bg-slate-50 w-20 h-20 rounded-[24px] flex items-center justify-center p-4 group-hover:bg-brand-secondary group-hover:shadow-lg group-hover:shadow-brand-secondary/30 group-hover:-rotate-6 transition-all duration-500">
                       <img
                         src={service.icon}
                         alt={service.title}
                         className="w-full h-full group-hover:invert transition-all duration-500"
                       />
                     </div>
-                    <span className="text-slate-100 text-5xl font-black group-hover:text-brand-primary/10 transition-colors uppercase tracking-tighter">
+                    <span className="text-slate-100 text-5xl font-black group-hover:text-brand-secondary/10 transition-colors uppercase tracking-tighter">
                       {service.number}
                     </span>
                   </div>
@@ -167,15 +169,15 @@ const Services = () => {
                     {service.desc}
                   </p>
 
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-3 font-black text-[10px] uppercase tracking-[0.3em] text-slate-900 group-hover:text-brand-primary transition-colors"
+                  <Link
+                    to={`/services/${service.slug}`}
+                    className="inline-flex items-center gap-3 font-black text-[10px] uppercase tracking-[0.2em] text-slate-900 group-hover:text-brand-primary transition-colors"
                   >
                     Details
                     <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-brand-primary group-hover:text-white transition-all">
                       <BiRightArrowAlt className="text-lg" />
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             ))}

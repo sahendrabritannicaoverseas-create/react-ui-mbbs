@@ -40,7 +40,7 @@ const About = () => {
                     className="absolute right-0 bottom-0 pointer-events-none w-1/3"
                 />
 
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -60,9 +60,9 @@ const About = () => {
             </section>
 
             {/* About Section */}
-            <section className="py-16 md:py-32 relative">
-                <div className="container mx-auto px-6">
-                    <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            <section className="py-8 md:py-12 relative">
+                <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                         {/* Image Column */}
                         <motion.div
                             {...fadeInUp}
@@ -97,7 +97,7 @@ const About = () => {
 
                         {/* Content Column */}
                         <div className="w-full lg:w-1/2">
-                            <motion.div {...fadeInUp} className="mb-12">
+                            <motion.div {...fadeInUp} className="mb-8">
                                 <span className="inline-block bg-brand-primary/10 text-brand-primary px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6">
                                     Who We Are
                                 </span>
@@ -114,7 +114,7 @@ const About = () => {
                                 initial="initial"
                                 whileInView="whileInView"
                                 viewport={{ once: true }}
-                                className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+                                className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
                             >
                                 {[
                                     { title: 'Global Recognition', desc: 'NMC & WHO Approved' },
@@ -149,10 +149,10 @@ const About = () => {
             </section>
 
             {/* Countries Section */}
-            <section className="py-16 md:py-32 bg-slate-50 relative overflow-hidden">
+            <section className="py-8 md:py-12 bg-slate-50 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-primary/5 -skew-x-12 translate-x-1/2 blur-3xl"></div>
-                <div className="container mx-auto px-6 relative z-10">
-                    <motion.div {...fadeInUp} className="text-center mb-20">
+                <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
+                    <motion.div {...fadeInUp} className="text-center mb-12">
                         <span className="inline-block bg-brand-secondary/10 text-brand-secondary px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6">
                             Global Reach
                         </span>
@@ -194,9 +194,9 @@ const About = () => {
             </section>
 
             {/* Simple Team Section */}
-            <section className="py-16 md:py-32">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-end mb-20">
+            <section className="py-8 md:py-12">
+                <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-12">
                         <motion.div {...fadeInUp}>
                             <span className="inline-block bg-brand-primary/10 text-brand-primary px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6">
                                 Expert Advisors

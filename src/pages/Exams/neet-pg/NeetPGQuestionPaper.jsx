@@ -3,11 +3,40 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { pageTitleBg, pageTitleShape } from '../../../assets/images';
 import { neetPGLinks, pyqData } from '../../../data/neetPGData';
-import { BiPlus, BiMinus, BiChevronRight } from 'react-icons/bi';
+import { BiPlus, BiMinus, BiChevronRight, BiSend, BiUser, BiPhone, BiEnvelope, BiMap, BiGlobe, BiLockAlt } from 'react-icons/bi';
+import TableOfContents from '../../../components/common/TableOfContents';
 
 const NeetPGQuestionPaper = () => {
     const [isTocOpen, setIsTocOpen] = useState(true);
     const [selectedYears, setSelectedYears] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState("");
+    const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
+    const [selectedCity, setSelectedCity] = useState("");
+    const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
+
+    const countries = [
+        "India", "United States", "United Kingdom", "Canada", "Australia",
+        "Germany", "France", "Japan", "China", "Brazil"
+    ];
+
+    const cities = {
+        "India": ["New Delhi", "Mumbai", "Bangalore", "Chennai", "Kolkata"],
+        "United States": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
+        "United Kingdom": ["London", "Birmingham", "Manchester", "Glasgow", "Liverpool"],
+        "Canada": ["Toronto", "Montreal", "Vancouver", "Calgary", "Edmonton"],
+        "Australia": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide"],
+        "Germany": ["Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt"],
+        "France": ["Paris", "Marseille", "Lyon", "Toulouse", "Nice"],
+        "Japan": ["Tokyo", "Yokohama", "Osaka", "Nagoya", "Sapporo"],
+        "China": ["Shanghai", "Beijing", "Guangzhou", "Shenzhen", "Chengdu"],
+        "Brazil": ["Sao Paulo", "Rio de Janeiro", "Brasilia", "Salvador", "Fortaleza"]
+    };
+
+    const handleCountrySelect = (country) => {
+        setSelectedCountry(country);
+        setIsCountryDropdownOpen(false);
+        setSelectedCity(""); // Reset city when country changes
+    };
 
     const years = pyqData.years;
     const sections = pyqData.tocSections;
@@ -73,7 +102,7 @@ const NeetPGQuestionPaper = () => {
                 </div>
             </section>
 
-            <section className="py-6 relative -mt-8 z-20">
+            <section className="py-8 relative -mt-8 z-20">
                 <div className="container mx-auto px-5 lg:px-12 max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                         {/* Left Sidebar - Filter Section */}
@@ -139,6 +168,116 @@ const NeetPGQuestionPaper = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Get in Touch Form Widget */}
+                            <div className="bg-white rounded-[32px] p-8 border border-slate-100 shadow-premium relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-bl-full transition-transform group-hover:scale-110 duration-700"></div>
+                                <h4 className="text-xl font-black text-slate-900 mb-6 uppercase tracking-widest relative pb-4 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-brand-secondary after:rounded-full">Get in Touch</h4>
+                                <form className="space-y-5 relative z-10">
+                                    <div className="relative group">
+                                        <BiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg group-focus-within:text-brand-primary transition-colors duration-300" />
+                                        <input
+                                            type="text"
+                                            placeholder="Full Name"
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold text-slate-700 focus:bg-white focus:border-brand-primary outline-none transition-all duration-300 placeholder:text-slate-400 shadow-sm focus:shadow-md"
+                                        />
+                                    </div>
+                                    <div className="relative group">
+                                        <BiEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg group-focus-within:text-brand-primary transition-colors duration-300" />
+                                        <input
+                                            type="email"
+                                            placeholder="Email Address"
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold text-slate-700 focus:bg-white focus:border-brand-primary outline-none transition-all duration-300 placeholder:text-slate-400 shadow-sm focus:shadow-md"
+                                        />
+                                    </div>
+                                    <div className="relative group">
+                                        <BiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg group-focus-within:text-brand-primary transition-colors duration-300" />
+                                        <input
+                                            type="tel"
+                                            placeholder="Phone Number"
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold text-slate-700 focus:bg-white focus:border-brand-primary outline-none transition-all duration-300 placeholder:text-slate-400 shadow-sm focus:shadow-md"
+                                        />
+                                    </div>
+                                    <div className="relative group">
+                                        <BiGlobe className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-slate-400 text-lg group-focus-within:text-brand-primary transition-colors duration-300" />
+                                        <div className="relative">
+                                            <input
+                                                type="text"
+                                                value={selectedCountry}
+                                                onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                                                readOnly
+                                                placeholder="Select Country"
+                                                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold text-slate-700 focus:bg-white focus:border-brand-primary outline-none transition-all duration-300 placeholder:text-slate-400 shadow-sm focus:shadow-md cursor-pointer"
+                                            />
+                                            {isCountryDropdownOpen && (
+                                                <div className="absolute top-full left-0 w-full bg-white border border-slate-200 rounded-xl mt-2 max-h-48 overflow-y-auto shadow-xl z-50">
+                                                    {countries.map((country, index) => (
+                                                        <div
+                                                            key={index}
+                                                            onClick={() => handleCountrySelect(country)}
+                                                            className="px-4 py-3 hover:bg-slate-50 text-sm font-bold text-slate-700 cursor-pointer transition-colors border-b border-slate-50 last:border-none"
+                                                        >
+                                                            {country}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="relative group">
+                                        <BiMap className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-slate-400 text-lg group-focus-within:text-brand-primary transition-colors duration-300" />
+                                        <div className="relative">
+                                            <input
+                                                type="text"
+                                                value={selectedCity}
+                                                onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
+                                                readOnly
+                                                placeholder={selectedCountry ? "Select City" : "Select Country First"}
+                                                disabled={!selectedCountry}
+                                                className={`w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 pl-12 pr-4 text-sm font-bold text-slate-700 focus:bg-white focus:border-brand-primary outline-none transition-all duration-300 placeholder:text-slate-400 shadow-sm focus:shadow-md ${!selectedCountry ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
+                                            />
+                                            {isCityDropdownOpen && selectedCountry && (
+                                                <div className="absolute top-full left-0 w-full bg-white border border-slate-200 rounded-xl mt-2 max-h-48 overflow-y-auto shadow-xl z-50">
+                                                    {cities[selectedCountry]?.map((city, index) => (
+                                                        <div
+                                                            key={index}
+                                                            onClick={() => {
+                                                                setSelectedCity(city);
+                                                                setIsCityDropdownOpen(false);
+                                                            }}
+                                                            className="px-4 py-3 hover:bg-slate-50 text-sm font-bold text-slate-700 cursor-pointer transition-colors border-b border-slate-50 last:border-none"
+                                                        >
+                                                            {city}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    {/* Captcha Section */}
+                                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                                        <div className="flex items-center gap-1  bg-slate-50 p-1.5 rounded-lg border border-slate-100 shadow-inner">
+                                            <div className="bg-white px-2 py-1.5 rounded-md border border-slate-200 select-none shadow-sm">
+                                                <span className="text-brand-primary font-black tracking-[0.2em] text-[10px]">8 + 4 =</span>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                placeholder=" "
+                                                className="w-8 bg-transparent border-none text-slate-900 text-center focus:ring-0 outline-none font-black text-sm p-0 placeholder:text-slate-300"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <motion.button
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="w-full bg-brand-primary hover:bg-brand-secondary text-white font-black py-4 rounded-xl text-xs uppercase tracking-[0.2em] shadow-lg shadow-brand-primary/25 hover:shadow-brand-secondary/25 transition-all duration-300 flex items-center justify-center gap-3 mt-4 group"
+                                    >
+                                        <BiSend className="text-lg group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                                        Send Inquiry
+                                    </motion.button>
+                                </form>
+                            </div>
                         </aside>
 
                         {/* Right Content */}
@@ -182,41 +321,11 @@ const NeetPGQuestionPaper = () => {
                                 </div>
                             </motion.div>
 
-                            {/* Table of Content */}
-                            <div className="bg-white rounded-[24px] p-5 md:p-8 border border-slate-200 shadow-premium transition-all duration-300">
-                                <div
-                                    className="flex items-center justify-between cursor-pointer group"
-                                    onClick={() => setIsTocOpen(!isTocOpen)}
-                                >
-                                    <h2 className="text-1xl font-black text-slate-800 flex items-center gap-3 lowercase tracking-tight">
-                                        Table of Content
-                                    </h2>
-                                    <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white rounded-lg transition-colors hover:bg-brand-primary/90 shadow-lg">
-                                        {isTocOpen ? <BiMinus className="text-1xl" /> : <BiPlus className="text-1xl" />}
-                                    </div>
-                                </div>
-                                {isTocOpen && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        className="overflow-hidden"
-                                    >
-                                        <ul className="flex flex-col gap-y-2 pt-4 mt-4 border-t border-slate-100">
-                                            {sections.map((section, idx) => (
-                                                <li key={idx} className="flex items-start gap-2 group">
-                                                    <span className="text-brand-primary/40 font-bold text-sm mt-0.5">{idx + 1}.</span>
-                                                    <button
-                                                        onClick={() => scrollToSection(section.id)}
-                                                        className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-2 transition-all text-left text-sm font-bold tracking-tight"
-                                                    >
-                                                        {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                                    </button>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </motion.div>
-                                )}
+                            {/* Table of Contents */}
+                            <div className="mb-8">
+                                <TableOfContents sections={sections} />
                             </div>
+
 
                             <div id="importance" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
                                 <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Why Solve NEET PG Previous Year Papers?</h2>

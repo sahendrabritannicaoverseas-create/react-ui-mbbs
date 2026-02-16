@@ -20,7 +20,7 @@ const Contact = () => {
     return (
         <main className="overflow-hidden bg-white">
             {/* Page Title Area */}
-            <section className="relative pt-[160px] pb-[120px] bg-slate-900 overflow-hidden">
+            <section className="relative pt-[100px] pb-[30px] md:pt-[140px] md:pb-[40px] bg-slate-900 overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
                     style={{ backgroundImage: `url(${pageTitleBg})` }}
@@ -42,7 +42,7 @@ const Contact = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
+                        <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
                             Contact <span className="text-brand-primary">Us</span>
                         </h2>
                         <ul className="flex items-center justify-center xl:justify-start gap-4 text-slate-400 font-black text-xs uppercase tracking-[0.3em]">

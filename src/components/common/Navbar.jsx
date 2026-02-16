@@ -9,6 +9,17 @@ const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     const [isExamsDropdownOpen, setIsExamsDropdownOpen] = React.useState(false);
+    const [isScrolled, setIsScrolled] = React.useState(false);
+
+    // Detect scroll position
+    React.useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const toggleMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -58,39 +69,42 @@ const Navbar = () => {
 
     return (
         <>
-            <header className="fixed top-2 md:top-8 left-1/2 -translate-x-1/2 w-[95%] sm:w-[90%] max-w-[1280px] bg-white rounded-full shadow-xl z-[1000] px-4 md:px-10 py-3 md:py-4 flex items-center justify-between transition-all duration-300">
+            <header className={`fixed left-1/2 -translate-x-1/2 w-[95%] xl:w-full max-w-[1400px] bg-white rounded-full z-[1000] px-6 md:px-12 flex items-center justify-between transition-all duration-500 ${isScrolled ? 'top-4 py-2 shadow-2xl scale-[0.98]' : 'top-8 py-4 shadow-xl'}`}>
                 {/* Logo Section */}
-                <div className="flex items-center min-w-fit pr-4">
+                <div className="flex items-center min-w-fit pr-6">
                     <Link to="/" onClick={closeMenu}>
-                        <img src={logo} alt="Header-logo" className="h-[45px] md:h-[60px] block object-contain" />
+                        <img src={logo} alt="Header-logo" className={`block object-contain transition-all duration-500 ${isScrolled ? 'h-[50px] md:h-[60px]' : 'h-[60px] md:h-[90px]'}`} />
                     </Link>
                 </div>
 
                 {/* Navigation Menu Section - Desktop */}
-                <nav className="hidden lg:block flex-grow px-4">
-                    <ul className="flex items-center justify-center gap-6 m-0 p-0 list-none font-semibold text-[15px]">
+                <nav className="hidden lg:block flex-grow px-8">
+                    <ul className="flex items-center justify-center gap-8 m-0 p-0 list-none font-bold text-[14px]">
                         <li>
                             <Link
                                 to="/"
-                                className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
+                                className="text-black hover:text-brand-primary no-underline transition-all relative group/nav py-2"
                             >
                                 Home
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover/nav:w-full"></span>
                             </Link>
                         </li>
                         <li>
                             <Link
                                 to="/mbbs-vietnam"
-                                className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
+                                className="text-black hover:text-brand-primary no-underline transition-all relative group/nav py-2"
                             >
                                 MBBS in Vietnam
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover/nav:w-full"></span>
                             </Link>
                         </li>
                         <li>
                             <Link
                                 to="/admission-process"
-                                className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
+                                className="text-black hover:text-brand-primary no-underline transition-all relative group/nav py-2"
                             >
                                 Admission Process
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover/nav:w-full"></span>
                             </Link>
                         </li>
                         <li
@@ -100,9 +114,10 @@ const Navbar = () => {
                         >
                             <Link
                                 to="/universities"
-                                className={`text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap flex items-center gap-1 ${isDropdownOpen ? 'text-brand-primary' : ''}`}
+                                className={`text-black hover:text-brand-primary no-underline transition-all relative group/nav flex items-center gap-1 ${isDropdownOpen ? 'text-brand-primary' : ''}`}
                             >
                                 Medical Universities <BiChevronDown className={`text-lg transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                                <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-primary transition-all duration-300 ${isDropdownOpen ? 'w-full' : 'w-0 group-hover/nav:w-full'}`}></span>
                             </Link>
 
                             {/* Mega Menu Dropdown */}
@@ -200,9 +215,10 @@ const Navbar = () => {
                         >
                             <Link
                                 to="/exams"
-                                className={`text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap flex items-center gap-1 ${isExamsDropdownOpen ? 'text-brand-primary' : ''}`}
+                                className={`text-black hover:text-brand-primary no-underline transition-all relative group/nav flex items-center gap-1 ${isExamsDropdownOpen ? 'text-brand-primary' : ''}`}
                             >
                                 Exams <BiChevronDown className={`text-lg transition-transform duration-300 ${isExamsDropdownOpen ? 'rotate-180' : ''}`} />
+                                <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-primary transition-all duration-300 ${isExamsDropdownOpen ? 'w-full' : 'w-0 group-hover/nav:w-full'}`}></span>
                             </Link>
 
                             {/* Exams Mega Menu Dropdown */}
@@ -299,17 +315,19 @@ const Navbar = () => {
                         <li>
                             <Link
                                 to="/services"
-                                className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
+                                className="text-black hover:text-brand-primary no-underline transition-all relative group/nav py-2"
                             >
                                 Services
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover/nav:w-full"></span>
                             </Link>
                         </li>
                         <li>
                             <Link
                                 to="/blog"
-                                className="text-[#212529] hover:text-brand-primary no-underline transition-colors capitalize whitespace-nowrap"
+                                className="text-black hover:text-brand-primary no-underline transition-all relative group/nav py-2"
                             >
                                 Blog
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover/nav:w-full"></span>
                             </Link>
                         </li>
                     </ul>

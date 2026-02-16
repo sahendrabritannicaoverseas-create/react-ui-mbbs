@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import Meta from '../../components/common/Meta';
 import {
   aboutMainImg,
   flagRussiaIcon,
@@ -93,11 +94,15 @@ const Home = () => {
 
   return (
     <main className="overflow-hidden bg-white">
+      <Meta
+        title="Direct MBBS Admission Abroad 2024"
+        description="Official representative for top medical universities in Vietnam, Russia, Uzbekistan & more. Get direct admission in MBBS abroad with complete guidance."
+      />
       <Hero />
 
       {/* Feature Cards Section */}
-      <section className="relative z-30 -mt-10 md:-mt-32 pb-12 md:pb-16">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="relative z-30 -mt-10 md:-mt-32 pb-8 md:pb-12">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -125,7 +130,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: item.delay }}
-                className="bg-white rounded-[40px] p-6 sm:p-12 shadow-premium border border-slate-50 text-center flex flex-col items-center group hover:shadow-2xl hover:border-brand-secondary transition-all duration-500"
+                className="bg-white rounded-[32px] p-6 shadow-premium border border-slate-50 text-center flex flex-col items-center group hover:shadow-2xl hover:border-brand-secondary transition-all duration-500"
               >
                 <div className="w-20 h-20 rounded-full bg-brand-primary flex items-center justify-center text-white text-4xl mb-8 group-hover:scale-110 transition-transform shadow-lg">
                   {item.icon}
@@ -143,9 +148,9 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-12 md:py-16 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
+      <section className="py-8 md:py-12 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -209,7 +214,7 @@ const Home = () => {
 
           {/* Stats bar below image */}
           <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-24 max-w-5xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-12 max-w-5xl mx-auto"
             ref={statsRef}
           >
             {[
@@ -230,7 +235,7 @@ const Home = () => {
                     "0"
                   )}
                 </h3>
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">
+                <p className="text-[10px] font-black text-slate-900 lowercase tracking-[0.3em]">
                   {stat.label}
                 </p>
               </div>
@@ -242,9 +247,9 @@ const Home = () => {
       <PopularUniversities />
 
       {/* Countries Section */}
-      <section className="py-12 md:py-16 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="text-center mb-20">
+      <section className="py-8 md:py-12 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
+          <div className="text-center mb-12">
             <h2 className="text-4xl md:text-[60px] font-semibold text-[#212529] mb-4">
               Countries We Offer <br className="hidden md:block" /> MBBS In
             </h2>
@@ -281,8 +286,8 @@ const Home = () => {
       <Testimonials />
 
       {/* blog Section */}
-      <section className="py-12 md:py-16 bg-white overflow-hidden">
-        <div className="container mx-auto px-6 md:px-12 text-center mb-20">
+      <section className="py-5 md:py-12 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl text-center mb-12">
           <h2 className="text-4xl md:text-[60px] font-black text-[#212529] mb-8 uppercase tracking-tighter leading-none">
             Latest <span className="text-brand-primary">MBBS Updates</span>
           </h2>
@@ -292,7 +297,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
               id: 1,
@@ -350,7 +355,7 @@ const Home = () => {
                     <BiUser className="text-lg" /> {post.author}
                   </span>
                   <span className="w-1.5 h-1.5 bg-slate-200 rounded-full"></span>
-                  <span>Insights</span>
+                  <span>university</span>
                 </div>
                 <h3 className="text-2xl font-black text-slate-900 mb-6 group-hover:text-brand-primary transition-colors leading-tight min-h-[96px]">
                   <Link to={`/blog/${post.slug}`} className="no-underline text-inherit">
@@ -359,7 +364,7 @@ const Home = () => {
                 </h3>
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="group inline-flex items-center gap-2 text-sm font-black text-slate-900 hover:text-brand-primary transition-all tracking-widest mt-auto uppercase"
+                  className="group inline-flex items-center gap-1 text-sm font-black text-slate-700 hover:text-brand-primary transition-all tracking-widest mt-auto lowercase"
                 >
                   Read More
                   <BiRightArrowAlt className="text-xl group-hover:translate-x-2 transition-transform" />
@@ -369,7 +374,7 @@ const Home = () => {
           ))}
         </div>
 
-        <div className="container mx-auto px-6 md:px-12 mt-16 text-center">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl mt-12 text-center">
           <Link
             to="/blog"
             className="bg-[#1E3A8A] text-white px-12 py-5 rounded-[35px] font-bold text-lg hover:bg-[#F5A716] transition-all inline-flex items-center gap-3 shadow-lg group"

@@ -100,7 +100,7 @@ const AllExams = () => {
     return (
         <main className="overflow-hidden bg-[#F8FAFC]">
             {/* Page Title */}
-            <section className="relative pt-[160px] pb-[120px] bg-slate-900 overflow-hidden">
+            <section className="relative pt-[100px] pb-[30px] md:pt-[140px] md:pb-[40px] bg-slate-900 overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
                     style={{ backgroundImage: `url(${pageTitleBg})` }}

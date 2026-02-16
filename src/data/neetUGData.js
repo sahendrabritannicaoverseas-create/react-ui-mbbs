@@ -136,11 +136,36 @@ export const syllabusData = {
     ],
     tocSections: [
         { id: 'syllabus-cards', label: '1. Subject-wise Syllabus Breakdown' },
-        { id: 'importance', label: '2. Why Solve NEET UG Previous Year Papers?' },
-        { id: 'pattern', label: '3. NEET UG Exam Pattern & Difficulty Level' },
-        { id: 'tips', label: '4. Preparation Tips using PYQs' },
+        { id: 'importance', label: '2. Importance of Syllabus' },
+        { id: 'pattern', label: '3. Exam Pattern' },
+        { id: 'tips', label: '4. Preparation Tips' },
         { id: 'faq', label: '5. Frequently Asked Questions' },
     ],
+    importance: {
+        title: 'Importance of NEET UG Syllabus',
+        content: 'Understanding the NEET UG syllabus is the first step towards a successful preparation. It helps students to focus on relevant topics, manage their time effectively, and avoid studying unnecessary material. The syllabus is designed to test the candidate\'s knowledge in Physics, Chemistry, and Biology.',
+    },
+    pattern: {
+        title: 'NEET UG Exam Pattern',
+        content: 'The NEET UG exam is a pen-and-paper based test consisting of 200 multiple-choice questions (MCQs) out of which candidates have to answer 180. The questions are divided into four subjects: Physics, Chemistry, Botany, and Zoology. Each subject has two sections: Section A (35 questions) and Section B (15 questions, attempt any 10).',
+    },
+    tips: {
+        title: 'Preparation Tips',
+        content: 'To ace the NEET UG exam, candidates should follow a disciplined study schedule. Focus on clarifying concepts from NCERT books, as they form the base for the exam. Regular practice of mock tests and previous year question papers is essential to improve speed and accuracy.',
+    },
+    faq: {
+        title: 'Frequently Asked Questions',
+        questions: [
+            {
+                question: 'Is the NEET UG syllabus strictly based on NCERT?',
+                answer: 'Yes, the NEET UG syllabus is largely based on the NCERT curriculum of Class 11 and 12. mastering NCERT textbooks is crucial for scoring well.',
+            },
+            {
+                question: 'Are there any changes in the syllabus for 2026?',
+                answer: 'As of now, the NTA has not announced any major changes. Candidates are advised to regularly check the official website for updates.',
+            }
+        ]
+    }
 };
 
 // ---- PYQ Page Data ----

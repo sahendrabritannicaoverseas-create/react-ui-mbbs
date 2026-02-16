@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import TableOfContents from '../../../components/common/TableOfContents';
+import ContactForm from '../../../components/common/ContactForm';
 import { pageTitleBg, pageTitleShape } from '../../../assets/images';
 import { neetUGLinks, pyqData } from '../../../data/neetUGData';
 import { BiPlus, BiMinus, BiChevronRight, BiListUl, BiRightArrowAlt } from 'react-icons/bi';
@@ -79,9 +81,7 @@ const NeetUGPYQ = () => {
                         <ul className="flex items-center justify-center xl:justify-start gap-4 text-slate-400 font-bold text-[8px] uppercase tracking-widest">
                             <li><Link to="/" className="hover:text-brand-primary text-white transition-colors">Home</Link></li>
                             <li className="text-slate-600">/</li>
-                            <li><Link to="/exams" className="hover:text-brand-primary text-white transition-colors">Exams</Link></li>
-                            <li className="text-slate-600">/</li>
-                            <li className="text-brand-secondary">Previous Year Questions</li>
+                            <li><span className="text-brand-secondary">Exam Preparation</span></li>
                         </ul>
                     </motion.div>
                 </div>
@@ -153,6 +153,7 @@ const NeetUGPYQ = () => {
                                     </div>
                                 </div>
                             </div>
+                            <ContactForm title="Get in Touch" />
                         </aside>
 
                         {/* Right Content */}
@@ -237,64 +238,8 @@ const NeetUGPYQ = () => {
                                 )}
                             </motion.div>
 
-                            {/* Premium Collapsible Table of Contents */}
-                            <motion.section
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="bg-white rounded-[40px] p-6 lg:p-10 border border-slate-100 shadow-premium transition-all duration-500 overflow-hidden relative"
-                            >
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
+                            <TableOfContents sections={sections} className="!sticky !top-28 z-30" />
 
-                                <div className="relative z-10">
-                                    <div
-                                        className="flex items-center justify-between cursor-pointer group"
-                                        onClick={() => setIsTocOpen(!isTocOpen)}
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 rounded-2xl bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-inner group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
-                                                <BiListUl className="text-2xl" />
-                                            </div>
-                                            <div>
-                                                <h2 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">
-                                                    Table of <span className="text-brand-primary uppercase">Contents</span>
-                                                </h2>
-                                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mt-1">Quick Navigation Guide</p>
-                                            </div>
-                                        </div>
-                                        <div className="w-10 h-10 bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-900 rounded-xl transition-all group-hover:bg-brand-primary group-hover:text-white group-hover:border-transparent group-hover:shadow-lg">
-                                            {isTocOpen ? <BiMinus className="text-xl" /> : <BiPlus className="text-xl" />}
-                                        </div>
-                                    </div>
-
-                                    <AnimatePresence>
-                                        {isTocOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                transition={{ duration: 0.5, ease: "easeInOut" }}
-                                                className="overflow-hidden"
-                                            >
-                                                <div className="pt-8 mt-8 border-t border-slate-100">
-                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-                                                        {sections.map((section, idx) => (
-                                                            <div key={section.id} className="flex items-start gap-4 group">
-                                                                <span className="text-brand-primary/40 font-black text-sm mt-1">0{idx + 1}.</span>
-                                                                <button
-                                                                    onClick={() => scrollToSection(section.id)}
-                                                                    className="text-slate-700 hover:text-brand-primary hover:translate-x-1 transition-all text-left text-[15px] font-bold tracking-tight py-1"
-                                                                >
-                                                                    {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                                                </button>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            </motion.section>
 
                             <div id="importance" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
                                 <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Why Solve NEET UG Previous Year Papers?</h2>

@@ -50,12 +50,10 @@ const NeetUGAdmitCard = () => {
                         <h1 className="text-2xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
                             NEET UG <span className="text-brand-secondary">Admit Card</span>
                         </h1>
-                        <ul className="flex items-center justify-center xl:justify-start gap-2 text-slate-400 font-bold text-[10px] uppercase tracking-widest">
+                        <ul className="flex items-center justify-center xl:justify-start gap-4 text-slate-400 font-bold text-[10px] uppercase tracking-widest">
                             <li><Link to="/" className="hover:text-brand-primary text-white transition-colors">Home</Link></li>
                             <li className="text-slate-600">/</li>
-                            <li><Link to="/exams" className="hover:text-brand-primary text-white transition-colors">Exams</Link></li>
-                            <li className="text-slate-600">/</li>
-                            <li className="text-brand-secondary">Admit Card</li>
+                            <li><span className="text-brand-secondary">Exam Preparation</span></li>
                         </ul>
                     </motion.div>
                 </div>

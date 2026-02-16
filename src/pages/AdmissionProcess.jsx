@@ -126,7 +126,7 @@ const AdmissionProcess = () => {
     return (
         <main className="overflow-hidden bg-white">
             {/* Page Title Area */}
-            <section className="relative pt-[120px] pb-[40px] md:pt-[160px] md:pb-[60px] bg-slate-900 overflow-hidden text-left">
+            <section className="relative pt-[100px] pb-[20px] md:pt-[140px] md:pb-[30px] bg-slate-900 overflow-hidden text-left">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
                     style={{ backgroundImage: `url(${pageTitleBg})` }}
@@ -162,7 +162,7 @@ const AdmissionProcess = () => {
             </section>
 
             {/* Main Content Area */}
-            <section className="py-8 bg-white">
+            <section className="pt-2 pb-12 bg-white">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         {/* Full Width Content Area */}

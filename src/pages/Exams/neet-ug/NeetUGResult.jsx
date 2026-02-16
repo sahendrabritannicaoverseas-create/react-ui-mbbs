@@ -52,9 +52,7 @@ const NeetUGResult = () => {
                         <ul className="flex items-center justify-center xl:justify-start gap-4 text-slate-400 font-bold text-[10px] uppercase tracking-widest">
                             <li><Link to="/" className="hover:text-brand-primary text-white transition-colors">Home</Link></li>
                             <li className="text-slate-600">/</li>
-                            <li><Link to="/exams" className="hover:text-brand-primary text-white transition-colors">Exams</Link></li>
-                            <li className="text-slate-600">/</li>
-                            <li className="text-brand-secondary">Exam Results</li>
+                            <li><span className="text-brand-secondary">Exam Preparation</span></li>
                         </ul>
                     </motion.div>
                 </div>

@@ -76,7 +76,7 @@ const MBBSRussia = () => {
     return (
         <main className="overflow-hidden bg-slate-50 min-h-screen">
             {/* Page Title Area */}
-            <section id="intro" className="relative pt-[160px] pb-[120px] bg-slate-900 overflow-hidden">
+            <section id="intro" className="relative pt-[100px] pb-[30px] md:pt-[140px] md:pb-[40px] bg-slate-900 overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
                     style={{ backgroundImage: `url(${pageTitleBg})` }}
@@ -197,19 +197,21 @@ const MBBSRussia = () => {
                                         >
                                             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
                                                 {/* University Logo/Image */}
-                                                <div className="w-32 h-32 md:w-36 md:h-36 rounded-xl border border-slate-100 p-3 bg-white flex-shrink-0 flex items-center justify-center overflow-hidden shadow-sm">
+                                                <Link to={`/mbbs-russia/${uni.slug}`} className="w-32 h-32 md:w-36 md:h-36 rounded-xl border border-slate-100 p-3 bg-white flex-shrink-0 flex items-center justify-center overflow-hidden shadow-sm hover:border-brand-primary/30 transition-all">
                                                     <img
                                                         src={uni.img}
                                                         alt={uni.name}
                                                         className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                                                     />
-                                                </div>
+                                                </Link>
 
                                                 {/* University Details (Center) */}
                                                 <div className="flex-grow text-center md:text-left">
-                                                    <h3 className="text-lg md:text-xl font-black text-brand-navy mb-2 hover:text-brand-primary transition-colors cursor-pointer">
-                                                        {uni.name}
-                                                    </h3>
+                                                    <Link to={`/mbbs-russia/${uni.slug}`}>
+                                                        <h3 className="text-lg md:text-xl font-black text-brand-navy mb-2 hover:text-brand-primary transition-colors cursor-pointer">
+                                                            {uni.name}
+                                                        </h3>
+                                                    </Link>
                                                     <div className="flex items-center justify-center md:justify-start gap-2 text-slate-500 text-sm font-bold mb-2">
                                                         <BiMapPin className="text-brand-primary" />
                                                         <span>{uni.location}</span>
@@ -231,13 +233,19 @@ const MBBSRussia = () => {
                                                 {/* Action Button (Right) */}
                                                 <div className="flex-shrink-0 w-full md:w-auto">
                                                     <Link
-                                                        to={`/university/${uni.slug}`}
+                                                        to={`/mbbs-russia/${uni.slug}`}
                                                         className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-brand-primary text-white px-6 py-3 rounded-lg text-sm font-bold hover:bg-brand-secondary transition-all shadow-sm active:scale-95"
                                                     >
                                                         <BiBookOpen className="text-lg" />
                                                         Request Info
                                                     </Link>
                                                 </div>
+
+
+
+
+
+
                                             </div>
                                         </motion.div>
                                     ))
@@ -275,8 +283,8 @@ const MBBSRussia = () => {
                                                 key={i + 1}
                                                 onClick={() => handlePageChange(i + 1)}
                                                 className={`w-10 h-10 rounded-xl font-black text-sm transition-all shadow-sm ${currentPage === i + 1
-                                                        ? 'bg-brand-primary text-white shadow-brand-primary/20'
-                                                        : 'bg-white border border-slate-200 text-slate-600 hover:border-brand-primary hover:text-brand-primary'
+                                                    ? 'bg-brand-primary text-white shadow-brand-primary/20'
+                                                    : 'bg-white border border-slate-200 text-slate-600 hover:border-brand-primary hover:text-brand-primary'
                                                     }`}
                                             >
                                                 {i + 1}

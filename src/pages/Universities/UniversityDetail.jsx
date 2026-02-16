@@ -1,266 +1,49 @@
 import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { pageTitleBg, pageTitleShape, uniCrimea, uniDhaka, uniAma, uniAltinbas, uniMasha } from '../../assets/images';
-import { BiChevronRight, BiMapPin, BiCalendar, BiCheckShield, BiBuildings, BiBookOpen, BiMoney, BiTime, BiGlobe, BiPhone, BiListUl, BiInfoCircle, BiPlus, BiMinus } from 'react-icons/bi';
-
+import { pageTitleBg, pageTitleShape } from '../../assets/images';
+import { BiChevronRight, BiMapPin, BiCalendar, BiCheckShield, BiBuildings, BiBookOpen, BiMoney, BiTime, BiGlobe, BiPhone, BiListUl, BiInfoCircle, BiPlus, BiMinus, BiSend } from 'react-icons/bi';
+import Meta from '../../components/common/Meta';
+import TableOfContents from '../../components/common/TableOfContents';
+import { universitiesData } from '../../data/universityData';
 
 const UniversityDetail = () => {
     const { slug } = useParams();
+    const location = useLocation();
     const [isTocOpen, setIsTocOpen] = useState(false);
 
-    // University data - this could be moved to a separate data file or fetched from API
-    const universitiesData = {
-        'hanoi-medical-university': {
-            name: 'Hanoi Medical University',
-            img: uniCrimea,
-            bannerImg: uniCrimea,
-            location: 'Hanoi, Vietnam',
-            established: '1902',
-            recognition: 'WHO, NMC, FAIMER Listed',
-            description: 'Hanoi Medical University (HMU) is the premier medical institution in Vietnam, recognized globally for its century-long legacy of excellence. The university combines traditional medical heritage with modern technological advancements to provide students with a comprehensive, world-class education in medicine and surgery.',
-            highlights: [
-                'Over 120 years of excellence in medical education',
-                'WHO and NMC recognized degrees',
-                'English-medium MBBS program available',
-                'Modern laboratories and teaching hospitals',
-                'Affordable tuition fees for international students',
-                'Strong focus on clinical training and research'
-            ],
-            tuitionFee: '$3,500 - $4,500 per year',
-            duration: '6 years (including internship)',
-            medium: 'English / Vietnamese',
-            intake: 'September',
-            eligibility: '50% in PCB for General, 40% for Reserved categories, NEET qualified',
-            facilities: ['Teaching Hospital', 'Research Labs', 'Library', 'Hostel', 'Sports Complex', 'Cafeteria']
-        },
-        'hcmc-university-medicine-pharmacy': {
-            name: 'Ho Chi Minh City University of Medicine and Pharmacy',
-            img: uniDhaka,
-            bannerImg: uniDhaka,
-            location: 'Ho Chi Minh City, Vietnam',
-            established: '1947',
-            recognition: 'WHO, NMC, FAIMER Listed',
-            description: 'Ho Chi Minh City University of Medicine and Pharmacy stands as a leading medical hub in Southern Vietnam, dedicated to innovation and clinical mastery. It offers students unparalleled access to high-tech simulation centers and a vast network of partner hospitals for extensive clinical practice.',
-            highlights: [
-                'Premier medical institution in Southern Vietnam',
-                'State-of-the-art medical simulation center',
-                'International exchange programs',
-                'Strong alumni network globally',
-                'Research-oriented curriculum',
-                'Clinical rotations at top hospitals'
-            ],
-            tuitionFee: '$4,000 - $5,000 per year',
-            duration: '6 years (including internship)',
-            medium: 'English / Vietnamese',
-            intake: 'September',
-            eligibility: '50% in PCB for General, 40% for Reserved categories, NEET qualified',
-            facilities: ['University Hospital', 'Simulation Center', 'Digital Library', 'International Hostel', 'Research Center']
-        },
-        'kazan-state-medical-university': {
-            name: 'Kazan State Medical University',
-            img: uniAma,
-            bannerImg: uniAma,
-            location: 'Kazan, Russia',
-            established: '1814',
-            recognition: 'WHO, NMC Recognized',
-            description: 'One of the oldest medical schools in Russia, Kazan State Medical University is a center of excellence in medical research and education.',
-            highlights: [
-                'Over 200 years of medical teaching history',
-                'Globally recognized research programs',
-                'Strategic partnerships with international universities',
-                'Centrally located in Kazan (Sports Capital of Russia)',
-                'English medium MBBS since 1996'
-            ],
-            tuitionFee: '$5,500 - $6,500 per year',
-            duration: '6 years',
-            medium: 'English',
-            intake: 'September',
-            eligibility: '50% in PCB, NEET qualified',
-            facilities: ['Teaching Hospitals', 'Biomedical Labs', 'Dormitories', 'Recreational Centers']
-        },
-        'hue-university-medicine-pharmacy': {
-            name: 'Hue University of Medicine and Pharmacy',
-            img: uniAma,
-            bannerImg: uniAma,
-            location: 'Hue, Vietnam',
-            established: '1957',
-            recognition: 'WHO, NMC Listed',
-            description: 'Nestled in the historic city of Hue, this university offers a uniquely rich clinical training program set within one of Vietnam’s most tranquil environments. It is renowned for its dedicated faculty and its commitment to producing compassionate medical doctors through rigorous academic and practical standards.',
-            highlights: [
-                'Located in UNESCO World Heritage city',
-                'Peaceful learning environment',
-                'Strong practical training focus',
-                'Affordable cost of living',
-                'Experienced international faculty',
-                'Modern medical equipment'
-            ],
-            tuitionFee: '$3,000 - $4,000 per year',
-            duration: '6 years (including internship)',
-            medium: 'English / Vietnamese',
-            intake: 'September',
-            eligibility: '50% in PCB for General, 40% for Reserved categories, NEET qualified',
-            facilities: ['Teaching Hospital', 'Anatomy Lab', 'Library', 'Student Dormitory', 'Sports Facilities']
-        },
-        'can-tho-university-medicine-pharmacy': {
-            name: 'Can Tho University of Medicine and Pharmacy',
-            img: uniAltinbas,
-            bannerImg: uniAltinbas,
-            location: 'Can Tho, Vietnam',
-            established: '2002',
-            recognition: 'WHO, NMC Listed',
-            description: 'Can Tho University of Medicine and Pharmacy is the cornerstone of healthcare education in the Mekong Delta, offering highly affordable yet top-tier medical training. It provides a community-focused curriculum that equips international students with both global medical standards and practical regional insights.',
-            highlights: [
-                'Most affordable MBBS option in Vietnam',
-                'Growing international student community',
-                'Modern campus infrastructure',
-                'Strong community medicine focus',
-                'Supportive learning environment',
-                'Easy visa processing'
-            ],
-            tuitionFee: '$2,500 - $3,500 per year',
-            duration: '6 years (including internship)',
-            medium: 'English / Vietnamese',
-            intake: 'September',
-            eligibility: '50% in PCB for General, 40% for Reserved categories, NEET qualified',
-            facilities: ['Medical Center', 'Laboratories', 'E-Library', 'Hostel', 'Canteen']
-        },
-        'thai-binh-university-medicine-pharmacy': {
-            name: 'Thai Binh University of Medicine and Pharmacy',
-            img: uniMasha,
-            bannerImg: uniMasha,
-            location: 'Thai Binh, Vietnam',
-            established: '1968',
-            recognition: 'WHO, NMC Listed',
-            description: 'Thai Binh University of Medicine and Pharmacy is a premier medical institution in Vietnam, offering globally recognized degrees, state-of-the-art facilities, and extensive clinical training for future medical leaders.',
-            highlights: [
-                'Over 55 years of medical education',
-                'Strong emphasis on practical skills',
-                'Collaborative research programs',
-                'Safe and student-friendly city',
-                'Experienced teaching staff',
-                'Quality clinical exposure'
-            ],
-            tuitionFee: '$3,000 - $4,000 per year',
-            duration: '6 years',
-            medium: 'English / Vietnamese',
-            intake: 'September',
-            eligibility: '50% in PCB, NEET qualified',
-            facilities: ['Teaching Hospital', 'Research Labs', 'Central Library', 'Student Housing']
-        },
-        'crimea-federal-university': {
-            name: 'Crimea Federal University',
-            img: uniCrimea,
-            bannerImg: uniCrimea,
-            location: 'Simferopol, Russia',
-            established: '1918',
-            recognition: 'WHO, NMC Recognized',
-            description: 'Crimea Federal University is one of the top medical universities in Russia, offering high-quality medical education with a strong emphasis on clinical practice and research.',
-            highlights: [
-                'Centuries of academic excellence',
-                'English medium MBBS program',
-                'State-of-the-art medical equipment',
-                'International student community',
-                'Low cost of living'
-            ],
-            tuitionFee: '$3,500 - $4,500 per year',
-            duration: '6 years',
-            medium: 'English',
-            intake: 'September',
-            eligibility: '50% in PCB, NEET qualified',
-            facilities: ['Museum of Anatomy', 'Scientific Library', 'Sports Grounds', 'Hostels']
-        },
-        'dhaka-national-medical': {
-            name: 'Dhaka National Medical College',
-            img: uniDhaka,
-            bannerImg: uniDhaka,
-            location: 'Dhaka, Bangladesh',
-            established: '1925',
-            recognition: 'WHO, NMC, BMDC Recognized',
-            description: 'Dhaka National Medical College is a prestigious private medical college in Bangladesh, known for its high academic standards and excellent clinical training.',
-            highlights: [
-                'Located in the heart of Dhaka',
-                'Affiliated with University of Dhaka',
-                'High FMGE passing rate',
-                'Extensive clinical exposure',
-                'Modern campus facilities'
-            ],
-            tuitionFee: '$40,000 (Total for 5 years)',
-            duration: '5 years + 1 year internship',
-            medium: 'English',
-            intake: 'January',
-            eligibility: 'GPA requirements as per DGHS Bangladesh, NEET qualified',
-            facilities: ['Modern Hospital', 'AC Classrooms', 'Auditorium', 'Cafeteria']
-        },
-        'ama-school-of-medicine': {
-            name: 'AMA School of Medicine',
-            img: uniAma,
-            bannerImg: uniAma,
-            location: 'Manila, Philippines',
-            established: '2008',
-            recognition: 'WHO, NMC Recognized',
-            description: 'AMA School of Medicine offers a MD program (equivalent to MBBS) based on the American pattern of medical education, focusing on practical learning and USMLE preparation.',
-            highlights: [
-                'BS+MD course structure',
-                'American pattern of education',
-                'Hands-on clinical training',
-                'English speaking country',
-                'Affordable tuition fees'
-            ],
-            tuitionFee: '$3,000 - $4,000 per year',
-            duration: '5.5 years (including BS)',
-            medium: 'English',
-            intake: 'September',
-            eligibility: '50% in PCB, NEET qualified',
-            facilities: ['Simulation Lab', 'Wi-Fi Campus', 'Modern Library', 'Student Lounge']
-        },
-        'samarkand-state-medical-university': {
-            name: 'Samarkand State Medical University',
-            img: uniCrimea,
-            bannerImg: uniCrimea,
-            location: 'Samarkand, Uzbekistan',
-            established: '1930',
-            recognition: 'WHO, NMC Recognized',
-            description: 'Samarkand State Medical University is the oldest medical university in Uzbekistan, providing high-quality medical education with modern teaching methods.',
-            highlights: [
-                'Oldest medical university in Central Asia',
-                'English medium instruction',
-                'Direct admission process',
-                'Modern clinical database',
-                'Safe and historic city'
-            ],
-            tuitionFee: '$3,000 - $3,500 per year',
-            duration: '6 years',
-            medium: 'English',
-            intake: 'September',
-            eligibility: '50% in PCB, NEET qualified',
-            facilities: ['Anatomy Museum', 'Research Centers', 'Comfortable Hostels', 'Dining Halls']
-        },
-        'tbilisi-state-university': {
-            name: 'Tbilisi State University',
-            img: uniCrimea,
-            bannerImg: uniCrimea,
-            location: 'Tbilisi, Georgia',
-            established: '1918',
-            recognition: 'WHO, NMC, WFME Recognized',
-            description: 'Tbilisi State University is a leading research university in Georgia, offering European standard medical education with global recognition.',
-            highlights: [
-                'European standard education',
-                'Member of European University Association',
-                'No entrance exam for international students',
-                'High safety standards',
-                'English medium MBBS'
-            ],
-            tuitionFee: '$5,000 - $6,000 per year',
-            duration: '6 years',
-            medium: 'English',
-            intake: 'September',
-            eligibility: '50% in PCB, NEET qualified',
-            facilities: ['Modern Labs', 'University Clinic', 'Large Library', 'Student Hubs']
-        }
-    };
 
     const university = universitiesData[slug];
+
+    const getBackLink = () => {
+        if (location.pathname.startsWith('/university/')) return "/universities";
+        if (location.pathname.startsWith('/mbbs-vietnam/')) return "/mbbs-vietnam";
+        if (location.pathname.startsWith('/mbbs-russia/')) return "/mbbs-russia";
+        if (location.pathname.startsWith('/mbbs-uzbekistan/')) return "/mbbs-uzbekistan";
+
+        // Fallback
+        if (!university) return "/universities";
+        if (university.location.toLowerCase().includes('vietnam')) return "/mbbs-vietnam";
+        if (university.location.toLowerCase().includes('russia')) return "/mbbs-russia";
+        if (university.location.toLowerCase().includes('uzbekistan')) return "/mbbs-uzbekistan";
+        return "/universities";
+    };
+
+    const getUniversityLink = (slug, universityLocation) => {
+        // Respect the current context if possible
+        if (location.pathname.startsWith('/university/')) return `/university/${slug}`;
+        if (location.pathname.startsWith('/mbbs-vietnam/')) return `/mbbs-vietnam/${slug}`;
+        if (location.pathname.startsWith('/mbbs-russia/')) return `/mbbs-russia/${slug}`;
+        if (location.pathname.startsWith('/mbbs-uzbekistan/')) return `/mbbs-uzbekistan/${slug}`;
+
+        // Fallback to regional if location provided
+        if (!universityLocation) return `/university/${slug}`;
+        const country = universityLocation.toLowerCase();
+        if (country.includes('vietnam')) return `/mbbs-vietnam/${slug}`;
+        if (country.includes('russia')) return `/mbbs-russia/${slug}`;
+        if (country.includes('uzbekistan')) return `/mbbs-uzbekistan/${slug}`;
+        return `/university/${slug}`;
+    };
 
     const tocSections = [
         { id: 'about', label: `1. About ${university.name}` },
@@ -273,9 +56,26 @@ const UniversityDetail = () => {
         { id: 'quick-info', label: '8. Quick Information' },
     ];
 
+    // Prepare for API integration
+
+    React.useEffect(() => {
+        const fetchUniversity = async () => {
+            try {
+                // When API is ready:
+                // const response = await getUniversityBySlug(slug);
+                // setUniversity(response.data);
+                console.log(`Fetching university data for: ${slug}`);
+            } catch (error) {
+                console.error("Error fetching university:", error);
+            }
+        };
+        fetchUniversity();
+    }, [slug]);
+
     if (!university) {
         return (
             <main className="overflow-hidden bg-white min-h-screen flex items-center justify-center">
+                <Meta title="University Not Found" />
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-slate-900 mb-4">University Not Found</h1>
                     <p className="text-slate-600 mb-8">The university you're looking for doesn't exist.</p>
@@ -289,6 +89,10 @@ const UniversityDetail = () => {
 
     return (
         <main className="overflow-hidden bg-white">
+            <Meta
+                title={`${university.name} - MBBS Abroad`}
+                description={`Get full details about ${university.name}, including fee structure, eligibility, and admission process for international students.`}
+            />
             {/* Hero Banner */}
             <section className="relative pt-[120px] pb-[60px] md:pt-[160px] md:pb-[80px] bg-slate-900 overflow-hidden">
                 <div
@@ -316,7 +120,7 @@ const UniversityDetail = () => {
                         <ul className="flex flex-wrap items-center justify-center xl:justify-start gap-3 text-slate-400 font-black text-[10px] uppercase tracking-[0.3em] mb-8">
                             <li><Link to="/" className="hover:text-brand-secondary transition-colors">Home</Link></li>
                             <li className="text-slate-700">/</li>
-                            <li><Link to="/universities" className="hover:text-brand-secondary transition-colors">Medical Universities</Link></li>
+                            <li><Link to={getBackLink()} className="hover:text-brand-secondary transition-colors">{getBackLink() === '/universities' ? 'Medical Universities' : `MBBS in ${university.location.split(',').pop().trim()}`}</Link></li>
                             <li className="text-slate-700">/</li>
                             <li className="text-brand-primary">{university.name}</li>
                         </ul>
@@ -373,50 +177,11 @@ const UniversityDetail = () => {
                                     />
                                 </div>
 
-                                {/* Collapsible Table of Contents Box */}
-                                <div className="bg-white rounded-xl p-4 md:p-6 mb-12 border border-slate-200 shadow-sm transition-all duration-300">
-                                    <div
-                                        className="flex items-center justify-between cursor-pointer group"
-                                        onClick={() => setIsTocOpen(!isTocOpen)}
-                                    >
-                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-3">
-                                            Table of Contents
-                                        </h2>
-                                        <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white rounded transition-colors hover:bg-brand-primary/90">
-                                            {isTocOpen ? <BiMinus className="text-2xl" /> : <BiPlus className="text-2xl" />}
-                                        </div>
-                                    </div>
-
-                                    {isTocOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            className="overflow-hidden"
-                                        >
-                                            <ul className="flex flex-col gap-y-4 pt-8 mt-6 border-t border-slate-100">
-                                                {tocSections.map((section, idx) => (
-                                                    <li key={idx} className="flex items-start gap-2 group">
-                                                        <span className="text-slate-400 font-bold text-sm mt-0.5">{idx + 1}.</span>
-                                                        <button
-                                                            onClick={() => {
-                                                                const element = document.getElementById(section.id);
-                                                                if (element) {
-                                                                    window.scrollTo({
-                                                                        top: element.offsetTop - 120,
-                                                                        behavior: 'smooth'
-                                                                    });
-                                                                }
-                                                            }}
-                                                            className="text-[#1e3a8a] hover:text-brand-primary hover:translate-x-1 underline decoration-transparent hover:decoration-brand-primary/30 underline-offset-4 text-left text-sm font-bold transition-all"
-                                                        >
-                                                            {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                                        </button>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </motion.div>
-                                    )}
+                                {/* Table of Contents */}
+                                <div className="mb-12">
+                                    <TableOfContents sections={tocSections} />
                                 </div>
+
 
 
                                 {/* Highlights */}
@@ -598,15 +363,16 @@ const UniversityDetail = () => {
                                 {/* Other Universities Card */}
                                 <div className="bg-white rounded-[24px] border border-slate-100 p-6 shadow-sm overflow-hidden">
                                     <h3 className="text-base font-bold text-slate-900 mb-6 pb-2 border-b border-slate-100 flex items-center justify-between">
-                                        Other Universities <span className="text-brand-primary text-[10px] bg-brand-primary/5 px-2 py-0.5 rounded-full uppercase">Vietnam</span>
+                                        Other Universities <span className="text-brand-primary text-[10px] bg-brand-primary/5 px-2 py-0.5 rounded-full uppercase">{university.location.split(',')[1]?.trim() || 'Global'}</span>
                                     </h3>
                                     <div className="space-y-3">
                                         {Object.entries(universitiesData)
                                             .filter(([key]) => key !== slug)
+                                            .slice(0, 5) // Limit to 5 for cleaner sidebar
                                             .map(([key, uni]) => (
                                                 <Link
                                                     key={key}
-                                                    to={`/university/${key}`}
+                                                    to={getUniversityLink(key, uni.location)}
                                                     className="block p-4 rounded-xl border border-slate-50 bg-slate-50/30 hover:bg-white hover:border-brand-primary/30 hover:shadow-md transition-all group"
                                                 >
                                                     <div className="flex items-center justify-between gap-3">
@@ -616,8 +382,81 @@ const UniversityDetail = () => {
                                                 </Link>
                                             ))}
                                     </div>
+
                                 </div>
 
+                                {/* Get in Touch Form Widget */}
+                                <div className="bg-white rounded-[40px] p-8 border border-slate-100 shadow-premium relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-bl-full"></div>
+                                    <h4 className="text-xl font-black text-slate-900 mb-6 uppertolowercase tracking-widest relative pb-4 after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-brand-secondary">Get in Touch</h4>
+                                    <form className="space-y-4">
+                                        <div className="space-y-1.5">
+                                            <label className="text-[10px] font-black text-slate-900 uppertolowercase tracking-widest ml-2">Full Name</label>
+                                            <input
+                                                type="text"
+                                                placeholder=""
+                                                className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-5 py-3 text-slate-900 focus:border-brand-primary focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-sm"
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-[10px] font-black text-slate-900 uppertolowercase tracking-widest ml-2">Email Address</label>
+                                            <input
+                                                type="email"
+                                                placeholder=" "
+                                                className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-5 py-3 text-slate-900 focus:border-brand-primary focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-sm"
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-[10px] font-black text-slate-900 uppertolowercase tracking-widest ml-2">Phone Number</label>
+                                            <input
+                                                type="tel"
+                                                placeholder=""
+                                                className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-5 py-3 text-slate-900 focus:border-brand-primary focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-sm"
+                                            />
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <div className="space-y-1.5">
+                                                <label className="text-[10px] font-black text-slate-900 uppertolowercase tracking-widest ml-2">City</label>
+                                                <input
+                                                    type="text"
+                                                    placeholder=""
+                                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-5 py-3 text-slate-900 focus:border-brand-primary focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-sm"
+                                                />
+                                            </div>
+                                            <div className="space-y-1.5">
+                                                <label className="text-[10px] font-black text-slate-900 uppertolowercase tracking-widest ml-2">National Name</label>
+                                                <input
+                                                    type="text"
+                                                    placeholder=""
+                                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-5 py-3 text-slate-900 focus:border-brand-primary focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-sm"
+                                                />
+                                            </div>
+                                        </div>
+                                        {/* Captcha Section */}
+                                        <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-4">
+                                            <div className="flex items-center gap-3">
+                                                <div className="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 select-none">
+                                                    <span className="text-brand-primary font-black tracking-[0.3em] text-xs">8 + 4 =</span>
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    placeholder=" "
+                                                    className="w-12 bg-slate-50 border border-slate-100 rounded-lg px-2 py-1.5 text-slate-900 text-center focus:border-brand-primary outline-none font-bold text-sm"
+                                                />
+                                            </div>
+                                            <p className="text-[8px] font-bold text-slate-400 uppertolowercase tracking-wider text-right">Human<br />Verification</p>
+                                        </div>
+
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-black py-3 rounded-2xl text-[11px] uppertolowercase tracking-[0.2em] shadow-lg shadow-brand-primary/20 transition-all flex items-center justify-center gap-3 mt-2"
+                                        >
+                                            <BiSend className="text-lg" />
+                                            Send Inquiry
+                                        </motion.button>
+                                    </form>
+                                </div>
 
                                 {/* Quick Info Card */}
                                 <div id="quick-info" className="bg-white rounded-[24px] border border-slate-100 p-6 shadow-sm">
@@ -682,14 +521,15 @@ const UniversityDetail = () => {
             <section className="py-8 bg-slate-50">
                 <div className="container mx-auto px-6 text-center">
                     <Link
-                        to="/mbbs-vietnam"
+                        to={getBackLink()}
                         className="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 rounded-full font-semibold text-sm text-white hover:bg-[#1E3A8A] transition-all shadow-md"
                     >
                         <BiChevronRight className="text-xl rotate-180  group-hover:text-brand-primary" />
-                        Back to All Vietnam Universities
+                        Back to All {university.location.split(',')[1]?.trim() || ''} Universities
                     </Link>
                 </div>
             </section>
+
         </main>
     );
 };

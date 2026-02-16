@@ -163,7 +163,7 @@ const ExamPage = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
-              {data.title} <span className="text-brand-primary">Portal</span>
+              {data.title}
             </h1>
             <ul className="flex items-center justify-center xl:justify-start gap-4 text-slate-400 font-black text-xs uppercase tracking-[0.3em]">
               <li>

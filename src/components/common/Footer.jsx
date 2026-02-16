@@ -20,7 +20,7 @@ const Footer = () => {
                             <img
                                 src={logo}
                                 alt="logo"
-                                className="h-20 object-contain"
+                                className="h-28 object-contain"
                             />
                         </Link>
                         <p className="text-white text-sm leading-relaxed max-w-xs font-medium">

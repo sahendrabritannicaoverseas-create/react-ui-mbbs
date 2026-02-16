@@ -22,6 +22,7 @@ import NEXT from "../pages/Exams/medical-licensing/NEXT";
 import PLAB from "../pages/Exams/medical-licensing/PLAB";
 import PLAB2025 from "../pages/Exams/medical-licensing/PLAB2025";
 import PLABSyllabus from "../pages/Exams/medical-licensing/PLABSyllabus";
+import USMLE from "../pages/Exams/medical-licensing/USMLE";
 import Countries from "../pages/Countries";
 import Team from "../pages/Team";
 import Contact from "../pages/Contact/Contact";
@@ -30,6 +31,7 @@ import AdmissionProcess from "../pages/AdmissionProcess";
 import NeetPGQuestionPaper from "../pages/Exams/neet-pg/NeetPGQuestionPaper";
 import Blog from "../pages/Blog/Blog";
 import BlogDetail from "../pages/Blog/BlogDetail";
+import ServiceDetail from "../pages/ServiceDetail";
 
 const AppRoutes = () => {
     return (
@@ -37,9 +39,13 @@ const AppRoutes = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:slug" element={<ServiceDetail />} />
             <Route path="/mbbs-vietnam" element={<MBBSVietnam />} />
+            <Route path="/mbbs-vietnam/:slug" element={<UniversityDetail />} />
             <Route path="/mbbs-russia" element={<MBBSRussia />} />
+            <Route path="/mbbs-russia/:slug" element={<UniversityDetail />} />
             <Route path="/mbbs-uzbekistan" element={<MBBSUzbekistan />} />
+            <Route path="/mbbs-uzbekistan/:slug" element={<UniversityDetail />} />
             <Route path="/universities" element={<Universities />} />
             <Route path="/university/:slug" element={<UniversityDetail />} />
 
@@ -63,6 +69,7 @@ const AppRoutes = () => {
                 {/* Medical Licensing */}
                 <Route path="fmge" element={<FMGE />} />
                 <Route path="next" element={<NEXT />} />
+                <Route path="usmle" element={<USMLE />} />
                 <Route path="plab" element={<PLAB />} />
                 <Route path="plab-2025" element={<PLAB2025 />} />
                 <Route path="plab/syllabus" element={<PLABSyllabus />} />

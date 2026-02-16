@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import ContactForm from '../../../components/common/ContactForm';
+import TableOfContents from '../../../components/common/TableOfContents';
 import { Link } from 'react-router-dom';
 import { pageTitleBg, pageTitleShape } from '../../../assets/images';
 import { neetUGLinks, syllabusData } from '../../../data/neetUGData';
@@ -89,6 +91,7 @@ const NeetUGSyllabus = () => {
                                     </div>
                                 </div>
                             </div>
+                            <ContactForm title="Get in Touch" />
                         </aside>
 
                         {/* Right Content */}
@@ -98,8 +101,6 @@ const NeetUGSyllabus = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100"
                             >
-
-
                                 <div id="syllabus-cards" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {syllabusData.subjects.map((item, idx) => (
                                         <div key={idx} className="bg-white p-8 rounded-[24px] border border-slate-100 shadow-sm hover:shadow-premium transition-all duration-500 flex flex-col group">
@@ -120,88 +121,32 @@ const NeetUGSyllabus = () => {
                                 </div>
                             </motion.div>
 
-                            {/* Premium Collapsible Table of Contents */}
-                            <motion.section
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="bg-white rounded-[40px] p-6 lg:p-10 border border-slate-100 shadow-premium transition-all duration-500 overflow-hidden relative"
-                            >
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
-
-                                <div className="relative z-10">
-                                    <div
-                                        className="flex items-center justify-between cursor-pointer group"
-                                        onClick={() => setIsTocOpen(!isTocOpen)}
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 rounded-2xl bg-brand-primary/10 flex items-center justify-center text-brand-primary shadow-inner group-hover:bg-brand-primary group-hover:text-white transition-all duration-500">
-                                                <BiListUl className="text-2xl" />
-                                            </div>
-                                            <div>
-                                                <h2 className="text-xl md:text-2xl font-black text-slate-900 uppercase tracking-tight">
-                                                    Table of <span className="text-brand-primary uppercase">Contents</span>
-                                                </h2>
-                                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mt-1">Quick Navigation Guide</p>
-                                            </div>
-                                        </div>
-                                        <div className="w-10 h-10 bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-900 rounded-xl transition-all group-hover:bg-brand-primary group-hover:text-white group-hover:border-transparent group-hover:shadow-lg">
-                                            {isTocOpen ? <BiMinus className="text-xl" /> : <BiPlus className="text-xl" />}
-                                        </div>
-                                    </div>
-
-                                    <AnimatePresence>
-                                        {isTocOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                transition={{ duration: 0.5, ease: "easeInOut" }}
-                                                className="overflow-hidden"
-                                            >
-                                                <div className="pt-8 mt-8 border-t border-slate-100">
-                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-                                                        {sections.map((section, idx) => (
-                                                            <div key={section.id} className="flex items-start gap-4 group">
-                                                                <span className="text-brand-primary/40 font-black text-sm mt-1">0{idx + 1}.</span>
-                                                                <button
-                                                                    onClick={() => scrollToSection(section.id)}
-                                                                    className="text-slate-700 hover:text-brand-primary hover:translate-x-1 transition-all text-left text-[15px] font-bold tracking-tight py-1"
-                                                                >
-                                                                    {section.label.includes('. ') ? section.label.split('. ')[1] : section.label}
-                                                                </button>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            </motion.section>
-
+                            <TableOfContents sections={sections} className="!sticky !top-28 z-30" />
 
                             <div id="importance" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Why Solve NEET UG Previous Year Papers?</h2>
-                                <p className="text-slate-600">Solving previous year papers is crucial for understanding the exam pattern, difficulty level, and time management.</p>
+                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">{syllabusData.importance.title}</h2>
+                                <p className="text-slate-600">{syllabusData.importance.content}</p>
                             </div>
 
                             <div id="pattern" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">NEET UG Exam Pattern</h2>
-                                <p className="text-slate-600">The exam consists of 180 questions with a total duration of 3 hours and 20 minutes.</p>
+                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">{syllabusData.pattern.title}</h2>
+                                <p className="text-slate-600">{syllabusData.pattern.content}</p>
                             </div>
 
                             <div id="tips" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Preparation Tips</h2>
-                                <p className="text-slate-600">Follow a strict timetable, focus on NCERT books, and practice regular mock tests.</p>
+                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">{syllabusData.tips.title}</h2>
+                                <p className="text-slate-600">{syllabusData.tips.content}</p>
                             </div>
 
                             <div id="faq" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Frequently Asked Questions</h2>
-                                <p className="text-slate-600 font-bold mb-4 italic italic">Q: Is the syllabus same every year?</p>
-                                <p className="text-slate-600">A: Most topics remain constant, but minor changes may be introduced by the NTA.</p>
+                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">{syllabusData.faq.title}</h2>
+                                {syllabusData.faq.questions.map((q, idx) => (
+                                    <div key={idx} className="mb-4">
+                                        <p className="text-slate-600 font-bold mb-1 italic">Q: {q.question}</p>
+                                        <p className="text-slate-600">A: {q.answer}</p>
+                                    </div>
+                                ))}
                             </div>
-
 
                         </div>
                     </div>
