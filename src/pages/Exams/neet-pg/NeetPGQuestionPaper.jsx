@@ -325,43 +325,6 @@ const NeetPGQuestionPaper = () => {
                             <div className="mb-8">
                                 <TableOfContents sections={sections} />
                             </div>
-
-
-                            <div id="importance" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Why Solve NEET PG Previous Year Papers?</h2>
-                                <p className="text-slate-600">Solving previous year papers for NEET PG is essential to understand the complex clinical MCQ patterns, image-based questions, and the distribution of various pre-clinical, para-clinical, and clinical subjects.</p>
-                                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {[
-                                        'Identify high-yield topics',
-                                        'Practice time management',
-                                        'Analyze clinical case patterns',
-                                        'Boost confidence for CBT mode'
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                            <div className="w-2 h-2 rounded-full bg-brand-primary"></div>
-                                            <span className="text-sm font-bold text-slate-700">{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div id="pattern" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">NEET PG Exam Pattern</h2>
-                                <p className="text-slate-600">Candidates can analyze the distribution of questions across Clinical, Pre-Clinical, and Para-Clinical subjects from past papers. The exam consists of 200 multiple-choice questions.</p>
-                            </div>
-
-                            <div id="tips" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Preparation Tips</h2>
-                                <p className="text-slate-600">Focus on clinical case-based questions and image-based identification. Regular revision of high-yield topics from past papers is key to success.</p>
-                            </div>
-
-                            <div id="faq" className="bg-white rounded-[24px] p-8 md:p-12 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Frequently Asked Questions</h2>
-                                <p className="text-slate-600 font-bold mb-4 italic italic">Q: How many questions are asked in NEET PG?</p>
-                                <p className="text-slate-600">A: There are 200 MCQs to be solved in 3 hours and 30 minutes.</p>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>

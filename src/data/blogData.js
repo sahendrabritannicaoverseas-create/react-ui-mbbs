@@ -49,6 +49,15 @@ export const blogPosts = [
         category: "Admission",
         slug: "mbbs-admission-2026-guide",
         excerpt: "Planning to study MBBS abroad in 2026? Here is everything you need to know about eligibility, top countries, and fees.",
+        tocSections: [
+            { id: 'introduction', label: '1. Introduction' },
+            { id: 'benefits', label: '2. Why Study MBBS Abroad?' },
+            { id: 'top-countries', label: '3. Top Countries for MBBS 2026' },
+            { id: 'eligibility', label: '4. Eligibility Criteria' },
+            { id: 'documents', label: '5. Required Documents' },
+            { id: 'admission-process', label: '6. Admission Process' },
+            { id: 'conclusion', label: '7. Conclusion' }
+        ],
         content: ``
     }
 ];

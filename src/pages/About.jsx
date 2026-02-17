@@ -4,9 +4,9 @@ import {
     pageTitleBg, pageTitleShape, aboutMainImg, iconFinished, shape44,
     media5, media6, media7, media8,
     flagAustria, flagNewZealand, flagChina, flagAfghanistan, flagBrazil, flagAustralia, flagColombia,
-    team7, team8, team9
+    team7, team8, team9, shape10
 } from '../assets/images';
-import { BiPlus, BiCheckCircle } from 'react-icons/bi';
+import { BiPlus, BiCheckCircle, BiMapPin, BiPhone, BiMailSend, BiSend, BiCheck } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import Meta from '../components/common/Meta';
 
@@ -53,20 +53,20 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         className="max-w-3xl"
                     >
-                        <h2 className="text-4xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
-                            About <span className="text-brand-primary">Us</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppertolowercase tracking-tight">
+                            Contact <span className="text-brand-secondary">Us</span>
                         </h2>
                         <ul className="flex items-center gap-4 text-slate-400 font-black text-xs uppercase tracking-[0.3em]">
-                            <li><Link to="/" className="hover:text-brand-secondary transition-colors">Home</Link></li>
+                            <li><Link to="/" className="hover:text-secondary text-white">Home</Link></li>
                             <li className="text-slate-600">/</li>
-                            <li className="text-brand-primary">Our Story</li>
+                            <li className="text-white">Contact Us</li>
                         </ul>
                     </motion.div>
                 </div>
             </section>
 
             {/* About Section */}
-            <section className="py-8 md:py-12 relative">
+            <section className="py-4 md:py-8 relative">
                 <div className="container mx-auto px-4 md:px-8 max-w-7xl">
                     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                         {/* Image Column */}
@@ -104,14 +104,11 @@ const About = () => {
                         {/* Content Column */}
                         <div className="w-full lg:w-1/2">
                             <motion.div {...fadeInUp} className="mb-8">
-                                <span className="inline-block bg-brand-primary/10 text-brand-primary px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-                                    Who We Are
-                                </span>
-                                <h2 className="text-3xl md:text-[56px] font-black text-slate-900 leading-[1] mb-8 uppercase tracking-tighter">
-                                    Pioneering <span className="gradient-text">Medical Education</span> Abroad
+                                <h2 className="text-2xl md:text-[30px] font-black text-slate-900 leading-[1] mb-6 uppercase tracking-tighter">
+                                    Pioneering Medical Education Abroad
                                 </h2>
                                 <p className="text-slate-600 text-lg leading-relaxed font-medium">
-                                    Since our establishment, we've been dedicated to guiding aspiring medical professionals toward prestigious international universities. Our mission is to simplify the complex process of studying MBBS abroad, ensuring every student finds their perfect path to success.
+                                    Since our establishment, toward prestigious international universities. Our mission is to simplify the complex process of studying MBBS abroad, ensuring every student finds their perfect path to success.
                                 </p>
                             </motion.div>
 
@@ -245,6 +242,78 @@ const About = () => {
                                 </div>
                             </motion.div>
                         ))}
+                    </motion.div>
+                </div>
+            </section>
+            {/* Contact Info Boxes Section */}
+            <section className="py-20 relative">
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        variants={staggerContainer}
+                        initial="initial"
+                        whileInView="whileInView"
+                        viewport={{ once: true }}
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+                    >
+                        {[
+                            {
+                                icon: <BiMapPin />,
+                                title: 'Our Location',
+                                content: 'B-16 Ground Floor, Mayfield Garden, Sector 50, Gurugram, Haryana',
+                                color: 'text-brand-primary',
+                                bg: 'bg-brand-primary/10'
+                            },
+                            {
+                                icon: <BiPhone />,
+                                title: '24/7 Support',
+                                content: '+91-9818 560 331 / +91-9818 560 332',
+                                color: 'text-brand-secondary',
+                                bg: 'bg-brand-secondary/10'
+                            },
+                            {
+                                icon: <BiMailSend />,
+                                title: 'Email Info',
+                                content: 'info@mymbbsadmission.com / admission@mymbbsadmission.com',
+                                color: 'text-brand-primary',
+                                bg: 'bg-brand-primary/10'
+                            }
+                        ].map((box, i) => (
+                            <motion.div
+                                key={i}
+                                variants={fadeInUp}
+                                whileHover={{ y: -10 }}
+                                className="bg-white rounded-[40px] p-12 border border-slate-100 shadow-premium hover:shadow-2xl transition-all duration-500 flex flex-col items-center text-center group"
+                            >
+                                <div className={`${box.bg} ${box.color} w-20 h-20 rounded-[28px] flex items-center justify-center text-4xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                                    {box.icon}
+                                </div>
+                                <h3 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight">{box.title}</h3>
+                                <p className="text-slate-500 leading-relaxed font-medium">
+                                    {box.content}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Map Section */}
+            <section className="pb-32">
+                <div className="container mx-auto px-6 text-center">
+                    <motion.div
+                        {...fadeInUp}
+                        className="rounded-[64px] overflow-hidden shadow-2xl border-[12px] border-slate-50 grayscale hover:grayscale-0 transition-all duration-700 h-[500px]"
+                    >
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.3871624641573!2d77.06526831508603!3d28.43778558249615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1964f43f0533%3A0xc3fec2b55f1f7ca8!2sMayfield%20Garden%20Sector%2050%2C%20Gurugram!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
                     </motion.div>
                 </div>
             </section>
