@@ -29,7 +29,15 @@ export const blogPosts = [
         category: "Georgia",
         slug: "why-indian-students-prefer-mbbs-in-georgia",
         excerpt: "Georgia offers world-class medical education with European standards. Find out why it's the top choice for Indian students.",
-        tocSections: [],
+        tocSections: [
+            { id: 'introduction', label: '1. Introduction' },
+            { id: 'why-georgia', label: '2. Why Choose Georgia?' },
+            { id: 'top-universities', label: '3. Top Medical Universities' },
+            { id: 'eligibility', label: '4. Eligibility Criteria' },
+            { id: 'admission-process', label: '5. Admission Process' },
+            { id: 'cost-of-living', label: '6. Cost of Living' },
+            { id: 'conclusion', label: '7. Conclusion' }
+        ],
         content: ``
     },
     {

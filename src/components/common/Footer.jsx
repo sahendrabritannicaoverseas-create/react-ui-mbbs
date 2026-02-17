@@ -54,7 +54,7 @@ const Footer = () => {
                             {[
                                 { name: 'About Us', link: '/about' },
                                 { name: 'Medical Universities', link: '/universities' },
-                                { name: 'MBBS in Vietnam', link: '/mbbs-vietnam' },
+                                { name: 'MBBS in Vietnam', link: '/mbbs/vietnam' },
                                 { name: 'Admission Process', link: '/admission-process' },
                                 { name: 'Services', link: '/services' },
                                 { name: 'Blog', link: '/blog' },

@@ -6,6 +6,11 @@ import Services from "../pages/Services";
 import MBBSVietnam from "../pages/MBBS/MBBSVietnam";
 import MBBSRussia from "../pages/MBBS/MBBSRussia";
 import MBBSUzbekistan from "../pages/MBBS/MBBSUzbekistan";
+import MBBSKazakhstan from "../pages/MBBS/MBBSKazakhstan";
+import MBBSPhilippines from "../pages/MBBS/MBBSPhilippines";
+import MBBSGeorgia from "../pages/MBBS/MBBSGeorgia";
+import MBBSEgypt from "../pages/MBBS/MBBSEgypt";
+import MBBSBangladesh from "../pages/MBBS/MBBSBangladesh";
 import Universities from "../pages/Universities/Universities";
 import AllExams from "../pages/Exams/AllExams";
 import ExamPage from "../pages/Exams/ExamPage";
@@ -40,12 +45,26 @@ const AppRoutes = () => {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
-            <Route path="/mbbs-vietnam" element={<MBBSVietnam />} />
-            <Route path="/mbbs-vietnam/:slug" element={<UniversityDetail />} />
-            <Route path="/mbbs-russia" element={<MBBSRussia />} />
-            <Route path="/mbbs-russia/:slug" element={<UniversityDetail />} />
-            <Route path="/mbbs-uzbekistan" element={<MBBSUzbekistan />} />
-            <Route path="/mbbs-uzbekistan/:slug" element={<UniversityDetail />} />
+
+            {/* MBBS Countries - Structured URLs */}
+            <Route path="/mbbs/vietnam" element={<MBBSVietnam />} />
+            <Route path="/mbbs/vietnam/:slug" element={<UniversityDetail />} />
+            <Route path="/mbbs/russia" element={<MBBSRussia />} />
+            <Route path="/mbbs/russia/:slug" element={<UniversityDetail />} />
+            <Route path="/mbbs/uzbekistan" element={<MBBSUzbekistan />} />
+            <Route path="/mbbs/uzbekistan/:slug" element={<UniversityDetail />} />
+
+            <Route path="/mbbs/kazakhstan" element={<MBBSKazakhstan />} />
+            <Route path="/mbbs/kazakhstan/:slug" element={<UniversityDetail />} />
+            <Route path="/mbbs/philippines" element={<MBBSPhilippines />} />
+            <Route path="/mbbs/philippines/:slug" element={<UniversityDetail />} />
+            <Route path="/mbbs/georgia" element={<MBBSGeorgia />} />
+            <Route path="/mbbs/georgia/:slug" element={<UniversityDetail />} />
+            <Route path="/mbbs/egypt" element={<MBBSEgypt />} />
+            <Route path="/mbbs/egypt/:slug" element={<UniversityDetail />} />
+            <Route path="/mbbs/bangladesh" element={<MBBSBangladesh />} />
+            <Route path="/mbbs/bangladesh/:slug" element={<UniversityDetail />} />
+
             <Route path="/universities" element={<Universities />} />
             <Route path="/university/:slug" element={<UniversityDetail />} />
 

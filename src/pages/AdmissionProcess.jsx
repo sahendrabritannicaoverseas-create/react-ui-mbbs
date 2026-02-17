@@ -17,6 +17,7 @@ import {
     BiBadgeCheck
 } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import Meta from '../components/common/Meta';
 
 const AdmissionProcess = () => {
     const [isTocOpen, setIsTocOpen] = React.useState(true);
@@ -125,6 +126,10 @@ const AdmissionProcess = () => {
 
     return (
         <main className="overflow-hidden bg-white">
+            <Meta
+                title="MBBS Admission Process 2026 - Step-by-Step Guide"
+                description="Complete guide for MBBS admission abroad 2026. Step-by-step process for Vietnam, Russia, Uzbekistan, and other top destinations."
+            />
             {/* Page Title Area */}
             <section className="relative pt-[100px] pb-[20px] md:pt-[140px] md:pb-[30px] bg-slate-900 overflow-hidden text-left">
                 <div

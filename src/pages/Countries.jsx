@@ -3,20 +3,22 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, imgKazakhstan, imgRussia, imgUzbekistan, imgPhilippines, imgGeorgia, imgEgypt, flagBangladeshIcon } from '../assets/images';
 import { BiRightArrowAlt, BiCheck, BiChevronRight, BiCalendarCheck } from 'react-icons/bi';
+import Meta from '../components/common/Meta';
 
 const countriesData = [
-    { id: 'vietnam', name: 'Vietnam', img: imgKazakhstan },
-    { id: 'kazakhstan', name: 'Kazakhstan', img: imgKazakhstan },
-    { id: 'russia', name: 'Russia', img: imgRussia },
-    { id: 'uzbekistan', name: 'Uzbekistan', img: imgUzbekistan },
-    { id: 'philippines', name: 'Philippines', img: imgPhilippines },
-    { id: 'georgia', name: 'Georgia', img: imgGeorgia },
-    { id: 'egypt', name: 'Egypt', img: imgEgypt },
-    { id: 'bangladesh', name: 'Bangladesh', img: flagBangladeshIcon },
+    { id: 'vietnam', name: 'Vietnam', img: imgKazakhstan, path: '/mbbs/vietnam' },
+    { id: 'kazakhstan', name: 'Kazakhstan', img: imgKazakhstan, path: '/countries/kazakhstan' },
+    { id: 'russia', name: 'Russia', img: imgRussia, path: '/mbbs/russia' },
+    { id: 'uzbekistan', name: 'Uzbekistan', img: imgUzbekistan, path: '/mbbs/uzbekistan' },
+    { id: 'philippines', name: 'Philippines', img: imgPhilippines, path: '/countries/philippines' },
+    { id: 'georgia', name: 'Georgia', img: imgGeorgia, path: '/countries/georgia' },
+    { id: 'egypt', name: 'Egypt', img: imgEgypt, path: '/countries/egypt' },
+    { id: 'bangladesh', name: 'Bangladesh', img: flagBangladeshIcon, path: '/countries/bangladesh' },
 ];
 
 const Countries = () => {
     const { id } = useParams();
+    const countryName = countriesData.find(c => c.id === id)?.name || id;
 
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
@@ -81,7 +83,7 @@ const Countries = () => {
                             {countriesData.map((country) => (
                                 <motion.div key={country.id} variants={fadeInUp}>
                                     <Link
-                                        to={`/countries/${country.id}`}
+                                        to={country.path}
                                         className="group relative h-[450px] rounded-[48px] overflow-hidden shadow-premium hover:shadow-2xl transition-all duration-700 block bg-slate-200 border-8 border-white"
                                     >
                                         <img
@@ -114,6 +116,10 @@ const Countries = () => {
     // If ID exists, show details
     return (
         <div className="main-page-wrapper bg-white">
+            <Meta
+                title={`Study MBBS in ${countryName} 2026 - Top Medical Universities`}
+                description={`Apply for MBBS in ${countryName} 2026. Low tuition fees, English medium programs, and globally recognized medical degrees.`}
+            />
             <section className="relative pt-[160px] pb-[120px] bg-slate-900 overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
@@ -155,7 +161,7 @@ const Countries = () => {
                             </div>
                             <div className="pr-6">
                                 <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Admissions</p>
-                                <p className="text-sm font-black text-white uppercase tracking-tight">Open for 2025</p>
+                                <p className="text-sm font-black text-white uppercase tracking-tight">Open for 2026</p>
                             </div>
                         </motion.div>
                     </div>
@@ -217,7 +223,7 @@ const Countries = () => {
                                         {countriesData.filter(c => c.id !== id).slice(0, 5).map(country => (
                                             <Link
                                                 key={country.id}
-                                                to={`/countries/${country.id}`}
+                                                to={country.path}
                                                 className="flex items-center gap-5 p-3 rounded-2xl hover:bg-slate-50 transition-all no-underline group border border-transparent hover:border-slate-100"
                                             >
                                                 <div className="w-14 h-14 rounded-xl overflow-hidden shadow-sm group-hover:scale-95 transition-transform">

@@ -91,7 +91,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link
-                                to="/mbbs-vietnam"
+                                to="/mbbs/vietnam"
                                 className="text-black hover:text-brand-primary no-underline transition-all relative group/nav py-2"
                             >
                                 MBBS in Vietnam
@@ -373,7 +373,7 @@ const Navbar = () => {
                                 Home <BiRightArrowAlt className="text-slate-300" />
                             </Link>
                             <Link
-                                to="/mbbs-vietnam"
+                                to="/mbbs/vietnam"
                                 onClick={closeMenu}
                                 className="text-slate-900 hover:text-brand-primary border-b border-slate-50 pb-5 flex justify-between items-center"
                             >

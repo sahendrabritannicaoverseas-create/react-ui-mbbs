@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, uniCrimea, uniDhaka, uniAma, uniAltinbas, uniMasha } from '../../assets/images';
 import { BiRightArrowAlt, BiMapPin, BiCheckCircle, BiPlusCircle, BiChevronRight, BiChevronLeft, BiBookOpen, BiDetail, BiBuildings } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import Meta from '../../components/common/Meta';
 
 const Universities = () => {
     const [selectedUniversities, setSelectedUniversities] = React.useState([]);
@@ -95,6 +96,10 @@ const Universities = () => {
     };
 
     const getUniversityLink = (uni) => {
+        const country = categories.find(cat => cat.unis.some(u => u.slug === uni.slug))?.country.toLowerCase();
+        if (country?.includes('vietnam')) return `/mbbs/vietnam/${uni.slug}`;
+        if (country?.includes('russia')) return `/mbbs/russia/${uni.slug}`;
+        if (country?.includes('uzbekistan')) return `/mbbs/uzbekistan/${uni.slug}`;
         return `/university/${uni.slug}`;
     };
 
@@ -107,6 +112,10 @@ const Universities = () => {
 
     return (
         <main className="overflow-hidden bg-slate-50 min-h-screen">
+            <Meta
+                title="Top Medical Universities for MBBS Abroad 2026"
+                description="Explore top NMC & WHO recognized medical universities for MBBS abroad in Vietnam, Russia, Uzbekistan, and more."
+            />
             {/* Page Title Area / Banner */}
             <section className="relative pt-[160px] pb-[120px] bg-slate-900 overflow-hidden">
                 <div

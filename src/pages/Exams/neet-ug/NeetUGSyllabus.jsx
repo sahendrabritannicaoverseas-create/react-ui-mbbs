@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from '../../../components/common/ContactForm';
 import TableOfContents from '../../../components/common/TableOfContents';
+import Meta from '../../../components/common/Meta';
 import { Link } from 'react-router-dom';
 import { pageTitleBg, pageTitleShape } from '../../../assets/images';
 import { neetUGLinks, syllabusData } from '../../../data/neetUGData';
@@ -25,6 +26,10 @@ const NeetUGSyllabus = () => {
 
     return (
         <main className="overflow-hidden bg-slate-50 min-h-screen">
+            <Meta
+                title="NEET UG Syllabus 2026 - Physics, Chemistry & Biology Subject-wise"
+                description="Detailed NEET UG Syllabus 2026 for Physics, Chemistry, and Biology. Check topic-wise weightage and download the official syllabus PDF."
+            />
             {/* Page Title Area */}
             <section className="relative pt-[160px] pb-[120px] bg-slate-900 overflow-hidden">
                 <div

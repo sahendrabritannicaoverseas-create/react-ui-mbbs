@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, uniCrimea, uniDhaka, uniAma, uniAltinbas, uniMasha } from '../../assets/images';
 import { BiRightArrowAlt, BiMapPin, BiDetail, BiBuildings, BiChevronRight, BiBookOpen } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import Meta from '../../components/common/Meta';
 
 const MBBSUzbekistan = () => {
     const [selectedUniversities, setSelectedUniversities] = React.useState([]);
@@ -66,6 +67,10 @@ const MBBSUzbekistan = () => {
 
     return (
         <main className="overflow-hidden bg-slate-50 min-h-screen">
+            <Meta
+                title="Study MBBS in Uzbekistan 2026 - Top Medical Universities"
+                description="Apply for MBBS in Uzbekistan 2026. Quality education, low cost, english medium, and NMC/WHO recognized medical degrees."
+            />
             {/* Page Title Area */}
             <section id="intro" className="relative pt-[100px] pb-[30px] md:pt-[140px] md:pb-[40px] bg-slate-900 overflow-hidden">
                 <div
@@ -188,7 +193,7 @@ const MBBSUzbekistan = () => {
                                         >
                                             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
                                                 {/* University Logo/Image */}
-                                                <Link to={`/mbbs-uzbekistan/${uni.slug}`} className="w-32 h-32 md:w-36 md:h-36 rounded-xl border border-slate-100 p-3 bg-white flex-shrink-0 flex items-center justify-center overflow-hidden shadow-sm hover:border-brand-primary/30 transition-all">
+                                                <Link to={`/mbbs/uzbekistan/${uni.slug}`} className="w-32 h-32 md:w-36 md:h-36 rounded-xl border border-slate-100 p-3 bg-white flex-shrink-0 flex items-center justify-center overflow-hidden shadow-sm hover:border-brand-primary/30 transition-all">
                                                     <img
                                                         src={uni.img}
                                                         alt={uni.name}
@@ -198,7 +203,7 @@ const MBBSUzbekistan = () => {
 
                                                 {/* University Details (Center) */}
                                                 <div className="flex-grow text-center md:text-left">
-                                                    <Link to={`/mbbs-uzbekistan/${uni.slug}`}>
+                                                    <Link to={`/mbbs/uzbekistan/${uni.slug}`}>
                                                         <h3 className="text-lg md:text-xl font-black text-brand-navy mb-2 hover:text-brand-primary transition-colors cursor-pointer">
                                                             {uni.name}
                                                         </h3>
@@ -224,18 +229,13 @@ const MBBSUzbekistan = () => {
                                                 {/* Action Button (Right) */}
                                                 <div className="flex-shrink-0 w-full md:w-auto">
                                                     <Link
-                                                        to={`/mbbs-uzbekistan/${uni.slug}`}
+                                                        to={`/mbbs/uzbekistan/${uni.slug}`}
                                                         className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-brand-primary text-white px-6 py-3 rounded-lg text-sm font-bold hover:bg-brand-secondary transition-all shadow-sm active:scale-95"
                                                     >
                                                         <BiBookOpen className="text-lg" />
                                                         Request Info
                                                     </Link>
                                                 </div>
-
-
-
-
-
                                             </div>
                                         </motion.div>
                                     ))
