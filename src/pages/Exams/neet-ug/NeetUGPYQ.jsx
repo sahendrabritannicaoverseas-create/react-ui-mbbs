@@ -240,28 +240,6 @@ const NeetUGPYQ = () => {
 
                             <TableOfContents sections={sections} className="!sticky !top-28 z-30" />
 
-
-                            <div id="importance" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Why Solve NEET UG Previous Year Papers?</h2>
-                                <p className="text-slate-600">Solving previous year papers helps in identifying repeat questions and understanding the focus areas of the NTA.</p>
-                            </div>
-
-                            <div id="pattern" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">NEET UG Exam Pattern</h2>
-                                <p className="text-slate-600">Candidates can analyze the distribution of questions across Physics, Chemistry, and Biology from past papers.</p>
-                            </div>
-
-                            <div id="tips" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Preparation Tips</h2>
-                                <p className="text-slate-600">Analyze your mistakes in each paper and focus on improving those specific topics before the next practice session.</p>
-                            </div>
-
-                            <div id="faq" className="bg-white rounded-[32px] p-10 md:p-16 shadow-premium border border-slate-100">
-                                <h2 className="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tight">Frequently Asked Questions</h2>
-                                <p className="text-slate-600 font-bold mb-4 italic">Q: Are previous year questions repeated in NEET?</p>
-                                <p className="text-slate-600">A: While direct questions may not repeat, the concepts and patterns often do.</p>
-                            </div>
-
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import About from "../pages/About";
 import Services from "../pages/Services";
@@ -97,7 +97,7 @@ const AppRoutes = () => {
             <Route path="/countries" element={<Countries />} />
             <Route path="/countries/:id" element={<Countries />} />
             <Route path="/team" element={<Team />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<Navigate to="/about" replace />} />
             <Route path="/admission-process" element={<AdmissionProcess />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogDetail />} />
