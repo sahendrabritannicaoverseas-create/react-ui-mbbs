@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { pageTitleBg, pageTitleShape, shape10 } from '../../assets/images';
 import { BiMapPin, BiPhone, BiMailSend, BiSend, BiCheck } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import Meta from '../../components/common/Meta';
 
 const Contact = () => {
     const fadeInUp = {
@@ -19,6 +20,10 @@ const Contact = () => {
 
     return (
         <main className="overflow-hidden bg-white">
+            <Meta
+                title="Contact Us - My MBBS Admission"
+                description="Get in touch with our expert counsellors for MBBS admission abroad. Call us or visit our office in Gurugram."
+            />
             {/* Page Title Area */}
             <section className="relative pt-[100px] pb-[30px] md:pt-[140px] md:pb-[40px] bg-slate-900 overflow-hidden">
                 <div

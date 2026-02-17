@@ -7,6 +7,8 @@ import {
     team7, team8, team9
 } from '../assets/images';
 import { BiPlus, BiCheckCircle } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+import Meta from '../components/common/Meta';
 
 const About = () => {
     const fadeInUp = {
@@ -23,6 +25,10 @@ const About = () => {
 
     return (
         <main className="overflow-hidden bg-white">
+            <Meta
+                title="About Us - 14+ Years of Excellence"
+                description="We are a trusted educational consultancy with 14+ years of experience in guiding students for MBBS admission abroad."
+            />
             {/* Page Title Area */}
             <section className="relative pt-[120px] pb-[80px] md:pt-[160px] md:pb-[120px] bg-slate-900 overflow-hidden">
                 <div
@@ -51,7 +57,7 @@ const About = () => {
                             About <span className="text-brand-primary">Us</span>
                         </h2>
                         <ul className="flex items-center gap-4 text-slate-400 font-black text-xs uppercase tracking-[0.3em]">
-                            <li><a href="/" className="hover:text-brand-secondary transition-colors">Home</a></li>
+                            <li><Link to="/" className="hover:text-brand-secondary transition-colors">Home</Link></li>
                             <li className="text-slate-600">/</li>
                             <li className="text-brand-primary">Our Story</li>
                         </ul>
@@ -89,7 +95,7 @@ const About = () => {
                                     <BiCheckCircle className="text-4xl" />
                                 </div>
                                 <div>
-                                    <h3 className="text-3xl font-black text-slate-900 leading-tight tracking-tight uppercase">12+ Years</h3>
+                                    <h3 className="text-3xl font-black text-slate-900 leading-tight tracking-tight uppercase">14+ Years</h3>
                                     <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Excellence in Admission</p>
                                 </div>
                             </motion.div>

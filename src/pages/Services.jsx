@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { BiRightArrowAlt, BiPhone, BiCalendarCheck } from "react-icons/bi";
+import Meta from "../components/common/Meta";
 import {
   pageTitleBg,
   pageTitleShape,
@@ -73,6 +74,10 @@ const Services = () => {
 
   return (
     <main className="overflow-hidden bg-white">
+      <Meta
+        title="Our Services - Visa, Admission & Counseling"
+        description="Comprehensive services for MBBS abroad including student visa, admission counseling, documentation, and post-arrival support."
+      />
       {/* Page Title Area */}
       <section className="relative pt-[100px] pb-[30px] md:pt-[140px] md:pb-[40px] bg-slate-900 overflow-hidden">
         <div
@@ -101,12 +106,12 @@ const Services = () => {
             </h2>
             <ul className="flex items-center justify-center xl:justify-start gap-4 text-slate-400 font-black text-xs uppercase tracking-[0.3em]">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="hover:text-brand-secondary transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li className="text-slate-400">/</li>
               <li className="text-brand-primary">Services</li>

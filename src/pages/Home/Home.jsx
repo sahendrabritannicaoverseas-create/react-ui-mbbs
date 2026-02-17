@@ -40,18 +40,18 @@ const Home = () => {
   });
 
   const countries = [
-    { name: "MBBS in Russia", flag: flagRussiaIcon, color: "bg-blue-600", path: "/mbbs-russia" },
+    { name: "MBBS in Russia", flag: flagRussiaIcon, color: "bg-blue-600", path: "/mbbs/russia" },
     {
       name: "MBBS in Uzbekistan",
       flag: flagUzbekistanIcon,
       color: "bg-cyan-500",
-      path: "/mbbs-uzbekistan"
+      path: "/mbbs/uzbekistan"
     },
     {
       name: "MBBS in Vietnam",
       flag: flagVietnamIcon,
       color: "bg-red-600",
-      path: "/mbbs-vietnam"
+      path: "/mbbs/vietnam"
     },
     {
       name: "MBBS in Kazakhstan",
@@ -95,7 +95,7 @@ const Home = () => {
   return (
     <main className="overflow-hidden bg-white">
       <Meta
-        title="Direct MBBS Admission Abroad 2024"
+        title="Direct MBBS Admission Abroad 2026"
         description="Official representative for top medical universities in Vietnam, Russia, Uzbekistan & more. Get direct admission in MBBS abroad with complete guidance."
       />
       <Hero />

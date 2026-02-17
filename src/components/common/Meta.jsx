@@ -1,26 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import SeoHead from '../seo/SeoHead';
 
-const Meta = ({ title, description }) => {
-    useEffect(() => {
-        // Update Title
-        const baseTitle = "MBBS in vitnam";
-        document.title = title ? `${title} | ${baseTitle}` : baseTitle;
-
-        // Update Description
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const content = description || "Expert guidance for MBBS admissions in Vietnam, Russia, Uzbekistan and more. Secure your medical career with My MBBS Admission.";
-
-        if (metaDescription) {
-            metaDescription.setAttribute('content', content);
-        } else {
-            const newMeta = document.createElement('meta');
-            newMeta.name = "description";
-            newMeta.content = content;
-            document.head.appendChild(newMeta);
-        }
-    }, [title, description]);
-
-    return null;
+const Meta = (props) => {
+    return (
+        <SeoHead
+            title={props.title}
+            description={props.description}
+            keywords={props.keywords}
+            canonicalUrl={props.canonicalUrl}
+        />
+    );
 };
 
 export default Meta;

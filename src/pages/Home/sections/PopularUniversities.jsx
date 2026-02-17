@@ -64,9 +64,9 @@ const PopularUniversities = () => {
 
     const getUniversityLink = (uni) => {
         const country = uni.location.toLowerCase();
-        if (country.includes('vietnam')) return `/mbbs-vietnam/${uni.slug}`;
-        if (country.includes('russia')) return `/mbbs-russia/${uni.slug}`;
-        if (country.includes('uzbekistan')) return `/mbbs-uzbekistan/${uni.slug}`;
+        if (country.includes('vietnam')) return `/mbbs/vietnam/${uni.slug}`;
+        if (country.includes('russia')) return `/mbbs/russia/${uni.slug}`;
+        if (country.includes('uzbekistan')) return `/mbbs/uzbekistan/${uni.slug}`;
         return `/university/${uni.slug}`;
     };
 

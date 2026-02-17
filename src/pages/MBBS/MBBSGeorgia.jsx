@@ -5,7 +5,7 @@ import { BiRightArrowAlt, BiMapPin, BiDetail, BiBuildings, BiChevronRight, BiBoo
 import { Link } from 'react-router-dom';
 import Meta from '../../components/common/Meta';
 
-const MBBSVietnam = () => {
+const MBBSGeorgia = () => {
     const [selectedUniversities, setSelectedUniversities] = React.useState([]);
     const [searchQuery, setSearchQuery] = React.useState('');
     const [currentPage, setCurrentPage] = React.useState(1);
@@ -13,50 +13,15 @@ const MBBSVietnam = () => {
 
     const universities = [
         {
-            name: 'Hanoi Medical University',
-            slug: 'hanoi-medical-university',
-            img: uniCrimea,
-            desc: 'One of Vietnam\'s oldest and most prestigious medical institutions, known for excellence in medical education and research.',
-            location: 'Hanoi, Vietnam',
-            established: '1902',
-            recognition: 'WHO, NMC, FAIMER Listed'
-        },
-        {
-            name: 'Ho Chi Minh City University of Medicine and Pharmacy',
-            slug: 'hcmc-university-medicine-pharmacy',
-            img: uniDhaka,
-            desc: 'A leading medical university in Southern Vietnam offering world-class MBBS programs with modern facilities.',
-            location: 'Ho Chi Minh City, Vietnam',
-            established: '1947',
-            recognition: 'WHO, NMC, FAIMER Listed'
-        },
-        {
-            name: 'Hue University of Medicine and Pharmacy',
-            slug: 'hue-university-medicine-pharmacy',
-            img: uniAma,
-            desc: 'Located in the historic city of Hue, offering comprehensive medical education with strong clinical training.',
-            location: 'Hue, Vietnam',
-            established: '1957',
-            recognition: 'WHO, NMC Listed'
-        },
-        {
-            name: 'Can Tho University of Medicine and Pharmacy',
-            slug: 'can-tho-university-medicine-pharmacy',
-            img: uniAltinbas,
-            desc: 'A prominent institution in the Mekong Delta region, known for quality medical education and affordable tuition.',
-            location: 'Can Tho, Vietnam',
-            established: '2002',
-            recognition: 'WHO, NMC Listed'
-        },
-        {
-            name: 'Thai Binh University of Medicine and Pharmacy',
-            slug: 'thai-binh-university-medicine-pharmacy',
+            name: 'Tbilisi State Medical University',
+            slug: 'tbilisi-state-medical-university',
             img: uniMasha,
-            desc: 'A well-established medical university offering MBBS programs with excellent practical training opportunities.',
-            location: 'Thai Binh, Vietnam',
-            established: '1968',
-            recognition: 'WHO, NMC Listed'
-        }
+            desc: 'The leading medical university in Georgia with a rich history.',
+            location: 'Tbilisi, Georgia',
+            established: '1918',
+            recognition: 'WHO, NMC Recognized'
+        },
+        // Add more universities here as needed
     ];
 
     const toggleUniversity = (uniName) => {
@@ -95,8 +60,8 @@ const MBBSVietnam = () => {
     return (
         <main className="overflow-hidden bg-slate-50 min-h-screen">
             <Meta
-                title="MBBS in Vietnam"
-                description="Apply for MBBS in Vietnam 2026. Low tuition fees, English medium programs, and globally recognized medical degrees at Top Vietnam Universities."
+                title="Study MBBS in Georgia 2026 - Top Medical Universities"
+                description="Apply for MBBS in Georgia 2026. Quality education, low cost, english medium, and NMC/WHO recognized medical degrees."
             />
             {/* Page Title Area */}
             <section id="intro" className="relative pt-[100px] pb-[30px] md:pt-[140px] md:pb-[40px] bg-slate-900 overflow-hidden">
@@ -122,12 +87,12 @@ const MBBSVietnam = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <h1 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
-                            MBBS In <span className="text-brand-secondary">Vietnam</span>
+                            MBBS In <span className="text-brand-secondary">Georgia</span>
                         </h1>
                         <ul className="flex items-center justify-center xl:justify-start gap-4 text-slate-400 font-bold text-[10px] uppercase tracking-widest">
                             <li><Link to="/" className="hover:text-brand-primary text-white transition-colors">Home</Link></li>
                             <li className="text-slate-600">/</li>
-                            <li className="text-brand-secondary">Vietnam Universities</li>
+                            <li className="text-brand-secondary">Georgia Universities</li>
                         </ul>
                     </motion.div>
                 </div>
@@ -220,7 +185,7 @@ const MBBSVietnam = () => {
                                         >
                                             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
                                                 {/* University Logo/Image */}
-                                                <Link to={`/mbbs/vietnam/${uni.slug}`} className="w-32 h-32 md:w-36 md:h-36 rounded-xl border border-slate-100 p-3 bg-white flex-shrink-0 flex items-center justify-center overflow-hidden shadow-sm hover:border-brand-primary/30 transition-all">
+                                                <Link to={`/mbbs/georgia/${uni.slug}`} className="w-32 h-32 md:w-36 md:h-36 rounded-xl border border-slate-100 p-3 bg-white flex-shrink-0 flex items-center justify-center overflow-hidden shadow-sm hover:border-brand-primary/30 transition-all">
                                                     <img
                                                         src={uni.img}
                                                         alt={uni.name}
@@ -230,7 +195,7 @@ const MBBSVietnam = () => {
 
                                                 {/* University Details (Center) */}
                                                 <div className="flex-grow text-center md:text-left">
-                                                    <Link to={`/mbbs/vietnam/${uni.slug}`}>
+                                                    <Link to={`/mbbs/georgia/${uni.slug}`}>
                                                         <h3 className="text-lg md:text-xl font-black text-brand-navy mb-2 hover:text-brand-primary transition-colors cursor-pointer">
                                                             {uni.name}
                                                         </h3>
@@ -256,14 +221,13 @@ const MBBSVietnam = () => {
                                                 {/* Action Button (Right) */}
                                                 <div className="flex-shrink-0 w-full md:w-auto">
                                                     <Link
-                                                        to={`/mbbs/vietnam/${uni.slug}`}
+                                                        to={`/mbbs/georgia/${uni.slug}`}
                                                         className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-brand-primary text-white px-6 py-3 rounded-lg text-sm font-bold hover:bg-brand-secondary transition-all shadow-sm active:scale-95"
                                                     >
                                                         <BiBookOpen className="text-lg" />
                                                         Request Info
                                                     </Link>
                                                 </div>
-
                                             </div>
                                         </motion.div>
                                     ))
@@ -328,4 +292,4 @@ const MBBSVietnam = () => {
     );
 };
 
-export default MBBSVietnam;
+export default MBBSGeorgia;

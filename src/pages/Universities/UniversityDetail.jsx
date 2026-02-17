@@ -17,31 +17,31 @@ const UniversityDetail = () => {
 
     const getBackLink = () => {
         if (location.pathname.startsWith('/university/')) return "/universities";
-        if (location.pathname.startsWith('/mbbs-vietnam/')) return "/mbbs-vietnam";
-        if (location.pathname.startsWith('/mbbs-russia/')) return "/mbbs-russia";
-        if (location.pathname.startsWith('/mbbs-uzbekistan/')) return "/mbbs-uzbekistan";
+        if (location.pathname.startsWith('/mbbs/vietnam/')) return "/mbbs/vietnam";
+        if (location.pathname.startsWith('/mbbs/russia/')) return "/mbbs/russia";
+        if (location.pathname.startsWith('/mbbs/uzbekistan/')) return "/mbbs/uzbekistan";
 
         // Fallback
         if (!university) return "/universities";
-        if (university.location.toLowerCase().includes('vietnam')) return "/mbbs-vietnam";
-        if (university.location.toLowerCase().includes('russia')) return "/mbbs-russia";
-        if (university.location.toLowerCase().includes('uzbekistan')) return "/mbbs-uzbekistan";
+        if (university.location.toLowerCase().includes('vietnam')) return "/mbbs/vietnam";
+        if (university.location.toLowerCase().includes('russia')) return "/mbbs/russia";
+        if (university.location.toLowerCase().includes('uzbekistan')) return "/mbbs/uzbekistan";
         return "/universities";
     };
 
     const getUniversityLink = (slug, universityLocation) => {
         // Respect the current context if possible
         if (location.pathname.startsWith('/university/')) return `/university/${slug}`;
-        if (location.pathname.startsWith('/mbbs-vietnam/')) return `/mbbs-vietnam/${slug}`;
-        if (location.pathname.startsWith('/mbbs-russia/')) return `/mbbs-russia/${slug}`;
-        if (location.pathname.startsWith('/mbbs-uzbekistan/')) return `/mbbs-uzbekistan/${slug}`;
+        if (location.pathname.startsWith('/mbbs/vietnam/')) return `/mbbs/vietnam/${slug}`;
+        if (location.pathname.startsWith('/mbbs/russia/')) return `/mbbs/russia/${slug}`;
+        if (location.pathname.startsWith('/mbbs/uzbekistan/')) return `/mbbs/uzbekistan/${slug}`;
 
         // Fallback to regional if location provided
         if (!universityLocation) return `/university/${slug}`;
         const country = universityLocation.toLowerCase();
-        if (country.includes('vietnam')) return `/mbbs-vietnam/${slug}`;
-        if (country.includes('russia')) return `/mbbs-russia/${slug}`;
-        if (country.includes('uzbekistan')) return `/mbbs-uzbekistan/${slug}`;
+        if (country.includes('vietnam')) return `/mbbs/vietnam/${slug}`;
+        if (country.includes('russia')) return `/mbbs/russia/${slug}`;
+        if (country.includes('uzbekistan')) return `/mbbs/uzbekistan/${slug}`;
         return `/university/${slug}`;
     };
 
@@ -49,7 +49,7 @@ const UniversityDetail = () => {
         { id: 'about', label: `1. About ${university.name}` },
         { id: 'highlights', label: `2. Why Choose ${university.name}` },
         { id: 'eligibility', label: `3. Eligibility Criteria for MBBS` },
-        { id: 'fees', label: '4. Fee Structure 2024-25' },
+        { id: 'fees', label: '4. Fee Structure 2026' },
         { id: 'admission', label: '5. Admission Process' },
         { id: 'documents', label: '6. Documents Required' },
         { id: 'facilities', label: '7. Campus Facilities' },
@@ -79,7 +79,7 @@ const UniversityDetail = () => {
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-slate-900 mb-4">University Not Found</h1>
                     <p className="text-slate-600 mb-8">The university you're looking for doesn't exist.</p>
-                    <Link to="/mbbs-vietnam" className="btn-primary px-8 py-4 rounded-full">
+                    <Link to="/mbbs/vietnam" className="btn-primary px-8 py-4 rounded-full">
                         Back to Universities
                     </Link>
                 </div>
@@ -248,7 +248,7 @@ const UniversityDetail = () => {
                                         <div className="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary">
                                             <BiMoney className="text-xl" />
                                         </div>
-                                        Fee Structure 2024-25
+                                        Fee Structure 2026
                                     </h3>
                                     <div className="bg-white rounded-[24px] border border-slate-100 overflow-hidden shadow-sm">
                                         <table className="w-full text-left border-collapse">
